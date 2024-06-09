@@ -1,4 +1,7 @@
 $(document).ready(() => {
+    // featured 섹션 초기화
+    render_projects('featured');
+    // 1 섹션 초기화
     render_activity('1');
 })
 
@@ -68,5 +71,7 @@ let activity_mapper = activity => {
 }
 
 let selected = (slug) => {
+    // featured 섹션과 1 섹션 모두 버튼 초기화
+    render_projects(slug);
     render_activity(slug);
 }
