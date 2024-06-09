@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    render_activity('featured');
+    render_activity('contest');
 })
 
 
@@ -17,7 +17,7 @@ let render_activity = (slug) => {
             demo: 'https://tiktokmakeathon.info',
             technologies: ['Android', 'HTML', 'JS', 'Firebase'],
             description: "틱톡 메이커톤 홈페이지 및 관리 애플리케이션",
-            categories: ['hackathon', 'webdev']
+            categories: ['contest', 'webdev']
         },
         {
             image: 'assets/images/mobile-landscape.jpg',
@@ -26,7 +26,7 @@ let render_activity = (slug) => {
             demo: 'http://wall-e-jekyll.github.io/',
             technologies: ['Semantic UI', 'Jekyll'],
             description: "A modern Jekyll theme with grid frontpage, beautiful typography, mobile responsive, made with Semantic UI.",
-            categories: ['featured', 'webdev']
+            categories: ['contest', 'webdev']
         },
         {
             image: 'assets/images/collage.jpg',
@@ -35,7 +35,7 @@ let render_activity = (slug) => {
             demo: false,
             technologies: ['Android', 'OpenCV'],
             description: "Attendance marking tool that uses face recognition for marking attendance and firebase for tracking and analytics.",
-            categories: ['featured', 'native']
+            categories: ['contest', 'native']
         },
         {
             image: 'assets/images/mpw.jpg',
@@ -44,7 +44,7 @@ let render_activity = (slug) => {
             demo: 'https://www.nagekar.com/mpw',
             technologies: ['Semantic UI', 'CSS3'],
             description: "Master Password is an ingenious password solution that makes your passwords truly impossible to lose.",
-            categories: ['featured', 'security']
+            categories: ['contest', 'security']
         },
         {
             image: 'assets/images/social-share-count.jpeg',
