@@ -1,5 +1,8 @@
 $(document).ready(() => {
+    // featured 섹션 초기화
     render_projects('featured');
+    // 1 섹션 초기화
+    render_activity('1');
 })
 
 
@@ -203,5 +206,8 @@ let project_mapper = project => {
 }
 
 let selected = (slug) => {
-    render_projects(slug);
+    // featured 섹션 초기화
+    render_projects('featured');
+    // 1 섹션 초기화
+    render_activity('1');
 }
