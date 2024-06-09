@@ -11,13 +11,13 @@ let render_projects = (slug) => {
 
     let projects_obj = [
         {
-            image: 'assets/images/mentors.jpg',
-            link: 'https://github.com/abhn/Mporter',
-            title: 'Mporter',
-            demo: 'https://mporter.co',
-            technologies: ['Flask', 'Celery', 'Python'],
-            description: "Flask web application for easy reporting updates to one's mentor. Multi-user support, easy to deploy and use.",
-            categories: ['featured', 'webdev']
+            image: 'assets/images/tiktok_logo.png',
+            link: 'https://tiktokmakeathon.info',
+            title: 'TikTok Make a Thon',
+            demo: 'https://tiktokmakeathon.info',
+            technologies: ['Android', 'HTML', 'JS', 'Firebase'],
+            description: "틱톡 메이커톤 홈페이지 및 관리 애플리케이션",
+            categories: ['android', 'webdev']
         },
         {
             image: 'assets/images/mobile-landscape.jpg',
