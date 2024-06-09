@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    render_activity('contest');
+    render_activity('featured');
 })
 
 
@@ -17,7 +17,7 @@ let render_activity = (slug) => {
             demo: 'https://tiktokmakeathon.info',
             technologies: ['Android', 'HTML', 'JS', 'Firebase'],
             description: "틱톡 메이커톤 홈페이지 및 관리 애플리케이션",
-            categories: ['contest', 'webdev']
+            categories: ['android', 'webdev']
         },
         {
             image: 'assets/images/mobile-landscape.jpg',
@@ -26,7 +26,7 @@ let render_activity = (slug) => {
             demo: 'http://wall-e-jekyll.github.io/',
             technologies: ['Semantic UI', 'Jekyll'],
             description: "A modern Jekyll theme with grid frontpage, beautiful typography, mobile responsive, made with Semantic UI.",
-            categories: ['contest', 'webdev']
+            categories: ['featured', 'webdev']
         },
         {
             image: 'assets/images/collage.jpg',
@@ -35,7 +35,7 @@ let render_activity = (slug) => {
             demo: false,
             technologies: ['Android', 'OpenCV'],
             description: "Attendance marking tool that uses face recognition for marking attendance and firebase for tracking and analytics.",
-            categories: ['contest', 'native']
+            categories: ['featured', 'native']
         },
         {
             image: 'assets/images/mpw.jpg',
@@ -44,7 +44,7 @@ let render_activity = (slug) => {
             demo: 'https://www.nagekar.com/mpw',
             technologies: ['Semantic UI', 'CSS3'],
             description: "Master Password is an ingenious password solution that makes your passwords truly impossible to lose.",
-            categories: ['contest', 'security']
+            categories: ['featured', 'security']
         },
         {
             image: 'assets/images/social-share-count.jpeg',
@@ -158,24 +158,24 @@ let render_activity = (slug) => {
 
     let activity = [];
     if(slug == 'all') {
-        activity = activity_obj.map(activity_mapper);
+        activity = activity_obj.map(project_mapper);
     } 
     else {
-        activity = activity_obj.filter(activity => activity.categories.includes(slug)).map(activity_mapper);
+        activity = activity_obj.filter(project => project.categories.includes(slug)).map(project_mapper);
     }
     activity_area.hide().html(activity).fadeIn();
 }
 
-let activity_mapper = activity => {
+let project_mapper = project => {
     return `
         <div class="wrapper">
                 
             <div class="card radius shadowDepth1">
 
-                ${activity.image ? 
+                ${project.image ? 
                     `<div class="card__image border-tlr-radius">
-                        <a href="${activity.link}">
-                            <img src="${activity.image}" alt="image" id="activity-image" class="border-tlr-radius">
+                        <a href="${project.link}">
+                            <img src="${project.image}" alt="image" id="project-image" class="border-tlr-radius">
                         </a>
                     </div>`           
                 : ''}
@@ -184,15 +184,15 @@ let activity_mapper = activity => {
                 <div class="card__content card__padding">
         
                     <article class="card__article">
-                        <h2><a href="${activity.link}">${activity.title}</a></h2>
+                        <h2><a href="${project.link}">${project.title}</a></h2>
         
-                        <p class="paragraph-text-normal">${activity.description} ${activity.demo ? `<a href="${activity.demo}">Demo</a>` : ''}</p>
+                        <p class="paragraph-text-normal">${project.description} ${project.demo ? `<a href="${project.demo}">Demo</a>` : ''}</p>
                     </article>
 
                                 
                     <div class="card__meta">
-                        ${activity.technologies.map(tech =>
-                            `<span class="activity-technology paragraph-text-normal">${tech}</span>`
+                        ${project.technologies.map(tech =>
+                            `<span class="project-technology paragraph-text-normal">${tech}</span>`
                         ).join('')}
                     </div>
 
