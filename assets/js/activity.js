@@ -158,24 +158,24 @@ let render_activity = (slug) => {
 
     let activity = [];
     if(slug == 'all') {
-        activity = activity_obj.map(project_mapper);
+        activity = activity_obj.map(activity_mapper);
     } 
     else {
-        activity = activity_obj.filter(project => project.categories.includes(slug)).map(project_mapper);
+        activity = activity_obj.filter(activity => activity.categories.includes(slug)).map(activity_mapper);
     }
     activity_area.hide().html(activity).fadeIn();
 }
 
-let project_mapper = project => {
+let activity_mapper = activity => {
     return `
         <div class="wrapper">
                 
             <div class="card radius shadowDepth1">
 
-                ${project.image ? 
+                ${activity.image ? 
                     `<div class="card__image border-tlr-radius">
-                        <a href="${project.link}">
-                            <img src="${project.image}" alt="image" id="project-image" class="border-tlr-radius">
+                        <a href="${activity.link}">
+                            <img src="${activity.image}" alt="image" id="activity-image" class="border-tlr-radius">
                         </a>
                     </div>`           
                 : ''}
@@ -184,15 +184,15 @@ let project_mapper = project => {
                 <div class="card__content card__padding">
         
                     <article class="card__article">
-                        <h2><a href="${project.link}">${project.title}</a></h2>
+                        <h2><a href="${activity.link}">${activity.title}</a></h2>
         
-                        <p class="paragraph-text-normal">${project.description} ${project.demo ? `<a href="${project.demo}">Demo</a>` : ''}</p>
+                        <p class="paragraph-text-normal">${activity.description} ${activity.demo ? `<a href="${activity.demo}">Demo</a>` : ''}</p>
                     </article>
 
                                 
                     <div class="card__meta">
-                        ${project.technologies.map(tech =>
-                            `<span class="project-technology paragraph-text-normal">${tech}</span>`
+                        ${activity.technologies.map(tech =>
+                            `<span class="activity-technology paragraph-text-normal">${tech}</span>`
                         ).join('')}
                     </div>
 
