@@ -188,8 +188,30 @@ img {
       -ms-flex-pack: center;
           justify-content: center;
 }
+.section-activity {
+  max-width: 768px;
+  margin: 60px auto;
+  padding: 20px 0;
+  min-height: 100vh;
+
+  display: -webkit-box;
+
+  display: -ms-flexbox;
+
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
 
 .section.skills > div {
+  width: 100%;
+}
+
+.section-activity.skills > div {
   width: 100%;
 }
 
@@ -199,6 +221,16 @@ img {
 }
 
 .section-heading {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: 'PT Sans', Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  font-size: 2.5rem;
+  color: #222;
+  font-weight: bold;
+}
+
+.section-activity-heading {
   text-align: center;
   margin-bottom: 30px;
   font-family: 'PT Sans', Arial, Helvetica, sans-serif;
@@ -218,6 +250,11 @@ img {
   background-repeat: repeat;
 }
 
+.section-activity-wrapper:nth-child(odd) {
+  background: url(../images/background.png);
+  background-repeat: repeat;
+}
+
 .section-wrapper:nth-child(odd) .section-heading {
   color: #fff;
 }
@@ -227,6 +264,18 @@ img {
 }
 
 .section-wrapper:nth-child(odd) .paragraph-text {
+  color: #fff;
+}
+
+.section-activity-wrapper:nth-child(odd) .section-activity-heading {
+  color: #fff;
+}
+
+.section-activity-wrapper:nth-child(odd) .skills-subsection {
+  color: #fff;
+}
+
+.section-activity-wrapper:nth-child(odd) .paragraph-text {
   color: #fff;
 }
 
