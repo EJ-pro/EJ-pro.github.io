@@ -17,7 +17,7 @@ let render_activity = (slug) => {
             demo: 'https://tiktokmakeathon.info',
             technologies: ['Android', 'HTML', 'JS', 'Firebase'],
             description: "틱톡 메이커톤 홈페이지 및 관리 애플리케이션",
-            categories: ['android', 'webdev']
+            categories: ['hackathon', 'webdev']
         },
         {
             image: 'assets/images/mobile-landscape.jpg',
