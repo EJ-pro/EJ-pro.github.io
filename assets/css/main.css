@@ -222,6 +222,23 @@ img {
   color: #fff;
 }
 
+.section-a-wrapper:nth-child(odd) {
+  background: url(../images/background.png);
+  background-repeat: repeat;
+}
+
+.section-a-wrapper:nth-child(odd) .section-heading {
+  color: #fff;
+}
+
+.section-a-wrapper:nth-child(odd) .skills-subsection {
+  color: #fff;
+}
+
+.section-a-wrapper:nth-child(odd) .paragraph-text {
+  color: #fff;
+}
+
 .paragraph-text {
   font-family: 'PT Sans', sans-serif;
   font-size: 20.8px;
