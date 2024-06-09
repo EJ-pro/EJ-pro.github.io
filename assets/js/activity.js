@@ -3,11 +3,11 @@ $(document).ready(() => {
 })
 
 
-let render_activity = (slug) => {
+let render_activity = (slug2) => {
     let activity_area = $('.activity-wrapper');
 
     $('.white-button2').removeClass('white-button2-hover');
-    $(`#${slug}`).addClass('white-button2-hover');
+    $(`#${slug2}`).addClass('white-button2-hover');
 
     let activity_obj = [
         {
@@ -157,11 +157,11 @@ let render_activity = (slug) => {
     ]
 
     let activity = [];
-    if(slug == '2') {
+    if(slug2 == '2') {
         activity = activity_obj.map(activity_mapper);
     } 
     else {
-        activity = activity_obj.filter(activity => activity.categories.includes(slug)).map(activity_mapper);
+        activity = activity_obj.filter(activity => activity.categories.includes(slug2)).map(activity_mapper);
     }
     activity_area.hide().html(activity).fadeIn();
 }
@@ -202,6 +202,6 @@ let activity_mapper = activity => {
     `
 }
 
-let selected = (slug) => {
-    render_activity(slug);
+let selected = (slug2) => {
+    render_activity(slug2);
 }
