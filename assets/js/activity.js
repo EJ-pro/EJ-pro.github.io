@@ -6,8 +6,8 @@ $(document).ready(() => {
 let render_activity = (slug) => {
     let activity_area = $('.activity-wrapper');
 
-    $('.white-button').removeClass('white-button-hover');
-    $(`#${slug}`).addClass('white-button-hover');
+    $('.white-button2').removeClass('white-button2-hover');
+    $(`#${slug}`).addClass('white-button2-hover');
 
     let activity_obj = [
         {
@@ -157,7 +157,7 @@ let render_activity = (slug) => {
     ]
 
     let activity = [];
-    if(slug == 'all') {
+    if(slug == '2') {
         activity = activity_obj.map(activity_mapper);
     } 
     else {
