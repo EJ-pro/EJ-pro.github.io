@@ -6,8 +6,8 @@ $(document).ready(() => {
 let render_activity = (slug) => {
     let activity_area = $('.activity-wrapper');
 
-    $('.white-button2').removeClass('white-button-hover');
-    $(`#${slug}`).addClass('white-button-hover');
+    $('.white-button2').removeClass('white-button2-hover');
+    $(`#${slug}`).addClass('white-button2-hover');
 
     let activity_obj = [
         {
