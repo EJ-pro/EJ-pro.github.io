@@ -13,16 +13,26 @@ let render_projects = (slug) => {
         {
             image: 'assets/images/tiktok_logo.png',
             link: 'http://tiktokmakeathon.info',
-            title: 'TikTok Make a Thon',
+            title: '<i class="fas fa-tiktok"></i> TikTok Make a Thon',
             demo: 'http://tiktokmakeathon.info',
-            technologies: ['Android', 'HTML', 'JS', 'Firebase'],
-            description: "틱톡 메이커톤 홈페이지 및 관리 애플리케이션",
-            categories: ['android', 'webdev']
+            technologies: ['HTML', 'JS', 'CSS', 'Firebase'],
+            // <i class="head-icon fab fa-github"></i>
+            description: "틱톡 메이커톤 지원 홈페이지",
+            categories: ['webdev', 'server']
+        },
+        {
+            image: 'assets/images/tiktok_logo.png',
+            link: 'http://tiktokmakeathon.info',
+            title: '<i class="fas fa-tiktok"></i> TikTok Make a Thon',
+            demo: 'http://tiktokmakeathon.info',
+            technologies: ['Android', 'Firebase'],
+            description: "틱톡 메이커톤 지원 관리 앱",
+            categories: ['android', 'server']
         },
         {
             image: 'assets/images/smartpot.png',
             link: 'https://splendid-bellflower-21f.notion.site/Smart-Pot-be8abaa5e8f14bedb1b1e2ab14c3a2ac',
-            title: 'Smart Pot',
+            title: '🪴 Smart Pot',
             demo: '',
             technologies: ['Android', 'Kotlin', 'KaKao API', 'Python'],
             description: "스마트 식물 관리 솔루션",
@@ -31,20 +41,29 @@ let render_projects = (slug) => {
         {
             image: 'assets/images/collobo.png',
             link: '',
-            title: 'Collobo',
+            title: '🫂 Collobo',
             demo: '',
             technologies: ['Android', 'Kotlin', 'Firebase'],
-            description: "",
+            description: "협업 관리 및 매칭 애플리케이션",
             categories: ['android', 'server']
         },
         {
             image: 'assets/images/baekjoon100day.png',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
-            title: '백준백일',
+            title: '💯 백준백일',
             demo: '',
             technologies: ['Java', 'BeakJoon'],
-            description: "",
+            description: "백준 백일 프로젝트",
             categories: ['activity']
+        },
+        {
+            image: 'assets/images/baekjoon100day.png',
+            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            title: '📖 Spec Test Solution',
+            demo: '',
+            technologies: ['Android', 'Java'],
+            description: "",
+            categories: ['android']
         },
     ]
 
@@ -78,7 +97,7 @@ let project_mapper = project => {
                     <article class="card__article">
                         <h2><a href="${project.link}">${project.title}</a></h2>
         
-                        <p class="paragraph-text-normal">${project.description} ${project.demo ? `<a href="${project.demo}">Link</a>` : ''}</p>
+                        <p class="paragraph-text-normal" style = "color : #111111">${project.description} ${project.demo ? `<a href="${project.demo}">Link</a>` : ''}</p>
                     </article>
 
                                 

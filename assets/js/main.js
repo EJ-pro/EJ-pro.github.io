@@ -23,42 +23,42 @@ function blog_posts() {
         {
             url: 'https://splendid-bellflower-21f.notion.site/_-9288fb134c294975bce54969b0aa4182?pvs=4',
             title: '🏤 2024 산학엽협력 융합캡스톤디자인 성과발표회',
-            subtitle: '한국프로젝트경영학회장상'
+            subtitle: '🎖️ 한국프로젝트경영학회장상'
         },
         {
             url: 'https://splendid-bellflower-21f.notion.site/_-9288fb134c294975bce54969b0aa4182?pvs=4',
             title: '🏛️ 2024 한국 콘텐츠학회 종합학술대회',
-            subtitle: '우수상'
+            subtitle: '🎖️ 우수상'
         },
         {
             url: 'https://splendid-bellflower-21f.notion.site/_-9288fb134c294975bce54969b0aa4182?pvs=4',
             title: '🏰 2023 캡스톤디자인 내부 경진대회',
-            subtitle: '목원대학교 총장상'
+            subtitle: '🎖️ 목원대학교 총장상'
         },
         {
             url: 'https://splendid-bellflower-21f.notion.site/_-9288fb134c294975bce54969b0aa4182?pvs=4',
             title: '🛸 PEN 창업동아리 활동',
-            subtitle: '목원대학교 총장상'
+            subtitle: '🎖️ 목원대학교 총장상'
         },
         {
             url: 'https://splendid-bellflower-21f.notion.site/_-9288fb134c294975bce54969b0aa4182?pvs=4',
             title: '💒 대전권대학연합 산학협력 성과 공유 발표 경진대회',
-            subtitle: '대산협회장상'
+            subtitle: '🎖️ 대산협회장상'
         },
         {
             url: 'https://splendid-bellflower-21f.notion.site/_-9288fb134c294975bce54969b0aa4182?pvs=4',
             title: '🧠 2023 캡스톤디자인 창업 Boot-Up 메이커톤',
-            subtitle: '우수창업부분 최우수상'
+            subtitle: '🎖️ 우수창업부분 최우수상'
         },
         {
             url: 'https://splendid-bellflower-21f.notion.site/_-9288fb134c294975bce54969b0aa4182?pvs=4',
             title: '🎪 대전 스타트업 스쿨',
-            subtitle: '대전 창조경제혁신센터장상'
+            subtitle: '🎖️ 대전 창조경제혁신센터장상'
         },
         {
             url: 'https://splendid-bellflower-21f.notion.site/_-9288fb134c294975bce54969b0aa4182?pvs=4',
             title: '🎇 Tiktok 메이커톤',
-            subtitle: '최다 언어 발행상'
+            subtitle: '🎖️ 최다 언어 발행상'
         },
     ];
 
