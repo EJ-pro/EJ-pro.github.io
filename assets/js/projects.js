@@ -12,36 +12,36 @@ let render_projects = (slug) => {
     let projects_obj = [
         {
             image: 'assets/images/tiktok_logo.png',
-            link: 'https://tiktokmakeathon.info',
+            link: 'http://tiktokmakeathon.info',
             title: 'TikTok Make a Thon',
-            demo: 'https://tiktokmakeathon.info',
+            demo: 'http://tiktokmakeathon.info',
             technologies: ['Android', 'HTML', 'JS', 'Firebase'],
             description: "틱톡 메이커톤 홈페이지 및 관리 애플리케이션",
             categories: ['android', 'webdev']
         },
         {
             image: 'assets/images/tiktok_logo.png',
-            link: 'https://tiktokmakeathon.info',
+            link: 'http://tiktokmakeathon.info',
             title: 'TikTok Make a Thon',
-            demo: 'https://tiktokmakeathon.info',
+            demo: 'http://tiktokmakeathon.info',
             technologies: ['Android', 'HTML', 'JS', 'Firebase'],
             description: "틱톡 메이커톤 홈페이지 및 관리 애플리케이션",
             categories: ['android', 'webdev']
         },
         {
             image: 'assets/images/tiktok_logo.png',
-            link: 'https://tiktokmakeathon.info',
+            link: 'http://tiktokmakeathon.info',
             title: 'TikTok Make a Thon',
-            demo: 'https://tiktokmakeathon.info',
+            demo: 'http://tiktokmakeathon.info',
             technologies: ['Android', 'HTML', 'JS', 'Firebase'],
             description: "틱톡 메이커톤 홈페이지 및 관리 애플리케이션",
             categories: ['android', 'webdev']
         },
         {
             image: 'assets/images/tiktok_logo.png',
-            link: 'https://tiktokmakeathon.info',
+            link: 'http://tiktokmakeathon.info',
             title: 'TikTok Make a Thon',
-            demo: 'https://tiktokmakeathon.info',
+            demo: 'http://tiktokmakeathon.info',
             technologies: ['Android', 'HTML', 'JS', 'Firebase'],
             description: "틱톡 메이커톤 홈페이지 및 관리 애플리케이션",
             categories: ['android', 'webdev']
