@@ -12,7 +12,7 @@ let render_projects = (slug) => {
     let projects_obj = [
         {
             image: 'assets/images/tiktok_logo.png',
-            link: 'http://tiktokmakeathon.info',
+            link: 'https://splendid-bellflower-21f.notion.site/TikTok-make-a-thon-84d7076693d741aab350f27bd7de09cd?pvs=4',
             title: '<i class="fas fa-tiktok"></i> TikTok Make a Thon',
             demo: 'http://tiktokmakeathon.info',
             technologies: ['HTML', 'JS', 'CSS', 'Firebase'],
@@ -65,7 +65,7 @@ let render_projects = (slug) => {
             categories: ['android']
         },
         {
-            image: 'assets/images/golbal_start_up_school.PNG',
+            image: 'assets/images/web_pront_end.png',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '2023 웹프론트엔드',
             demo: '',
