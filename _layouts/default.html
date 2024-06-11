@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko">
-    
-    {% include head.html %}
+
+<div class="sidebar">
+    <a class="semi-transparent-button nav-links" href="#about">About</a>
+    <hr width = "100%" color = "#fff" size = "1"   style="margin-top:0px;margin-bottom:0px;">
+    <a class="semi-transparent-button nav-links" href="#skills">Skills</a>
+    <hr width = "100%" color = "#fff" size = "1"   style="margin-top:0px;margin-bottom:0px;">
+    <a class="semi-transparent-button nav-links" href="#projects" style="font-size:12px">Project & Activity</a>
+    <hr width = "100%" color = "#fff" size = "1"   style="margin-top:0px;margin-bottom:0px;">
+    <a class="semi-transparent-button nav-links" href="#blog-posts">Awards</a>
+</div>
+{% include head.html %}
 
 <body>
 
     {% include nav.html %}
-
+    
+    {% include background.html %}
+    
     {% include about.html %}
 
     {% include skills.html %}
@@ -14,7 +25,7 @@
     {% include projects.html %}
 
     {% include blogs.html %}
-        
+
     {% include extra.html %}
 
     {% include footer.html %}
@@ -23,4 +34,5 @@
 
     {% include scripts.html %}
 </body>
+
 </html>
