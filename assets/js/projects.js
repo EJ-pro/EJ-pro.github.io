@@ -67,6 +67,15 @@ let render_projects = (slug) => {
         {
             image: 'assets/images/golbal_start_up_school.PNG',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            title: '2023 웹프론트엔드',
+            demo: '',
+            technologies: ['교육생', 'JS', 'React'],
+            description: "과기정통부 SW전문인재양성사업 웹프론트엔드 과정 수료",
+            categories: ['activity']
+        },
+        {
+            image: 'assets/images/golbal_start_up_school.PNG',
+            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '2024 글로벌 스타트업스쿨',
             demo: '',
             technologies: ['팀장', 'Android'],
