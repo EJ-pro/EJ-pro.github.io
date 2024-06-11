@@ -66,6 +66,7 @@
 
 /* card article */
 .card__article a {
+	font-size: 20px;
 	text-decoration: none;
 	color: #444;
 	transition: all 0.5s ease;

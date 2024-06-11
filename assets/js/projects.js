@@ -61,7 +61,7 @@ let render_projects = (slug) => {
             title: '📖 Spec Test Solution',
             demo: '',
             technologies: ['Android', 'Java'],
-            description: "",
+            description: "기사시험 준비를 위한 애플리케이션",
             categories: ['android']
         },
         {
@@ -70,7 +70,7 @@ let render_projects = (slug) => {
             title: '2024 글로벌 스타트업스쿨',
             demo: '',
             technologies: ['팀장', 'Android'],
-            description: "",
+            description: "말레이시아 학생들과 말레이시아에서 경진대회 진행",
             categories: ['contest']
         },
         {
@@ -79,7 +79,7 @@ let render_projects = (slug) => {
             title: '2024 PEN CREATER 시제품 경진대회',
             demo: '',
             technologies: ['팀장', 'Android'],
-            description: "",
+            description: "대전 0시 축제의 팝업스토어를 위해 0시축제 안내 애플리케이션 제작 및 포토 카드 판매",
             categories: ['contest']
         },
         {
@@ -88,7 +88,7 @@ let render_projects = (slug) => {
             title: '2024 한국콘텐츠학회 캡스톤디자인 논문 경진대회',
             demo: '',
             technologies: ['팀장', 'Android'],
-            description: "",
+            description: "Collobo 앱의 논문을 작성하여 경진대회 참여",
             categories: ['contest']
         },
         {
@@ -97,7 +97,7 @@ let render_projects = (slug) => {
             title: '제 7회 대전 스타트업 스쿨',
             demo: '',
             technologies: ['팀장', 'PM', '발표'],
-            description: "",
+            description: "Smart Pot 개발을 하며 창업관련으로 참여",
             categories: ['contest']
         },
         {
@@ -106,7 +106,7 @@ let render_projects = (slug) => {
             title: '2023 산학협력 성과확산 FESTA',
             demo: '',
             technologies: ['팀장', '발표'],
-            description: "",
+            description: "Smart Pot 캡스톤 경진대회 참여",
             categories: ['contest']
         },
         {
@@ -115,7 +115,7 @@ let render_projects = (slug) => {
             title: '2023 SW융합클러스터 2.0 디지털콘텐츠 DX 해커톤',
             demo: '',
             technologies: ['팀원', 'Android'],
-            description: "",
+            description: "바뷰 웹어플리케이션 개발을하여 해커톤참여 & 애플리케이션 제작",
             categories: ['contest']
         },
         {
@@ -124,7 +124,7 @@ let render_projects = (slug) => {
             title: '2023 TikTok 대학생 AR필터 메이커톤',
             demo: '',
             technologies: ['팀원', 'Android'],
-            description: "",
+            description: "틱톡 AR필터 제작 및 배포 현재 상위 1% 크리에이터",
             categories: ['contest']
         },
         {
@@ -133,7 +133,7 @@ let render_projects = (slug) => {
             title: '2023 SW 테스트 경진대회',
             demo: '',
             technologies: ['팀장', 'Android'],
-            description: "",
+            description: "출시 준비중인 애플리케이션의 오류 테스트 충청권 대표로 참여",
             categories: ['contest']
         },
     ]
@@ -168,7 +168,7 @@ let project_mapper = project => {
                     <article class="card__article">
                         <h2><a href="${project.link}">${project.title}</a></h2>
         
-                        <p class="paragraph-text-normal" style = "color : #111111">${project.description} ${project.demo ? `<a href="${project.demo}">Link</a>` : ''}</p>
+                        <p class="paragraph-text-normal" style = "color : #111111l; font-size: 15px;">${project.description} ${project.demo ? `<a href="${project.demo}">Link</a>` : ''}</p>
                     </article>
 
                                 
