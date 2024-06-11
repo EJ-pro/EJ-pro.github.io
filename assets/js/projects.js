@@ -65,7 +65,7 @@ let render_projects = (slug) => {
             categories: ['android']
         },
         {
-            image: 'assets/images/golbal_start_up_school.png',
+            image: 'assets/images/golbal_start_up_school.PNG',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '2024 글로벌 스타트업스쿨',
             demo: '',
@@ -74,7 +74,7 @@ let render_projects = (slug) => {
             categories: ['contest']
         },
         {
-            image: 'assets/images/pen_creator_prototype.png',
+            image: 'assets/images/pen_creator_prototype.PNG',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '2024 PEN CREATER 시제품 경진대회',
             demo: '',
@@ -101,7 +101,7 @@ let render_projects = (slug) => {
             categories: ['contest']
         },
         {
-            image: 'assets/images/announcement.png',
+            image: 'assets/images/announcement.PNG',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '2023 산학협력 성과확산 FESTA',
             demo: '',
@@ -110,7 +110,7 @@ let render_projects = (slug) => {
             categories: ['contest']
         },
         {
-            image: 'assets/images/sw_convergence_cluster.png',
+            image: 'assets/images/sw_convergence_cluster.PNG',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '2023 SW융합클러스터 2.0 디지털콘텐츠 DX 해커톤',
             demo: '',
@@ -119,7 +119,7 @@ let render_projects = (slug) => {
             categories: ['contest']
         },
         {
-            image: 'assets/images/tiktok_make.png',
+            image: 'assets/images/tiktok_make.PNG',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '2023 TikTok 대학생 AR필터 메이커톤',
             demo: '',
