@@ -10,6 +10,7 @@
     <hr width = "100%" color = "#fff" size = "1"   style="margin-top:0px;margin-bottom:0px;">
     <a class="semi-transparent-button nav-links" href="#blog-posts">Awards</a>
 </div>
+
 {% include head.html %}
 
 <body>
@@ -34,5 +35,23 @@
 
     {% include scripts.html %}
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('.nav-links');
+
+        for (const link of links) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    });
+</script>
 
 </html>
