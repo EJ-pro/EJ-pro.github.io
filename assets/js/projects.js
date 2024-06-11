@@ -16,7 +16,6 @@ let render_projects = (slug) => {
             title: '<i class="fas fa-tiktok"></i> TikTok Make a Thon',
             demo: 'http://tiktokmakeathon.info',
             technologies: ['HTML', 'JS', 'CSS', 'Firebase'],
-            // <i class="head-icon fab fa-github"></i>
             description: "틱톡 메이커톤 지원 홈페이지",
             categories: ['webdev', 'server']
         },
@@ -64,6 +63,78 @@ let render_projects = (slug) => {
             technologies: ['Android', 'Java'],
             description: "",
             categories: ['android']
+        },
+        {
+            image: 'assets/images/golbal_start_up_school.png',
+            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            title: '2024 글로벌 스타트업스쿨',
+            demo: '',
+            technologies: ['팀장', 'Android'],
+            description: "",
+            categories: ['contest']
+        },
+        {
+            image: 'assets/images/pen_creator_prototype.png',
+            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            title: '2024 PEN CREATER 시제품 경진대회',
+            demo: '',
+            technologies: ['팀장', 'Android'],
+            description: "",
+            categories: ['contest']
+        },
+        {
+            image: 'assets/images/korea_capstone_paper_contest.jpg',
+            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            title: '2024 한국콘텐츠학회 캡스톤디자인 논문 경진대회',
+            demo: '',
+            technologies: ['팀장', 'Android'],
+            description: "",
+            categories: ['contest']
+        },
+        {
+            image: 'assets/images/start_up_school.png',
+            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            title: '제 7회 대전 스타트업 스쿨',
+            demo: '',
+            technologies: ['팀장', 'PM', '발표'],
+            description: "",
+            categories: ['contest']
+        },
+        {
+            image: 'assets/images/announcement.png',
+            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            title: '2023 산학협력 성과확산 FESTA',
+            demo: '',
+            technologies: ['팀장', '발표'],
+            description: "",
+            categories: ['contest']
+        },
+        {
+            image: 'assets/images/sw_convergence_cluster.png',
+            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            title: '2023 SW융합클러스터 2.0 디지털콘텐츠 DX 해커톤',
+            demo: '',
+            technologies: ['팀원', 'Android'],
+            description: "",
+            categories: ['contest']
+        },
+        {
+            image: 'assets/images/tiktok_make.png',
+            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            title: '2023 TikTok 대학생 AR필터 메이커톤',
+            demo: '',
+            technologies: ['팀원', 'Android'],
+            description: "",
+            categories: ['contest']
+        },
+        {
+            image: 'assets/images/sw_test.png',
+            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            title: '2023 SW 테스트 경진대회',
+            demo: '',
+            technologies: ['팀장', 'Android'],
+            description: "",
+            categories: ['contest']
         },
     ]
 
