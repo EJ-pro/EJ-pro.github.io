@@ -18,6 +18,11 @@ body {
     border-radius: 10px; /* 둥근 모서리를 만들기 위해 추가 */
   }
 }
+@media (max-width: 1079px) {
+  .sidebar {
+    display: none;
+  }
+}
 
 
 img {
