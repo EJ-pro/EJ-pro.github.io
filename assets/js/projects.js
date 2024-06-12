@@ -58,7 +58,7 @@ let render_projects = (slug) => {
         {
             image: 'assets/images/number_baseball.png',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
-            title: '📖 숫자야구게임',
+            title: '⚾ 숫자야구게임',
             demo: '',
             technologies: ['Android', 'Kotlin'],
             description: "코틀린 첫 토이 프로젝트 숫자야구게임",

@@ -1,5 +1,5 @@
 title: EJ-pro 포트폴리오
-description: Web & Security Engineer
+description: Android Developer
 site_title: '@EJ-pro 포트폴리오'
 
 # Build settings
@@ -10,7 +10,6 @@ exclude: [vendor/ruby]
 github_username: EJ-pro
 email: hsshss2522@naver.com
 
-# absolute or relative
 profile_picture: assets/images/profile.jpg
 
 # Google Analytics ID
