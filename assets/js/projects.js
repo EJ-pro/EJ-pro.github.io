@@ -20,7 +20,7 @@ let render_projects = (slug) => {
             categories: ['webdev', 'server']
         },
         {
-            image: 'assets/images/tiktok_logo.png',
+            image: 'assets/images/tiktokmakeathon_app.png',
             link: 'http://tiktokmakeathon.info',
             title: '<i class="fas fa-tiktok"></i> TikTok Make a Thon',
             demo: 'http://tiktokmakeathon.info',
@@ -56,7 +56,16 @@ let render_projects = (slug) => {
             categories: ['activity']
         },
         {
-            image: 'assets/images/baekjoon100day.png',
+            image: 'assets/images/number_baseball.png',
+            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            title: '📖 숫자야구게임',
+            demo: '',
+            technologies: ['Android', 'Kotlin'],
+            description: "코틀린 첫 토이 프로젝트 숫자야구게임",
+            categories: ['android']
+        },
+        {
+            image: 'assets/images/sts.png',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '📖 Spec Test Solution',
             demo: '',
@@ -74,7 +83,7 @@ let render_projects = (slug) => {
             categories: ['activity']
         },
         {
-            image: 'assets/images/golbal_start_up_school.PNG',
+            image: 'assets/images/golbal_start_up_school.png',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '2024 글로벌 스타트업스쿨',
             demo: '',
@@ -83,7 +92,7 @@ let render_projects = (slug) => {
             categories: ['contest']
         },
         {
-            image: 'assets/images/pen_creator_prototype.PNG',
+            image: 'assets/images/pen_creator_prototype.png',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '2024 PEN CREATER 시제품 경진대회',
             demo: '',
@@ -110,7 +119,7 @@ let render_projects = (slug) => {
             categories: ['contest']
         },
         {
-            image: 'assets/images/announcement.PNG',
+            image: 'assets/images/announcement.png',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '2023 산학협력 성과확산 FESTA',
             demo: '',
@@ -119,7 +128,7 @@ let render_projects = (slug) => {
             categories: ['contest']
         },
         {
-            image: 'assets/images/sw_convergence_cluster.PNG',
+            image: 'assets/images/sw_convergence_cluster.png',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '2023 SW융합클러스터 2.0 디지털콘텐츠 DX 해커톤',
             demo: '',
@@ -128,7 +137,7 @@ let render_projects = (slug) => {
             categories: ['contest']
         },
         {
-            image: 'assets/images/tiktok_make.PNG',
+            image: 'assets/images/tiktok_make.png',
             link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
             title: '2023 TikTok 대학생 AR필터 메이커톤',
             demo: '',
