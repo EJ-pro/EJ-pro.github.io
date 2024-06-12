@@ -21,7 +21,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/tiktokmakeathon_app.png',
-            link: 'http://tiktokmakeathon.info',
+            link: 'https://splendid-bellflower-21f.notion.site/Tiktok-Make-a-Thon-app-36fe6d47018e431a87e47500d52baa65?pvs=4',
             title: '<i class="fas fa-tiktok"></i> TikTok Make a Thon',
             demo: 'http://tiktokmakeathon.info',
             technologies: ['Android', 'Firebase'],
@@ -39,7 +39,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/collobo.png',
-            link: '',
+            link: 'https://splendid-bellflower-21f.notion.site/Collobo-d4c91fab2c53450c9232b1b46fbef7f3?pvs=4',
             title: '🫂 Collobo',
             demo: '',
             technologies: ['Android', 'Kotlin', 'Firebase'],
@@ -57,7 +57,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/number_baseball.png',
-            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            link: 'https://splendid-bellflower-21f.notion.site/7e307d6f69bf43c1bec272443e32b8a3?pvs=4',
             title: '⚾ 숫자야구게임',
             demo: '',
             technologies: ['Android', 'Kotlin'],
@@ -66,7 +66,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/sts.png',
-            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            link: 'https://splendid-bellflower-21f.notion.site/Spec-Test-Solution-37ad256f09e64a60ba6f10d26c2ac870?pvs=4',
             title: '📖 Spec Test Solution',
             demo: '',
             technologies: ['Android', 'Java'],
@@ -75,7 +75,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/web_pront_end.png',
-            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            link: 'https://splendid-bellflower-21f.notion.site/SW-53eb8e8ceab549a2b30d3e09ef5e5057?pvs=4',
             title: '2023 웹프론트엔드',
             demo: '',
             technologies: ['교육생', 'JS', 'React'],
@@ -84,7 +84,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/golbal_start_up_school.png',
-            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            link: 'https://splendid-bellflower-21f.notion.site/2024-ed7566f286df4589a23e181c51b9138e?pvs=4',
             title: '2024 글로벌 스타트업스쿨',
             demo: '',
             technologies: ['팀장', 'Android'],
@@ -93,7 +93,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/pen_creator_prototype.png',
-            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            link: 'https://splendid-bellflower-21f.notion.site/2024-PEN-CREATER-e4f243ede3334f41a1ef85c81239e0dd?pvs=4',
             title: '2024 PEN CREATER 시제품 경진대회',
             demo: '',
             technologies: ['팀장', 'Android'],
@@ -102,7 +102,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/korea_capstone_paper_contest.jpg',
-            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            link: 'https://splendid-bellflower-21f.notion.site/2024-e570e7a8288041e2af54358f79f24526?pvs=4',
             title: '2024 한국콘텐츠학회 캡스톤디자인 논문 경진대회',
             demo: '',
             technologies: ['팀장', 'Android'],
@@ -111,7 +111,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/start_up_school.png',
-            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            link: 'https://splendid-bellflower-21f.notion.site/c4781e6061894adbbc340b9ad9d31a3a?pvs=4',
             title: '제 7회 대전 스타트업 스쿨',
             demo: '',
             technologies: ['팀장', 'PM', '발표'],
@@ -120,7 +120,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/announcement.png',
-            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            link: 'https://splendid-bellflower-21f.notion.site/2023-FESTA-8bab3a9df7a6415a998256be586ca22e?pvs=4',
             title: '2023 산학협력 성과확산 FESTA',
             demo: '',
             technologies: ['팀장', '발표'],
@@ -129,7 +129,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/sw_convergence_cluster.png',
-            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            link: 'https://splendid-bellflower-21f.notion.site/2023-SW-2-0-DX-92cac8f42c064de38fcc4d289abb6335?pvs=4',
             title: '2023 SW융합클러스터 2.0 디지털콘텐츠 DX 해커톤',
             demo: '',
             technologies: ['팀원', 'Android'],
@@ -138,7 +138,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/tiktok_make.png',
-            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            link: 'https://splendid-bellflower-21f.notion.site/TikTok-AR-9e6a2cf0cac0416e8b845bcadde30d28?pvs=4',
             title: '2023 TikTok 대학생 AR필터 메이커톤',
             demo: '',
             technologies: ['팀원', 'Android'],
@@ -147,7 +147,7 @@ let render_projects = (slug) => {
         },
         {
             image: 'assets/images/sw_test.png',
-            link: 'https://splendid-bellflower-21f.notion.site/530042c6249c4d3f9ab75f586ceac746?pvs=25',
+            link: 'https://splendid-bellflower-21f.notion.site/SW-8f69bf2f3f454ca9a6ed00ae7c727b99?pvs=4',
             title: '2023 SW 테스트 경진대회',
             demo: '',
             technologies: ['팀장', 'Android'],
