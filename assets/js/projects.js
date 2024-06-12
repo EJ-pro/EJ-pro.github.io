@@ -121,7 +121,7 @@ let render_projects = (slug) => {
         {
             image: 'assets/images/announcement.png',
             link: 'https://splendid-bellflower-21f.notion.site/2023-FESTA-8bab3a9df7a6415a998256be586ca22e?pvs=4',
-            title: '2023 산학협력 성과확산 FESTA',
+            title: '2023 산학협력 성과발표 FESTA',
             demo: '',
             technologies: ['팀장', '발표'],
             description: "Smart Pot 캡스톤 경진대회 참여",
