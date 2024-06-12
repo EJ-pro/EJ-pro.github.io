@@ -1,108 +1,73 @@
-$(document).ready(function () {
+// script.js
+
+import { db } from './firebase.js';
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+
+document.addEventListener("DOMContentLoaded", function () {
     general_utils();
     blog_posts();
 });
 
 function general_utils() {
     // smooth scrolling for nav links
-    $('.head-menu-wrap a').smoothScroll();
-    $('.extra-link a').smoothScroll();
-    $('.profile-pic-link').smoothScroll();
+    document.querySelectorAll('.head-menu-wrap a, .extra-link a, .profile-pic-link').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
 
-    $('.skillbar').each(function () {
-        $(this).find('.skillbar-bar').animate({
-            width: $(this).attr('data-percent')
-        }, 1000);
+    document.querySelectorAll('.skillbar').forEach(skillbar => {
+        const bar = skillbar.querySelector('.skillbar-bar');
+        bar.style.width = '0';
+        const width = skillbar.getAttribute('data-percent');
+        setTimeout(() => {
+            bar.style.transition = 'width 1s';
+            bar.style.width = width;
+        }, 0);
     });
 }
 
-function blog_posts() {
+async function blog_posts() {
+    try {
+        const postCollection = collection(db, 'awards');
+        const postSnapshot = await getDocs(postCollection);
+        const posts = postSnapshot.docs.map(doc => doc.data());
 
-    // keeping it static, can be fetched from a blog dynamically as well
-    let posts = [
-        {
-            url: 'https://splendid-bellflower-21f.notion.site/39f4787311f04c0c82378820c754158a?v=3b12d5427de94da98955e32ff09b4f02',
-            title: '🏤 2024 산학엽협력 융합캡스톤디자인 성과발표회',
-            subtitle: '🎖️ 한국프로젝트경영학회장상'
-        },
-        {
-            url: 'https://splendid-bellflower-21f.notion.site/39f4787311f04c0c82378820c754158a?v=3b12d5427de94da98955e32ff09b4f02',
-            title: '🏛️ 2024 한국 콘텐츠학회 종합학술대회',
-            subtitle: '🎖️ 우수상'
-        },
-        {
-            url: 'https://splendid-bellflower-21f.notion.site/39f4787311f04c0c82378820c754158a?v=3b12d5427de94da98955e32ff09b4f02',
-            title: '🏰 2023 캡스톤디자인 내부 경진대회',
-            subtitle: '🎖️ 목원대학교 총장상'
-        },
-        {
-            url: 'https://splendid-bellflower-21f.notion.site/39f4787311f04c0c82378820c754158a?v=3b12d5427de94da98955e32ff09b4f02',
-            title: '🛸 PEN 창업동아리 활동',
-            subtitle: '🎖️ 목원대학교 총장상'
-        },
-        {
-            url: 'https://splendid-bellflower-21f.notion.site/39f4787311f04c0c82378820c754158a?v=3b12d5427de94da98955e32ff09b4f02',
-            title: '💒 대전권대학연합 산학협력 성과 공유 발표 경진대회',
-            subtitle: '🎖️ 대산협회장상'
-        },
-        {
-            url: 'https://splendid-bellflower-21f.notion.site/39f4787311f04c0c82378820c754158a?v=3b12d5427de94da98955e32ff09b4f02',
-            title: '🧠 2023 캡스톤디자인 창업 Boot-Up 메이커톤',
-            subtitle: '🎖️ 우수창업부분 최우수상'
-        },
-        {
-            url: 'https://splendid-bellflower-21f.notion.site/39f4787311f04c0c82378820c754158a?v=3b12d5427de94da98955e32ff09b4f02',
-            title: '🎪 대전 스타트업 스쿨',
-            subtitle: '🎖️ 대전 창조경제혁신센터장상'
-        },
-        {
-            url: 'https://splendid-bellflower-21f.notion.site/39f4787311f04c0c82378820c754158a?v=3b12d5427de94da98955e32ff09b4f02',
-            title: '🎇 Tiktok 메이커톤',
-            subtitle: '🎖️ 최다 언어 발행상'
-        },
-    ];
+        console.log('Posts:', posts); // 데이터를 불러왔는지 확인
 
-    let post_html = [];
+        let post_html = [];
 
-    for (let post of posts) {
+        for (let post of posts) {
+            let post_template = `
+            <div class="blog-post" onclick="blog_link_click('#');">
+                <div class="blog-link">
+                    <h3>${post['대회']}</h3>
+                    <p class="blog-subtitle">${post['수상']}</p>
+                </div>
+                <div class="blog-goto-link">
+                    <img class="blog-arrow" src="/assets/images/right-open-mini.svg"/>
+                </div>
+            </div>
+            `;
 
-        let tags;
-
-        if (post.tags) {
-            tags = post.tags.map(tag => {
-                return `<a href="https://www.nagekar.com/tags#${tag}">${tag}</a>`;
-            });
+            post_html.push(post_template);
         }
 
-        let post_template = `
-        <div class="blog-post" onclick="blog_link_click('${post.url}');">
-
-            <div class="blog-link">
-
-                <h3><a href="${post.url}">${post.title}</a></h3>
-                ${post.subtitle ? `<p class="blog-subtitle">${post.subtitle}</p>` : ''}
-
-            </div>
-
-            <div class="blog-goto-link">
-                <img class="blog-arrow" src="/assets/images/right-open-mini.svg"/>
-            </div>
+        // for the more posts link
+        let more_post_template = `
+        <div class="blog-post more-blogs" onclick="blog_link_click('https://www.nagekar.com');">
         </div>
         `;
 
-        post_html.push(post_template);
+        post_html.push(more_post_template);
+
+        document.getElementById('rss-feeds').innerHTML = post_html.join('');
+    } catch (error) {
+        console.error("Error fetching Firestore data: ", error);
     }
-
-    // for the more posts link
-    let post_template = `
-    <div class="blog-post more-blogs" onclick="blog_link_click('https://www.nagekar.com');">
-    </div>
-    `;
-
-    post_html.push(post_template);
-
-    $('#rss-feeds').html(post_html);
-
 }
 
 function blog_link_click(url) {
