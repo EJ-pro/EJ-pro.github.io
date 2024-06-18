@@ -174,7 +174,7 @@ let project_mapper = project => {
 
                 ${project.image ? 
                     `<div class="card__image border-tlr-radius">
-                        <a href="${project.link}">
+                        <a href="${project.link}" target="_blank">
                             <img src="${project.image}" alt="image" id="project-image" class="border-tlr-radius">
                         </a>
                     </div>`           
@@ -184,9 +184,9 @@ let project_mapper = project => {
                 <div class="card__content card__padding">
         
                     <article class="card__article">
-                        <h2><a href="${project.link}">${project.title}</a></h2>
+                        <h2><a href="${project.link}" target="_blank">${project.title}</a></h2>
         
-                        <p class="paragraph-text-normal" style = "color : #111111l; font-size: 15px;">${project.description} ${project.demo ? `<a href="${project.demo}">Link</a>` : ''}</p>
+                        <p class="paragraph-text-normal" style = "color : #111111l; font-size: 15px;">${project.description} ${project.demo ? `<a href="${project.demo}" target="_blank">Link</a>` : ''}</p>
                     </article>
 
                                 
