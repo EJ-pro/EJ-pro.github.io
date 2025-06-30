@@ -42,9 +42,9 @@ async function blog_posts() {
 
         for (let post of posts) {
             let post_template = `
-            <div class="blog-post" onclick="blog_link_click('${post['url']}');">
+            <div class="blog-post">
                 <div class="blog-link">
-                    <h3><a href="${post['url']}">${post['대회']}</a></h3>
+                    <h3>${post['대회']}</a></h3>
                     <p class="blog-subtitle">${post['수상']}</p>
                 </div>
                 <div class="blog-goto-link">
@@ -74,6 +74,6 @@ async function blog_posts() {
 }
 
 // Ensure the function is globally accessible
-window.blog_link_click = function (url) {
-    window.location.href = url;
-}
+// window.blog_link_click = function (url) {
+//     window.location.href = url;
+// }
