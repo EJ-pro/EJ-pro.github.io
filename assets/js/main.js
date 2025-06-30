@@ -28,39 +28,50 @@ function general_utils() {
 }
 
 async function blog_posts() {
-    try {
-        const postCollection = collection(db, 'awards');
-        const postSnapshot = await getDocs(postCollection);
-        const posts = postSnapshot.docs.map(doc => doc.data());
+  try {
+    const postCollection = collection(db, 'awards');
+    const postSnapshot = await getDocs(postCollection);
+    let posts = postSnapshot.docs.map(doc => doc.data());
 
-        console.log('Posts:', posts); // 확인용
+    console.log('Before sort:', posts);
 
-        let post_html = [];
+    // 교외 먼저, 교내 뒤에 정렬
+    posts.sort((a, b) => {
+      const getPriority = title => {
+        if (title.includes('(교외)')) return 0;
+        if (title.includes('(교내)')) return 1;
+        return 2;
+      };
+      return getPriority(a.대회) - getPriority(b.대회);
+    });
 
-        for (let i = 0; i < posts.length; i += 2) {
-            let row_html = `<div class="blog-posts-row">`;
+    console.log('After sort:', posts);
 
-            // 현재 줄의 2개 항목
-            for (let j = i; j < i + 2 && j < posts.length; j++) {
-                let post = posts[j];
-                let post_template = `
-                <div class="blog-post">
-                    <div class="blog-link">
-                        <h3>${post['대회']}</h3>
-                        <p class="blog-subtitle">${post['수상']}</p>
-                    </div>
-                </div>
-                `;
-                row_html += post_template;
-            }
+    let post_html = [];
 
-            row_html += `</div>`;
-            post_html.push(row_html);
-        }
+    for (let i = 0; i < posts.length; i += 2) {
+      let row_html = `<div class="blog-posts-row">`;
 
-        document.getElementById('rss-feeds').innerHTML = post_html.join('');
+      for (let j = i; j < i + 2 && j < posts.length; j++) {
+        let post = posts[j];
+        let post_template = `
+          <div class="blog-post">
+            <div class="blog-link">
+              <h3>${post['대회']}</h3>
+              <p class="blog-subtitle">${post['수상']}</p>
+            </div>
+          </div>
+        `;
+        row_html += post_template;
+      }
 
-    } catch (error) {
-        console.error("Error fetching Firestore data: ", error);
+      row_html += `</div>`;
+      post_html.push(row_html);
     }
+
+    document.getElementById('rss-feeds').innerHTML = post_html.join('');
+
+  } catch (error) {
+    console.error("Error fetching Firestore data: ", error);
+  }
 }
