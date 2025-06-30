@@ -1,5 +1,3 @@
-// script.js
-
 import { db } from './firebase.js';
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
 
@@ -9,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function general_utils() {
-    // smooth scrolling for nav links
     document.querySelectorAll('.head-menu-wrap a, .extra-link a, .profile-pic-link').forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
@@ -36,44 +33,34 @@ async function blog_posts() {
         const postSnapshot = await getDocs(postCollection);
         const posts = postSnapshot.docs.map(doc => doc.data());
 
-        console.log('Posts:', posts); // Check if the data is fetched
+        console.log('Posts:', posts); // 확인용
 
         let post_html = [];
 
-        for (let post of posts) {
-            let post_template = `
-            <div class="blog-post">
-                <div class="blog-link">
-                    <h3>${post['대회']}</a></h3>
-                    <p class="blog-subtitle">${post['수상']}</p>
-                </div>
-                <div class="blog-goto-link">
-                    <img class="blog-arrow" src="/assets/images/right-open-mini.svg"/>
-                </div>
-            </div>
-            `;
+        for (let i = 0; i < posts.length; i += 2) {
+            let row_html = `<div class="blog-posts-row">`;
 
-            post_html.push(post_template);
+            // 현재 줄의 2개 항목
+            for (let j = i; j < i + 2 && j < posts.length; j++) {
+                let post = posts[j];
+                let post_template = `
+                <div class="blog-post">
+                    <div class="blog-link">
+                        <h3>${post['대회']}</h3>
+                        <p class="blog-subtitle">${post['수상']}</p>
+                    </div>
+                </div>
+                `;
+                row_html += post_template;
+            }
+
+            row_html += `</div>`;
+            post_html.push(row_html);
         }
 
-        // for the more posts link
-        let more_post_template = `
-        <div class="blog-post more-blogs" onclick="blog_link_click('https://www.nagekar.com');">
-           
-           
-        </div>
-        `;
-
-        post_html.push(more_post_template);
-
-        // Add the generated HTML to the page
         document.getElementById('rss-feeds').innerHTML = post_html.join('');
+
     } catch (error) {
         console.error("Error fetching Firestore data: ", error);
     }
 }
-
-// Ensure the function is globally accessible
-// window.blog_link_click = function (url) {
-//     window.location.href = url;
-// }

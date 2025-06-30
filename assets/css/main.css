@@ -18,6 +18,22 @@ body {
   bottom: -1.5em;
   animation: rays 2s ease-in-out infinite;
 }
+#rss-feeds {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* row 간격 */
+}
+
+.blog-posts-row {
+  display: flex;
+  gap: 20px; /* column 간격 */
+}
+
+.blog-post {
+  flex: 1; /* 반반 */
+  border: 1px solid #ccc;
+  padding: 10px;
+}
 
 .form {
   position: relative;
