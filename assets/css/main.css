@@ -139,7 +139,7 @@ body {
 }
 
 /* Innovative Banner */
-.card_social {
+/* .card_social {
   position: relative;
   display: flex;
   align-items: center;
@@ -181,7 +181,7 @@ body {
   filter: blur(20px);
   opacity: 0.8;
   animation: glowBall2 7s infinite ease-in-out;
-}
+} */
 .image {
   width: 70%;
   height: auto;
