@@ -28,6 +28,7 @@ export type Stage = { id: string; nav?: string; status: string };
 export const stages: Stage[] = [
   { id: "hello", status: "대화 시작" },
   { id: "context", nav: "프로필", status: "컨텍스트 불러오는 중" },
+  { id: "training", nav: "학습 기록", status: "체크포인트 불러오는 중" },
   { id: "trace", nav: "대표 프로젝트", status: "추론 과정 재생 중" },
   { id: "evals", nav: "경험", status: "평가 돌리는 중" },
   { id: "tools", nav: "기술", status: "Tool 연결하는 중" },
@@ -48,11 +49,7 @@ export const context = {
     { kind: "blank" },
     { kind: "kv", key: "역할: ", text: "AI Engineer" },
     { kind: "kv", key: "관심: ", text: "AI Agent, RAG, 검색 품질 평가" },
-    { kind: "blank" },
-    { kind: "h", text: "## 지나온 길" },
-    { kind: "li", text: "Java로 Android 앱을 만들며 개발 시작" },
-    { kind: "li", text: "모바일 앱 2개 기획부터 스토어 출시까지" },
-    { kind: "li", text: "2026 SK네트웍스 Family AI 캠프 27기" },
+    { kind: "kv", key: "학력: ", text: "목원대학교 컴퓨터공학과 학사" },
     { kind: "blank" },
     { kind: "h", text: "## 잘하는 일" },
     { kind: "li", text: "Multi-Agent 설계와 Hybrid RAG" },
@@ -61,6 +58,118 @@ export const context = {
     { kind: "kv", key: "원칙: ", text: "만들고 끝내지 않고, 평가와 배포로 확인한다" },
   ] satisfies PromptLine[],
 };
+
+export type Checkpoint = {
+  period: string;
+  title: string;
+  summary: string;
+  items?: string[];
+  subs?: { title: string; desc: string }[];
+  note?: string;
+  ongoing?: boolean;
+};
+
+/** 학습 기록: 시기별 체크포인트 */
+export const checkpoints: Checkpoint[] = [
+  {
+    period: "2019 — 2025",
+    title: "컴퓨터공학 전공",
+    summary: "목원대학교 컴퓨터공학과에서 소프트웨어 개발의 기초를 공부했습니다. Java를 활용한 Android 개발로 프로젝트 경험을 시작했으며, 학사 학위를 취득했습니다.",
+    items: ["목원대학교 컴퓨터공학과", "학사 졸업", "학점 3.76 / 4.5"],
+  },
+  {
+    period: "2023.09 — 2025.03",
+    title: "창업동아리 PEN CREATOR",
+    summary: "팀장으로 활동하며 아이디어 기획부터 제품 개발, 경진대회 참여까지 프로젝트 전반을 이끌었습니다.",
+    items: ["팀 아이디어 구체화 및 일정 관리", "Android 애플리케이션 개발", "교내외 창업·프로젝트 경진대회 참가", "팀원 간 역할 조율 및 결과물 발표"],
+  },
+  {
+    period: "2023.11",
+    title: "SmartPot",
+    summary: "CameraX와 ML Kit를 활용한 반려 식물 관리 Android 애플리케이션을 개발했습니다.",
+    items: ["CameraX 기반 카메라 기능 구현", "ML Kit를 활용한 이미지 인식 기능 적용", "Android 서비스 기획 및 UI 구현"],
+  },
+  {
+    period: "2024",
+    title: "웹·AR 프로젝트",
+    summary: "모바일 개발에서 경험 범위를 넓혀 웹 서비스와 AR 콘텐츠를 제작했습니다.",
+    subs: [
+      { title: "E-Card", desc: "영어 단어 학습을 위한 웹 서비스를 개발했습니다." },
+      { title: "TikTok AR Filter", desc: "TikTok Effect House를 활용해 사용자 반응형 AR 필터를 제작했습니다." },
+    ],
+  },
+  {
+    period: "2023 — 2025",
+    title: "Android 앱 기획·출시",
+    summary: "Java 기반 모바일 앱 2개를 직접 기획하고 개발해 애플리케이션 스토어에 출시했습니다. 출시 이후에도 기능 개선과 유지보수를 이어갔습니다.",
+    items: ["서비스 아이디어 기획", "Android 애플리케이션 개발", "스토어 배포", "사용자 흐름 점검", "출시 이후 기능 개선 및 유지보수"],
+  },
+  {
+    period: "2026.02 — 2026.08",
+    title: "SK네트웍스 Family AI 캠프",
+    summary: "머신러닝과 딥러닝을 시작으로 RAG, Multi-Agent, MCP, AWS 배포까지 AI 서비스 개발 전반을 학습하고 프로젝트에 적용했습니다.",
+    items: ["Python 기반 데이터 분석", "머신러닝·딥러닝 모델 개발", "RAG 및 검색 시스템 설계", "LangGraph 기반 Multi-Agent 구현", "MCP Server와 Tool 개발", "AWS 기반 서비스 배포", "GitHub Actions 기반 CI/CD 구성"],
+  },
+  {
+    period: "2026.03 — 2026.04",
+    title: "KKBOX Churn Prevention",
+    summary: "고객의 이탈 여부를 예측하는 데서 끝내지 않고, 이탈 원인과 대응 전략을 운영자가 확인할 수 있는 의사결정 지원 서비스를 개발했습니다.",
+    items: ["XGBoost, LightGBM, CatBoost 모델 비교", "사용자별 Feature Contribution 분석", "고객별 이탈 원인 분류", "고위험 고객 Action Board 구현", "리텐션 전략별 ROI Simulator 구현", "모델 성능과 운영 복잡도를 함께 고려한 모델 선택"],
+  },
+  {
+    period: "2026.04 — 2026.05",
+    title: "너로 정했다! LLM",
+    summary: "서로 다른 검색 방식의 실패 패턴을 보완하는 Hybrid RAG 기반 포켓몬 AI 플랫폼을 개발했습니다.",
+    items: ["외부 API 데이터 수집 및 정제", "PostgreSQL·pgvector와 Neo4j 데이터 적재", "BM25·pg_trgm·Vector Search 결합", "Reciprocal Rank Fusion 기반 검색 결과 병합", "고정 평가 데이터셋 구축", "RAGAS 기반 검색 품질 비교", "Graph-only 방식 대비 검색 Coverage 개선"],
+  },
+  {
+    period: "2026.04 — 2026.07",
+    title: "GitGraph · ChatFolio",
+    summary: "GitHub 저장소의 코드 구조를 분석하고 프로젝트 문서를 생성하는 AI 개발자 도구를 제작했습니다.",
+    items: ["AST 기반 코드 구조 분석", "코드 관계 데이터 그래프화", "GraphRAG 기반 프로젝트 탐색", "저장소 분석 결과 시각화", "AI 기반 프로젝트 문서 생성"],
+  },
+  {
+    period: "2026.05 — 2026.06",
+    title: "HELBOTIN",
+    summary: "약 920종의 운동 데이터를 기반으로 답변하는 개인 맞춤형 RAG 운동 서비스를 개발했습니다.",
+    items: ["pgvector 기반 운동 정보 의미 검색", "Neo4j 기반 운동·근육·장비 관계 탐색", "RAG 기반 운동 상담 기능 구현", "AWS 운영 환경 구성", "Production 환경의 SSE Streaming 장애 해결"],
+    note: "운영 환경에서 토큰이 한 번에 출력되는 문제를 요청 경로별로 분석했습니다. Backend Streaming이 정상임을 확인한 뒤 Browser, Host Nginx, Container, Django 순서로 범위를 좁혀 EC2 Host Nginx의 proxy_buffering을 원인으로 특정했습니다.",
+  },
+  {
+    period: "2026.06 — 2026.08",
+    title: "밥벌이",
+    summary: "팀장으로 참여해 냉장고, 레시피, 장보기, 일정을 하나의 대화에서 처리하는 Multi-Agent 식생활 서비스를 개발했습니다.",
+    items: ["Supervisor와 Domain Agent 책임 분리", "LangGraph 기반 실행 흐름 설계", "독립 작업 병렬 실행", "의존 작업 순차 실행", "MCP Server와 Tool 개발", "PostgreSQL과 Neo4j 역할 분리", "데이터 변경 작업 전 사용자 확인 구조 적용", "Langfuse 기반 Agent 실행 추적", "RAGAS 및 고정 평가 문항 기반 품질 검증", "AWS ECS Fargate 기반 서비스 배포", "AWS CDK 기반 Infrastructure as Code 적용", "GitHub Actions 기반 CI/CD 구축", "배포 전 테스트와 배포 후 Smoke Test 구성"],
+    note: "팀장으로서 특정 기능에만 참여하기보다 설계, 구현, 품질 평가, 배포 과정에서 팀원들과 주요 문제를 함께 논의하고 해결했습니다.",
+  },
+  {
+    period: "2026.10 —",
+    title: "밥벌이 Android",
+    summary: "기존 밥벌이 서비스를 모바일 환경으로 확장하는 Android 애플리케이션을 개발하고 있습니다.",
+    items: ["Jetpack Compose 기반 UI 구성", "Supabase 연동", "모바일 환경에 맞춘 사용자 흐름 설계", "요리 단계 안내 기능 구현"],
+    ongoing: true,
+  },
+];
+
+export type Award = { year: number; title: string; prize: string; org: string; note: string; top?: boolean };
+
+/** 수상 14건. top은 최우수상·대상처럼 강조할 상 */
+export const awards: Award[] = [
+  { year: 2023, title: "캡스톤디자인 창업 Boot-up 메이커톤", prize: "최우수상", org: "목원대학교", note: "창업 아이디어 기획 및 프로토타입 제작", top: true },
+  { year: 2023, title: "제7회 대전 스타트업 스쿨", prize: "우수상", org: "대전창조경제혁신센터", note: "창업 아이디어 구체화 및 발표" },
+  { year: 2023, title: "TikTok EFFECT HOUSE AR 필터 메이커톤", prize: "특별상", org: "한국디지털콘텐츠학회", note: "TikTok Effect House를 활용한 AR 필터 제작" },
+  { year: 2024, title: "진로 포트폴리오 경진대회", prize: "최우수상", org: "목원대학교", note: "개발 프로젝트와 진로 경험을 포트폴리오로 구성", top: true },
+  { year: 2024, title: "스타트업 코리아 투자위크 아이디어 경진대회", prize: "우수상", org: "한남대학교 LINC 3.0 사업단", note: "창업 아이디어 기획 및 사업화 방향 발표" },
+  { year: 2024, title: "글로벌 스타트업스쿨 캠프", prize: "Leadership", org: "한남대학교 창업중심대학 사업단", note: "팀 프로젝트 리딩 및 해외시장 진출 전략 발표" },
+  { year: 2024, title: "모빌리티 드론코딩 경진대회", prize: "최우수상", org: "목원대학교", note: "모빌리티·드론 소프트웨어 프로젝트", top: true },
+  { year: 2024, title: "대전 대학생 공공기술 창업 아이디어 경진대회", prize: "우수상", org: "대전창조경제혁신센터", note: "공공기술을 활용한 창업 아이디어 기획" },
+  { year: 2024, title: "융합캡스톤디자인 논문 경진대회", prize: "우수상", org: "한국프로젝트경영학회", note: "캡스톤디자인 프로젝트 결과 논문화 및 발표" },
+  { year: 2024, title: "산학협력 융합캡스톤디자인 성과발표 경진대회", prize: "대상협회장상", org: "대전권대학연합 산학협력협의체", note: "산학협력 프로젝트 성과 발표", top: true },
+  { year: 2024, title: "산학협력 캡스톤디자인 논문 경진대회", prize: "우수상", org: "한국콘텐츠학회", note: "캡스톤디자인 프로젝트 논문 작성 및 발표" },
+  { year: 2024, title: "목원대학교 PEN 혁신창업가상", prize: "혁신창업가상", org: "목원대학교 총장", note: "창업동아리 PEN CREATOR 운영 및 프로젝트 성과" },
+  { year: 2025, title: "인력양성 성과공유회 캡스톤디자인", prize: "실용가치상", org: "목원대학교", note: "실제 활용 가능성을 고려한 캡스톤디자인 프로젝트" },
+  { year: 2026, title: "SK네트웍스 Family AI 캠프 프로젝트", prize: "프로젝트 우수상", org: "플레이데이터경영교육원", note: "AI 식생활 서비스 밥벌이 개발, 5인 팀 프로젝트 팀장" },
+];
 
 export type FeaturedProject = {
   name: string;
