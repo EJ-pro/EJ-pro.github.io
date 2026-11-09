@@ -1,8 +1,5 @@
 "use client";
 
-import type { ElementType } from "react";
-import { tokenize } from "@/lib/motion";
-
 export function Spinner({ size = 16, className = "" }: { size?: number; className?: string }) {
   return (
     <svg className={`spin ${className}`} aria-hidden="true" width={size} height={size} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
@@ -50,18 +47,5 @@ export function ToolChip({ call, phase, result, tone = "light" }: { call: string
       <span>{call}</span>
       <span className="chip-badge">{label}</span>
     </div>
-  );
-}
-
-/** 열릴 때 토큰 단위로 색이 지나가는 제목 */
-export function TokenText({ as: Tag = "h2", text, on, dark, id, className }: { as?: ElementType; text: string; on: boolean; dark?: boolean; id?: string; className?: string }) {
-  return (
-    <Tag id={id} className={className} aria-label={text}>
-      {tokenize(text, on, dark).map((t, i) => (
-        <span key={i} className="tok" aria-hidden="true" style={t.style}>
-          {t.text}
-        </span>
-      ))}
-    </Tag>
   );
 }

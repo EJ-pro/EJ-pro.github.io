@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { profile, projectFilters, projects, screenshots, search } from "@/data/portfolio";
 import { useCounter, useReducedMotion, useSeenOnce, useToolPhase } from "@/lib/motion";
-import { ArrowUpRight, TokenText, ToolChip } from "./ui";
+import { ArrowUpRight, ToolChip } from "./ui";
 
 type FilterId = (typeof projectFilters)[number]["id"];
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -33,7 +33,7 @@ export function SearchSection() {
       <div className="wrap search">
         <ToolChip call='search(index="EJ-pro/projects")' phase={phase} result={`${projects.length}건`} />
         <div className="search-head">
-          <TokenText id="search-title" className="h2" text="지금까지 만든 것들을 찾아봤어요" on={phase >= 2} />
+          <h2 id="search-title" className="h2">지금까지 만든 것들을 찾아봤어요</h2>
           <a className="text-link" href={profile.repositories} target="_blank" rel="noreferrer">
             GitHub 저장소 전체 보기
           </a>

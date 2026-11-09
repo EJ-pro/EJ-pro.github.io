@@ -363,7 +363,6 @@ button { font-family: inherit; }
 .spin { animation: spin 0.9s linear infinite; }
 .nudge { animation: nudge 1.6s ease-in-out infinite; }
 .pulse { animation: pulse 1.8s ease-in-out infinite; }
-.tok { border-radius: 0.14em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .runbar { animation: runbar 0.8s ease-in-out both; }
 .denoise { animation: denoise 1.6s cubic-bezier(0.3, 0.6, 0.2, 1) both; }
 .grain { animation: grain 1.6s ease-out both; }
@@ -375,7 +374,6 @@ button { font-family: inherit; }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes nudge { 0%, 100% { transform: none; } 50% { transform: translateY(6px); } }
 @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(52, 70, 232, 0.45); } 50% { box-shadow: 0 0 0 6px rgba(52, 70, 232, 0); } }
-@keyframes tokwave { 0% { background: transparent; } 18% { background: var(--tint); transform: translateY(-0.04em); } 60% { background: var(--tint); } 100% { background: transparent; transform: none; } }
 @keyframes runbar { from { transform: translateX(-100%); } to { transform: translateX(0); } }
 @keyframes denoise { 0% { filter: blur(22px) saturate(0) contrast(0.7); transform: scale(1.08); } 55% { filter: blur(6px) saturate(0.6) contrast(0.9); } 100% { filter: none; transform: none; } }
 @keyframes grain { 0% { opacity: 1; } 70% { opacity: 0.35; } 100% { opacity: 0; } }
@@ -399,7 +397,7 @@ button { font-family: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .caret, .caret-y, .pop, .row-in, .dot, .spin, .nudge, .pulse, .runbar, .tok, .denoise { animation: none !important; }
+  .caret, .caret-y, .pop, .row-in, .dot, .spin, .nudge, .pulse, .runbar, .denoise { animation: none !important; }
   .reveal, .grow-x, .step-lit, .step-lit .num, .rail-fill { animation: none !important; opacity: 1; transform: none; clip-path: none; }
   .scan, .grain { display: none; }
 }

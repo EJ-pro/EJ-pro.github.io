@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { evals, type EvalCase } from "@/data/portfolio";
 import { useCounter, useReducedMotion, useSeenOnce, useToolPhase } from "@/lib/motion";
-import { Check, Spinner, TokenText, ToolChip } from "./ui";
+import { Check, Spinner, ToolChip } from "./ui";
 
 type Status = "queued" | "running" | "done";
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -61,7 +61,7 @@ export function EvalSection() {
       <div className="wrap evals">
         <div className="evals-head">
           <ToolChip call='run_evals(suite="experience")' phase={phase} result={`${evals.length}건`} />
-          <TokenText id="evals-title" className="h2" text="직접 해본 일을 평가셋으로 돌려봤어요" on={phase >= 2} />
+          <h2 id="evals-title" className="h2">직접 해본 일을 평가셋으로 돌려봤어요</h2>
           <p className="lead">프로젝트를 하며 반복해서 맡아온 일 여섯 가지를 하나씩 확인해요.</p>
         </div>
 

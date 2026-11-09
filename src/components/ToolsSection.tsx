@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { toolkits } from "@/data/portfolio";
 import { useCounter, useReducedMotion, useSeenOnce, useToolPhase } from "@/lib/motion";
-import { TokenText, ToolChip } from "./ui";
+import { ToolChip } from "./ui";
 
 const TOTAL = toolkits.reduce((n, k) => n + k.tools.length, 0);
 
@@ -25,7 +25,7 @@ export function ToolsSection() {
         <div className="tools-head">
           <div className="tools-head-text">
             <ToolChip call="list_tools()" phase={phase} result={`${TOTAL}개`} tone="onAccent" />
-            <TokenText id="tools-title" className="h2" text="필요할 때 바로 꺼내 쓰는 도구들이에요" on={phase >= 2} dark />
+            <h2 id="tools-title" className="h2">필요할 때 바로 꺼내 쓰는 도구들이에요</h2>
           </div>
           <p className="tools-count" aria-live="polite">
             <span className="mono">

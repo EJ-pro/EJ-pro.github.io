@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore, type CSSProperties, type RefObject } from "react";
+import { useEffect, useState, useSyncExternalStore, type RefObject } from "react";
 
 const REDUCED_QUERY = "(prefers-reduced-motion: reduce)";
 
@@ -79,25 +79,4 @@ export function useCounter(active: boolean, total: number, interval: number, ste
     };
   }, [active, total, interval, step, delay]);
   return count;
-}
-
-const LIGHT_TINTS = ["rgba(52,70,232,0.18)", "rgba(255,181,71,0.42)", "rgba(15,122,92,0.20)", "rgba(180,35,90,0.18)"];
-const DARK_TINTS = ["rgba(255,201,77,0.42)", "rgba(150,170,255,0.42)", "rgba(110,231,183,0.36)", "rgba(255,150,195,0.38)"];
-
-/** 문장을 BPE 비슷한 토큰으로 자르고, 켜졌을 때 색이 물결치듯 지나가는 스타일을 붙인다. */
-export function tokenize(text: string, on: boolean, dark = false) {
-  const tints = dark ? DARK_TINTS : LIGHT_TINTS;
-  const tokens: string[] = [];
-  text.split(" ").forEach((word, wi) => {
-    const pieces: string[] = [];
-    if (/^[\x00-\x7F]+$/.test(word)) pieces.push(word);
-    else for (let k = 0; k < word.length; k += 2) pieces.push(word.slice(k, k + 2));
-    pieces.forEach((p, pi) => tokens.push((wi > 0 && pi === 0 ? " " : "") + p));
-  });
-  return tokens.map((t, i) => ({
-    text: t,
-    style: on
-      ? ({ "--tint": tints[i % 4], animation: `tokwave 1.6s ease-out ${i * 55}ms both` } as CSSProperties)
-      : undefined,
-  }));
 }

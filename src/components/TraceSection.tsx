@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { featured } from "@/data/portfolio";
 import { useReducedMotion, useSeenOnce, useToolPhase } from "@/lib/motion";
-import { TokenText, ToolChip } from "./ui";
+import { ToolChip } from "./ui";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -20,7 +20,7 @@ export function TraceSection() {
     <section id="trace" ref={ref} className="section trace" aria-labelledby="trace-title">
       <div className="wrap trace-head">
         <ToolChip call="trace_runs(featured=true)" phase={phase} result={`${featured.length}건`} tone="dark" />
-        <TokenText id="trace-title" className="h2 trace-title" text="대표 프로젝트를 실행 순서대로 따라가 보세요" on={phase >= 2} dark />
+        <h2 id="trace-title" className="h2 trace-title">대표 프로젝트를 실행 순서대로 따라가 보세요</h2>
       </div>
 
       {featured.map((f, i) => (

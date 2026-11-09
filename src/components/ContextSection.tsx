@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { context, profile, type PromptLine } from "@/data/portfolio";
 import { useCounter, useReducedMotion, useSeenOnce, useToolPhase } from "@/lib/motion";
-import { TokenText, ToolChip } from "./ui";
+import { ToolChip } from "./ui";
 
 const lineText = (l: PromptLine) =>
   l.kind === "blank" ? "" : l.kind === "li" ? `- ${l.text}` : l.kind === "kv" ? l.key + l.text : l.text;
@@ -62,7 +62,7 @@ export function ContextSection() {
             {profile.name}
           </h2>
           <div className="name-bar grow-x" aria-hidden="true" />
-          <TokenText as="p" className="tagline" text={context.tagline} on={phase >= 2} />
+          <p className="tagline">{context.tagline}</p>
           <div className="pill-row">
             <a className="pill-link" href={profile.github} target="_blank" rel="noreferrer">
               GitHub {profile.githubHandle}
