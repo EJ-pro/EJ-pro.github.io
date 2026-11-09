@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { hero, profile } from "@/data/portfolio";
-import { useReducedMotion } from "@/lib/motion";
+import { REPLAY_EVENT, useReducedMotion } from "@/lib/motion";
 import { Check, Spinner, TypingDots } from "./ui";
 
 /*
@@ -102,6 +102,12 @@ function Conversation({ reduced, onReplay }: { reduced: boolean; onReplay: () =>
 export function Hero() {
   const reduced = useReducedMotion();
   const [run, setRun] = useState(0);
+
+  useEffect(() => {
+    const replay = () => setRun((r) => r + 1);
+    window.addEventListener(REPLAY_EVENT, replay);
+    return () => window.removeEventListener(REPLAY_EVENT, replay);
+  }, []);
 
   return (
     <section id="hello" className="hero" aria-label="첫 대화">

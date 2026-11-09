@@ -2,6 +2,9 @@
 
 import { useEffect, useState, useSyncExternalStore, type RefObject } from "react";
 
+/** 푸터의 "새 대화 시작하기"가 보내고, 첫 화면이 받아서 대화를 처음부터 다시 재생한다 */
+export const REPLAY_EVENT = "portfolio:replay";
+
 const REDUCED_QUERY = "(prefers-reduced-motion: reduce)";
 
 function subscribeReduced(onChange: () => void) {

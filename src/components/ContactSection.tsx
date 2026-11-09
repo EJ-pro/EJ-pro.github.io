@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { contact, profile } from "@/data/portfolio";
-import { useCounter, useReducedMotion, useSeenOnce } from "@/lib/motion";
+import { contact, contextWindow, profile } from "@/data/portfolio";
+import { REPLAY_EVENT, useCounter, useReducedMotion, useSeenOnce } from "@/lib/motion";
 import { TypingDots } from "./ui";
 
 /** 7. 응답: 첫 대화처럼 다시 대화가 재생되고 연락 입력창이 나온다 */
@@ -18,6 +18,11 @@ export function ContactSection() {
     const timers = [setTimeout(() => setStep(1), 300), setTimeout(() => setStep(2), 1000), setTimeout(() => setStep(3), 1900)];
     return () => timers.forEach(clearTimeout);
   }, [seen, reduced]);
+
+  const restart = () => {
+    window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+    window.dispatchEvent(new Event(REPLAY_EVENT));
+  };
 
   const chars = reduced ? contact.reply.length : typed;
   const replyDone = chars >= contact.reply.length;
@@ -65,8 +70,33 @@ export function ContactSection() {
         )}
       </div>
       <footer className="site-footer">
-        <span className="mono">&lt;|end_of_turn|&gt; © 2026 {profile.name}</span>
-        <a href="#top">새 대화 시작하기</a>
+        <div className="footer-inner">
+          <div className="footer-top">
+            <div className="footer-end">
+              <h2>대화가 끝났어요</h2>
+              <p>{contextWindow.limit.toLocaleString("en-US")} 토큰을 모두 사용했어요. 처음부터 다시 보시려면 새 대화를 시작해 주세요.</p>
+            </div>
+            <div className="footer-actions">
+              <button type="button" className="btn-restart" onClick={restart}>
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2.5 8a5.5 5.5 0 1 0 1.7-4" />
+                  <path d="M2.5 2.5v3h3" />
+                </svg>
+                새 대화 시작하기
+              </button>
+              <a className="footer-link" href={profile.github} target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+              <a className="footer-link" href={`mailto:${profile.email}`}>
+                메일
+              </a>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <span>© 2026 {profile.name}</span>
+            <span>Next.js로 만들고 GitHub Pages에 배포했어요</span>
+          </div>
+        </div>
       </footer>
     </section>
   );
