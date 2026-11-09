@@ -17,4 +17,4 @@ npm run dev
 npm run check
 ```
 
-`main` 브랜치에 push하면 GitHub Actions가 `out` 폴더를 빌드해 `https://ej-pro.github.io` 주소로 배포합니다.
+`deploy` 브랜치에 push하면 GitHub Actions가 `out` 폴더를 빌드해 `https://ej-pro.github.io` 주소로 배포합니다.
