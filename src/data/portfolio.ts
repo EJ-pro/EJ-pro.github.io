@@ -30,7 +30,7 @@ export const stages: Stage[] = [
   { id: "context", nav: "프로필", status: "컨텍스트 불러오는 중" },
   { id: "trace", nav: "대표 프로젝트", status: "추론 과정 재생 중" },
   { id: "evals", nav: "경험", status: "평가 돌리는 중" },
-  { id: "tools", nav: "기술", status: "도구 불러오는 중" },
+  { id: "tools", nav: "기술", status: "Tool 연결하는 중" },
   { id: "search", nav: "전체 프로젝트", status: "프로젝트 검색 중" },
   { id: "contact", nav: "연락", status: "응답 작성 중" },
 ];

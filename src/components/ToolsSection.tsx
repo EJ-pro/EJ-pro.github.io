@@ -7,7 +7,7 @@ import { ToolChip } from "./ui";
 
 const TOTAL = toolkits.reduce((n, k) => n + k.tools.length, 0);
 
-/** 5. 도구: 빈 카드가 한 줄씩 "연결됨"으로 바뀐다 */
+/** 5. Tool: 이재희 AI에 연결된 Tool 카드가 한 줄씩 "연결됨"으로 바뀐다 */
 export function ToolsSection() {
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
@@ -24,8 +24,8 @@ export function ToolsSection() {
       <div className="wrap">
         <div className="tools-head">
           <div className="tools-head-text">
-            <ToolChip call="list_tools()" phase={phase} result={`${TOTAL}개`} tone="onAccent" />
-            <h2 id="tools-title" className="h2">필요할 때 바로 꺼내 쓰는 도구들이에요</h2>
+            <ToolChip call='list_tools(agent="이재희")' phase={phase} result={`${TOTAL}개`} tone="onAccent" />
+            <h2 id="tools-title" className="h2">이재희 AI에 연결된 Tool</h2>
           </div>
           <p className="tools-count" aria-live="polite">
             <span className="mono">
