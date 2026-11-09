@@ -135,18 +135,17 @@ export function TrainingSection() {
 
   return (
     <section id="training" ref={ref} className="section section-fog training" aria-labelledby="training-title">
-      <div className="wrap training-head">
-        <ToolChip call='load_checkpoints(model="이재희")' phase={phase} result={`${checkpoints.length}개`} />
-        <h2 id="training-title" className="h2">이재희 AI 학습 기록</h2>
-        <p className="lead">2019년 컴퓨터공학 전공부터 지금까지 거쳐 온 학습 단계와, 그 과정에서 받은 상 {awards.length}건입니다.</p>
-      </div>
-
       <div
         ref={pinRef}
         className={`ckpt-pin${pinned ? " is-pinned" : ""}`}
         style={pinned ? { height: `calc(100vh + ${travel}px)` } : undefined}
       >
         <div className="ckpt-stage">
+          <div className="ckpt-head">
+            <ToolChip call='load_checkpoints(model="이재희")' phase={phase} result={`${checkpoints.length}개`} />
+            <h2 id="training-title" className="h2">이재희 AI 학습 기록</h2>
+            <p className="lead">2019년 컴퓨터공학 전공부터 지금까지 거쳐 온 학습 단계와, 그 과정에서 받은 상 {awards.length}건입니다.</p>
+          </div>
           <aside ref={awardsRef} className="rewards" aria-labelledby="rewards-title">
             <div className="rewards-top">
               <h3 id="rewards-title">
