@@ -61,8 +61,8 @@ export function EvalSection() {
       <div className="wrap evals">
         <div className="evals-head">
           <ToolChip call='run_evals(suite="experience")' phase={phase} result={`${evals.length}건`} />
-          <h2 id="evals-title" className="h2">직접 해본 일을 평가셋으로 돌려봤어요</h2>
-          <p className="lead">프로젝트를 하며 반복해서 맡아온 일 여섯 가지를 하나씩 확인해요.</p>
+          <h2 id="evals-title" className="h2">이재희 AI 실력 검증</h2>
+          <p className="lead">실제 프로젝트에서 반복해서 맡아온 여섯 가지 일로 평가합니다.</p>
         </div>
 
         <div className="evals-board">
