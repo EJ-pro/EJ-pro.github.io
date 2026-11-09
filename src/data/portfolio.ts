@@ -16,6 +16,13 @@ export const hero = {
   handoff: "작업 공간을 열어뒀어요. 아래로 내려오시면 차례로 보여드릴게요.",
 };
 
+/** 스크롤 전체를 대화 하나의 컨텍스트로 보고, 내려갈수록 토큰을 소모한다 */
+export const contextWindow = {
+  limit: 128_000,
+  limitLabel: "128K",
+  lowAt: 0.85,
+};
+
 export type Stage = { id: string; nav?: string; status: string };
 
 export const stages: Stage[] = [

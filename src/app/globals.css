@@ -20,6 +20,8 @@
   --butter: #ffe07a;
   --mint: #6ee7b7;
   --green: #0f7a5c;
+  --rec: #ff4d4f;
+  --rec-deep: #7a1420;
   --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --mono: "IBM Plex Mono", "IBM Plex Sans KR", ui-monospace, monospace;
   --header-h: 66px;
@@ -148,7 +150,23 @@ button { font-family: inherit; }
 .stage-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 .stage-num { font-family: var(--mono); color: var(--muted); }
 .progress-track { height: 2px; }
-.progress { display: none; height: 2px; background: var(--accent); }
+.progress { height: 2px; background: var(--accent); transform-origin: left; transform: scaleX(0); transition: background 0.3s; }
+.progress.is-low { background: var(--amber); }
+.progress.is-empty { background: var(--rec); }
+
+/* 남은 토큰: 레퍼런스의 REC 녹화 표시처럼 */
+.header-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; }
+.tokens {
+  margin: 0; display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 12px;
+  border-radius: 999px; background: var(--night-2); color: #c9cee8; font-size: 13px; transition: background 0.3s;
+}
+.tokens-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rec); animation: blink 1.4s steps(1) infinite; }
+.tokens-num { min-width: 7.2ch; text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 600; color: #fff; }
+.tokens-max { font-family: var(--mono); color: #6c76a0; }
+.tokens.is-low .tokens-num { color: var(--amber); }
+.tokens.is-empty { background: var(--rec-deep); color: #ffd9d9; }
+.tokens.is-empty .tokens-dot { animation: none; background: #ffd9d9; }
+.tokens.is-empty .tokens-max { color: #ff9c9c; }
 
 /* ───────── 1. 첫 대화 ───────── */
 .hero { min-height: calc(100vh - var(--header-h)); display: flex; flex-direction: column; background: var(--fog); }
@@ -380,7 +398,6 @@ button { font-family: inherit; }
 
 /* 스크롤에 맞춰 움직이는 효과: 지원 브라우저에서만, 아니면 완성된 상태로 보인다 */
 @supports (animation-timeline: scroll()) {
-  .progress { display: block; transform-origin: left; animation: growx linear both; animation-timeline: scroll(root); }
   .reveal { animation: reveal linear both; animation-timeline: view(); animation-range: entry 30% cover 45%; }
   .grow-x { transform-origin: left; animation: growx linear both; animation-timeline: view(); animation-range: entry 20% cover 45%; }
   .step-lit { animation: steplit linear both; animation-timeline: view(); animation-range: entry 40% cover 50%; }
@@ -397,7 +414,7 @@ button { font-family: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .caret, .caret-y, .pop, .row-in, .dot, .spin, .nudge, .pulse, .runbar, .denoise { animation: none !important; }
+  .caret, .caret-y, .pop, .row-in, .dot, .spin, .nudge, .pulse, .runbar, .denoise, .tokens-dot { animation: none !important; }
   .reveal, .grow-x, .step-lit, .step-lit .num, .rail-fill { animation: none !important; opacity: 1; transform: none; clip-path: none; }
   .scan, .grain { display: none; }
 }
@@ -407,6 +424,7 @@ button { font-family: inherit; }
   .wrap { padding-inline: 20px; }
   .section { padding-block: 96px; }
   .site-nav { display: none; }
+  .stage { display: none; }
   .site-header-bar { padding: 8px 16px; }
   .res { grid-template-columns: 28px minmax(0, 1fr) 18px; gap: 4px 12px; padding: 16px 4px; }
   .res-cat { display: none; }

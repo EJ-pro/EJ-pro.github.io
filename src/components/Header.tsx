@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { profile, stages } from "@/data/portfolio";
+import { contextWindow, profile, stages } from "@/data/portfolio";
 
-/** 고정 헤더: 섹션 메뉴, 지금 보고 있는 단계, 스크롤 진행 막대 */
+type TokenState = "ok" | "low" | "empty";
+
+/** 고정 헤더: 섹션 메뉴, 지금 보고 있는 단계, 스크롤만큼 줄어드는 남은 토큰 */
 export function Header() {
   const [stage, setStage] = useState(0);
+  const [used, setUsed] = useState(0); // 0~1, 페이지를 얼마나 내려왔는지
 
   useEffect(() => {
     let frame = 0;
@@ -18,6 +21,8 @@ export function Header() {
         if (el && el.getBoundingClientRect().top <= line) current = i;
       });
       setStage(current);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setUsed(max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0);
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(measure);
@@ -31,6 +36,9 @@ export function Header() {
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);
+
+  const tokenState: TokenState = used >= 0.995 ? "empty" : used >= contextWindow.lowAt ? "low" : "ok";
+  const left = tokenState === "empty" ? 0 : Math.round((1 - used) * contextWindow.limit);
 
   return (
     <header className="site-header">
@@ -47,16 +55,24 @@ export function Header() {
               </a>
             ))}
         </nav>
-        <p className="stage" aria-live="polite">
-          <span className="stage-dot pulse" aria-hidden="true" />
-          <span className="stage-num">
-            {stage + 1}/{stages.length}
-          </span>
-          <span>{stages[stage].status}</span>
-        </p>
+        <div className="header-meta">
+          <p className="stage" aria-live="polite">
+            <span className="stage-dot pulse" aria-hidden="true" />
+            <span className="stage-num">
+              {stage + 1}/{stages.length}
+            </span>
+            <span>{stages[stage].status}</span>
+          </p>
+          <p className={`tokens is-${tokenState}`} aria-hidden="true">
+            <span className="tokens-dot" />
+            <span className="tokens-label">{tokenState === "empty" ? "토큰 소진" : "남은 토큰"}</span>
+            <span className="tokens-num">{left.toLocaleString("en-US")}</span>
+            <span className="tokens-max">/ {contextWindow.limitLabel}</span>
+          </p>
+        </div>
       </div>
       <div className="progress-track" aria-hidden="true">
-        <div className="progress" />
+        <div className={`progress is-${tokenState}`} style={{ transform: `scaleX(${used})` }} />
       </div>
     </header>
   );
