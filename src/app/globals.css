@@ -205,21 +205,20 @@ button { font-family: inherit; }
 
 /* 가로 타임라인: 화면에 고정된 채 스크롤만큼 옆으로 흐른다 */
 .ckpt-pin { position: relative; }
-.ckpt-stage { display: flex; flex-direction: column; gap: 28px; overflow-x: auto; scroll-snap-type: x proximity; }
-.ckpt-pin.is-pinned .ckpt-stage {
-  position: sticky; top: var(--header-h); height: calc(100vh - var(--header-h));
-  justify-content: center; overflow: hidden;
+.ckpt-stage {
+  max-width: 1440px; margin: 0 auto; padding: 0 32px; box-sizing: border-box;
+  display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 28px; align-items: center;
 }
-.ckpt-meter { display: flex; justify-content: space-between; gap: 16px; width: 100%; font-size: 13px; color: var(--muted); }
-.ckpt-meter span:first-child { font-weight: 600; color: var(--ink-2); }
-.ckpt-meter .mono { color: var(--accent); font-weight: 600; }
+.ckpt-pin.is-pinned .ckpt-stage { position: sticky; top: var(--header-h); height: calc(100vh - var(--header-h)); padding-block: 24px; }
+.ckpt-view { min-width: 0; overflow-x: auto; scroll-snap-type: x proximity; padding: 8px 0 12px; }
+.ckpt-pin.is-pinned .ckpt-view { overflow: hidden; }
 .ckpts {
-  position: relative; list-style: none; margin: 0; display: flex; align-items: flex-start; gap: 24px; width: max-content;
-  padding: 0 max(32px, calc((100vw - 1200px) / 2 + 32px)); will-change: transform;
+  position: relative; list-style: none; margin: 0; display: flex; align-items: flex-start; gap: 22px; width: max-content;
+  padding: 0 4px; will-change: transform;
 }
 .ckpt-rail { position: absolute; left: 0; right: 0; top: 44px; height: 2px; background: var(--line); }
 .ckpt-rail-fill { background: var(--accent); transform-origin: left; transition: transform 0.1s linear; }
-.ckpt { position: relative; flex: 0 0 340px; display: flex; flex-direction: column; gap: 12px; }
+.ckpt { position: relative; flex: 0 0 320px; display: flex; flex-direction: column; gap: 12px; }
 .ckpt-period { font-size: 13px; color: var(--muted); white-space: nowrap; height: 20px; }
 .ckpt-dot {
   position: relative; z-index: 1; width: 18px; height: 18px; margin: 3px 0 6px; border-radius: 50%;
@@ -228,7 +227,7 @@ button { font-family: inherit; }
 .ckpt.is-lit .ckpt-dot { background: var(--accent); border-color: var(--accent); transform: scale(1.08); }
 .ckpt.is-lit .ckpt-period { color: var(--ink-2); }
 .ckpt-card {
-  display: flex; flex-direction: column; gap: 10px; padding: 20px 22px; max-height: calc(100vh - 300px); overflow: auto;
+  display: flex; flex-direction: column; gap: 10px; padding: 20px 22px; max-height: calc(100vh - 260px); overflow: auto;
   border-radius: 16px; background: #fff; border: 1px solid #dadee7; box-shadow: 0 12px 30px -28px rgba(21, 25, 36, 0.45);
   opacity: 0.55; transition: opacity 0.4s, box-shadow 0.4s;
 }
@@ -253,28 +252,38 @@ button { font-family: inherit; }
 .ckpt-detail ul { margin: 12px 0 0; padding-left: 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 4px 24px; font-size: 14.5px; color: var(--ink-2); }
 .ckpt-detail p { margin: 0; padding: 12px 14px; border-radius: 12px; background: var(--fog); font-size: 14px; line-height: 1.7; color: var(--ink-3); }
 
-.rewards { display: flex; flex-direction: column; gap: 32px; padding: 40px; border-radius: 24px; background: #fff; border: 1px solid #dadee7; }
-.rewards-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px 48px; }
-.rewards-head h3 { margin: 0; font-size: clamp(28px, 3vw, 36px); font-weight: 600; letter-spacing: -0.02em; }
-.rewards-head h3 .mono { color: var(--accent); }
-.rewards-head p { margin: 8px 0 0; max-width: 26em; font-size: 15px; color: var(--ink-3); }
-.reward-bars { flex: 0 1 380px; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-.reward-bar { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: center; gap: 12px; }
-.reward-bar dt { font-size: 13px; color: var(--muted); }
-.reward-bar dd { margin: 0; display: flex; align-items: center; gap: 10px; }
-.reward-track { flex: 1 1 auto; height: 10px; border-radius: 5px; background: var(--fog); overflow: hidden; }
-.reward-track span { display: block; height: 100%; border-radius: 5px; background: var(--accent); transition: width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); }
-.reward-count { flex: 0 0 auto; min-width: 2.6em; font-size: 13px; font-weight: 600; color: var(--ink-2); }
-.reward-year { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; padding-top: 24px; border-top: 1px solid var(--line-soft); }
-.reward-year h4 { margin: 0; padding-top: 14px; font-size: 15px; font-weight: 600; color: var(--ink-2); }
-.reward-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); gap: 12px; }
-.reward-card { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border-radius: 14px; background: var(--fog); }
-.reward-card strong { font-size: 15px; line-height: 1.45; font-weight: 600; }
-.reward-prize { align-self: flex-start; margin-bottom: 4px; padding: 2px 10px; border-radius: 999px; background: #fff; font-size: 12px; font-weight: 600; color: var(--ink-2); }
-.reward-card.is-top { background: #fff6d6; }
-.reward-card.is-top .reward-prize { background: var(--butter); color: var(--ink); }
-.reward-org { font-size: 13px; color: var(--muted); }
-.reward-note { font-size: 13px; color: var(--ink-3); }
+.rewards {
+  align-self: center; display: flex; flex-direction: column; gap: 18px; padding: 24px; max-height: calc(100vh - var(--header-h) - 48px); overflow: auto;
+  border-radius: 20px; background: #fff; border: 1px solid #dadee7; box-shadow: 0 20px 44px -34px rgba(21, 25, 36, 0.5);
+}
+.rewards-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.rewards-top h3 { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; }
+.rewards-top h3 .mono { color: var(--accent); }
+.rewards-counter { font-size: 13px; font-weight: 600; color: var(--muted); }
+.reward-bars { display: flex; flex-direction: column; gap: 4px; }
+.reward-bar {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr) 30px; align-items: center; gap: 10px; min-height: 32px; padding: 0 8px;
+  border: 0; border-radius: 8px; background: transparent; color: var(--muted); font-size: 13px; text-align: left; cursor: pointer;
+}
+.reward-bar:hover { background: var(--fog); }
+.reward-bar.is-active { background: #eef0ff; color: var(--ink); }
+.reward-track { height: 8px; border-radius: 4px; background: var(--fog); overflow: hidden; }
+.reward-bar.is-active .reward-track { background: #dde1ff; }
+.reward-track span { display: block; height: 100%; border-radius: 4px; background: #9aa6e8; transition: width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s; }
+.reward-bar.is-active .reward-track span { background: var(--accent); }
+.reward-count { font-weight: 600; color: var(--ink-2); }
+.reward-list { display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line-soft); }
+.reward-list-head { margin: 0; font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.reward-list-head .mono { color: var(--accent); }
+.reward-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.reward-item { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 10px; padding: 8px 10px; border-radius: 10px; background: var(--fog); }
+.reward-item.is-top { background: #fff6d6; }
+.reward-prize { margin-top: 1px; padding: 1px 8px; border-radius: 999px; background: #fff; font-size: 11.5px; font-weight: 600; color: var(--ink-2); white-space: nowrap; }
+.reward-item.is-top .reward-prize { background: var(--butter); color: var(--ink); }
+.reward-item-text { display: flex; flex-direction: column; min-width: 0; }
+.reward-item-text strong { font-size: 13.5px; line-height: 1.45; font-weight: 600; }
+.reward-item-text span { font-size: 12px; color: var(--muted); }
+.reward-empty { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--ink-3); }
 
 /* ───────── 3. 추론 과정 ───────── */
 .trace {
@@ -522,12 +531,10 @@ button { font-family: inherit; }
   .res-cat { display: none; }
   .run { padding-block: 64px; }
   .run-media { position: static; }
-  .ckpt-stage { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
-  .ckpts { padding: 0 20px; gap: 14px; }
+  .ckpt-stage { grid-template-columns: 1fr; padding: 0 20px; gap: 20px; }
+  .ckpt-view { margin: 0 -20px; padding: 8px 20px 12px; scroll-snap-type: x mandatory; }
+  .ckpts { gap: 14px; }
   .ckpt { flex-basis: min(82vw, 320px); scroll-snap-align: center; }
   .ckpt-card { max-height: none; overflow: visible; opacity: 1; }
-  .ckpt-meter { display: none; }
-  .rewards { padding: 24px 20px; }
-  .reward-year { grid-template-columns: 1fr; gap: 8px; }
-  .reward-year h4 { padding-top: 0; }
+  .rewards { max-height: none; padding: 20px; }
 }
