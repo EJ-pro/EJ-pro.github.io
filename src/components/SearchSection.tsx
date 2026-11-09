@@ -33,7 +33,7 @@ export function SearchSection() {
       <div className="wrap search">
         <ToolChip call='search(index="EJ-pro/projects")' phase={phase} result={`${projects.length}건`} />
         <div className="search-head">
-          <h2 id="search-title" className="h2">지금까지 만든 것들을 찾아봤어요</h2>
+          <h2 id="search-title" className="h2">지금까지 만든 프로젝트</h2>
           <a className="text-link" href={profile.repositories} target="_blank" rel="noreferrer">
             GitHub 저장소 전체 보기
           </a>

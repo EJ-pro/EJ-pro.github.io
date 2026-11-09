@@ -65,7 +65,7 @@ export function ContactSection() {
                 GitHub {profile.githubHandle}
               </a>
             </div>
-            <p className="fineprint">{profile.name}도 실수할 수 있어요. 중요한 내용은 GitHub에서 확인해 주세요.</p>
+            <p className="fineprint">{profile.name}도 실수할 수 있습니다. 중요한 내용은 GitHub에서 확인해 주세요.</p>
           </form>
         )}
       </div>
@@ -73,8 +73,8 @@ export function ContactSection() {
         <div className="footer-inner">
           <div className="footer-top">
             <div className="footer-end">
-              <h2>대화가 끝났어요</h2>
-              <p>{contextWindow.limit.toLocaleString("en-US")} 토큰을 모두 사용했어요. 처음부터 다시 보시려면 새 대화를 시작해 주세요.</p>
+              <h2>대화가 끝났습니다</h2>
+              <p>{contextWindow.limit.toLocaleString("en-US")} 토큰을 모두 사용했습니다. 처음부터 다시 보시려면 새 대화를 시작해 주세요.</p>
             </div>
             <div className="footer-actions">
               <button type="button" className="btn-restart" onClick={restart}>
@@ -94,7 +94,7 @@ export function ContactSection() {
           </div>
           <div className="footer-bottom">
             <span>© 2026 {profile.name}</span>
-            <span>Next.js로 만들고 GitHub Pages에 배포했어요</span>
+            <span>Next.js로 만들고 GitHub Pages에 배포했습니다</span>
           </div>
         </div>
       </footer>

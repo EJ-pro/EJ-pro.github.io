@@ -52,7 +52,7 @@ function Conversation({ reduced, onReplay }: { reduced: boolean; onReplay: () =>
   return (
     <>
       <div className="hero-thread">
-        <p className="hero-start">새 대화가 시작됐어요</p>
+        <p className="hero-start">새 대화가 시작되었습니다</p>
         {s >= 1 && <p className="bubble-user pop">{hero.opening}</p>}
         {s === 2 && <TypingDots />}
         {s >= 3 && (

@@ -13,7 +13,7 @@ export const hero = {
   statement: "AI Agent와 RAG를 만들고, 배포와 평가까지 직접 이어가고 있습니다.",
   closing: "지금부터 제 포트폴리오를 소개해드리겠습니다.",
   tool: 'open_portfolio(owner="EJ-pro")',
-  handoff: "작업 공간을 열어뒀어요. 아래로 내려오시면 차례로 보여드릴게요.",
+  handoff: "작업 공간을 열었습니다. 아래로 내려오시면 차례로 보여드리겠습니다.",
 };
 
 /** 스크롤 전체를 대화 하나의 컨텍스트로 보고, 내려갈수록 토큰을 소모한다 */
@@ -85,11 +85,11 @@ export const featured: FeaturedProject[] = [
     stack: "LangGraph / MCP / FastAPI / PostgreSQL / Neo4j / AWS",
     href: "https://github.com/EJ-pro",
     steps: [
-      { title: "요청 받기", detail: "ChatGPT, Claude 같은 MCP 클라이언트나 웹·앱에서 요청이 들어와요" },
-      { title: "Supervisor가 작업 분해", detail: "복합 요청을 도메인별 작업으로 나누고 의존 관계를 파악해요" },
-      { title: "독립 조회는 병렬 실행", detail: "재고, 장보기, 레시피 Agent가 동시에 정보를 모아요" },
-      { title: "의존 작업은 순차 실행", detail: "앞 단계 결과가 필요한 작업은 순서를 지켜 실행해요" },
-      { title: "변경 전 사용자 확인", detail: "데이터를 쓰기 전에는 미리보기를 보여주고 확인을 받아요" },
+      { title: "요청 받기", detail: "ChatGPT, Claude 같은 MCP 클라이언트나 웹·앱에서 요청이 들어옵니다" },
+      { title: "Supervisor가 작업 분해", detail: "복합 요청을 도메인별 작업으로 나누고 의존 관계를 파악합니다" },
+      { title: "독립 조회는 병렬 실행", detail: "재고, 장보기, 레시피 Agent가 동시에 정보를 모읍니다" },
+      { title: "의존 작업은 순차 실행", detail: "앞 단계 결과가 필요한 작업은 순서를 지켜 실행합니다" },
+      { title: "변경 전 사용자 확인", detail: "데이터를 쓰기 전에는 미리보기를 보여주고 확인을 받습니다" },
     ],
   },
   {
@@ -102,11 +102,11 @@ export const featured: FeaturedProject[] = [
     stack: "Python / PostgreSQL / pgvector / Neo4j / RRF / RAGAS",
     href: "https://github.com/EJ-pro",
     steps: [
-      { title: "데이터 수집과 정제", detail: "외부 API에서 정형·비정형 데이터를 모아 정리해요" },
-      { title: "저장소 적재", detail: "PostgreSQL·pgvector와 Neo4j에 나눠 담아요" },
-      { title: "세 방식으로 동시 검색", detail: "BM25, pg_trgm, Vector 검색을 함께 돌려요" },
-      { title: "RRF로 결과 결합", detail: "각 방식의 순위를 합쳐 한쪽의 실패를 다른 쪽이 메워요" },
-      { title: "RAGAS로 품질 검증", detail: "고정 평가셋으로 적용 전후 검색 품질을 비교해요" },
+      { title: "데이터 수집과 정제", detail: "외부 API에서 정형·비정형 데이터를 모아 정리합니다" },
+      { title: "저장소 적재", detail: "PostgreSQL·pgvector와 Neo4j에 나눠 담습니다" },
+      { title: "세 방식으로 동시 검색", detail: "BM25, pg_trgm, Vector 검색을 함께 실행합니다" },
+      { title: "RRF로 결과 결합", detail: "각 방식의 순위를 합쳐 한쪽의 실패를 다른 쪽이 보완합니다" },
+      { title: "RAGAS로 품질 검증", detail: "고정 평가셋으로 적용 전후 검색 품질을 비교합니다" },
     ],
   },
   {
@@ -119,10 +119,10 @@ export const featured: FeaturedProject[] = [
     stack: "XGBoost / LightGBM / CatBoost / SHAP / Streamlit",
     href: "https://github.com/EJ-pro",
     steps: [
-      { title: "이탈 확률 예측", detail: "XGBoost, LightGBM, CatBoost로 고객별 이탈 가능성을 계산해요" },
-      { title: "사용자별 원인 추출", detail: "Feature Contribution으로 왜 떠나려 하는지 찾아요" },
-      { title: "고위험 고객 Action Board", detail: "누구에게 무엇을 해야 할지 한눈에 정리해요" },
-      { title: "ROI 시뮬레이션", detail: "할인, 무료 연장 같은 전략별 예상 수익을 비교해요" },
+      { title: "이탈 확률 예측", detail: "XGBoost, LightGBM, CatBoost로 고객별 이탈 가능성을 계산합니다" },
+      { title: "사용자별 원인 추출", detail: "Feature Contribution으로 왜 떠나려 하는지 찾습니다" },
+      { title: "고위험 고객 Action Board", detail: "누구에게 무엇을 해야 할지 한눈에 정리합니다" },
+      { title: "ROI 시뮬레이션", detail: "할인, 무료 연장 같은 전략별 예상 수익을 비교합니다" },
     ],
   },
 ];
@@ -132,32 +132,32 @@ export type EvalCase = { title: string; desc: string; tags: string[] };
 export const evals: EvalCase[] = [
   {
     title: "Multi-Agent 실행 흐름 설계",
-    desc: "Supervisor와 도메인 Agent를 나누고, 작업 의존성에 따라 병렬·순차 실행을 정해요. 쓰기 작업 전에는 사용자 확인을 거쳐요.",
+    desc: "Supervisor와 도메인 Agent를 나누고, 작업 의존성에 따라 병렬·순차 실행을 결정했습니다. 쓰기 작업 전에는 사용자 확인을 거치도록 했습니다.",
     tags: ["LangGraph", "Multi-Agent"],
   },
   {
     title: "RAGAS로 검색 품질 평가",
-    desc: "고정 평가 데이터셋으로 검색 구조를 비교하고, Hybrid Retrieval 적용 전후 품질을 검증했어요.",
+    desc: "고정 평가 데이터셋으로 검색 구조를 비교하고, Hybrid Retrieval 적용 전후 품질을 검증했습니다.",
     tags: ["RAGAS", "Hybrid RAG"],
   },
   {
     title: "MCP 서버와 Tool 제작",
-    desc: "냉장고, 장보기, 일정 기능을 MCP Tool로 연결하고 조회와 변경의 실행 정책을 분리했어요.",
+    desc: "냉장고, 장보기, 일정 기능을 MCP Tool로 연결하고 조회와 변경의 실행 정책을 분리했습니다.",
     tags: ["MCP", "Tool Use"],
   },
   {
     title: "AWS 배포와 운영",
-    desc: "ECS Fargate와 EC2에 AI 서비스를 배포하고 도메인, HTTPS, Nginx까지 구성했어요.",
+    desc: "ECS Fargate와 EC2에 AI 서비스를 배포하고 도메인, HTTPS, Nginx까지 구성했습니다.",
     tags: ["AWS", "Docker"],
   },
   {
     title: "CI/CD와 배포 전후 검증",
-    desc: "GitHub Actions로 빌드, 테스트, CDK 검증을 돌리고 배포 후 Smoke Test를 자동화했어요.",
+    desc: "GitHub Actions로 빌드, 테스트, CDK 검증을 돌리고 배포 후 Smoke Test를 자동화했습니다.",
     tags: ["GitHub Actions", "AWS CDK"],
   },
   {
     title: "Android 앱 기획과 출시",
-    desc: "Java 기반 모바일 앱 두 개를 기획부터 스토어 출시까지 했고, 출시 뒤에도 계속 고쳐왔어요.",
+    desc: "Java 기반 모바일 앱 두 개를 기획부터 스토어 출시까지 했고, 출시 이후에도 꾸준히 개선해 왔습니다.",
     tags: ["Java", "Android"],
   },
 ];
@@ -246,6 +246,6 @@ export const search = {
 };
 
 export const contact = {
-  ask: "함께 일해보고 싶어요",
-  reply: "반가워요. 포지션 제안이나 함께할 프로젝트 이야기라면 언제든 좋아요.",
+  ask: "함께 일하고 싶습니다",
+  reply: "반갑습니다. 포지션 제안이나 함께할 프로젝트 이야기라면 언제든 환영합니다.",
 };
