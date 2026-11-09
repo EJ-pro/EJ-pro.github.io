@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { hero, profile } from "@/data/portfolio";
 import { useReducedMotion } from "@/lib/motion";
-import { Avatar, Check, Spinner, TypingDots } from "./ui";
+import { Check, Spinner, TypingDots } from "./ui";
 
 /*
  * 첫 대화 타임라인 (ms)
- * 1 질문 → 2 입력 중 → 3 자기소개 스트리밍 → 4 두 번째 질문 → 5 툴 실행 → 6 완료 → 7 안내
+ * 1 인사 → 2 입력 중 → 3 소개 스트리밍 → 4 포트폴리오 안내 → 5 툴 실행 → 6 완료 → 7 아래로 안내
  */
 const TIMELINE: [number, number][] = [
   [400, 1],
@@ -23,7 +23,7 @@ const FINAL_STEP = 7;
 function Conversation({ reduced, onReplay }: { reduced: boolean; onReplay: () => void }) {
   const [step, setStep] = useState(0);
   const [chars, setChars] = useState(0);
-  const full = hero.intro.length;
+  const full = hero.statement.length;
 
   useEffect(() => {
     if (reduced) return;
@@ -53,21 +53,20 @@ function Conversation({ reduced, onReplay }: { reduced: boolean; onReplay: () =>
     <>
       <div className="hero-thread">
         <p className="hero-start">새 대화가 시작됐어요</p>
-        {s >= 1 && <p className="bubble-user pop">{hero.greeting}</p>}
+        {s >= 1 && <p className="bubble-user pop">{hero.opening}</p>}
         {s === 2 && <TypingDots />}
         {s >= 3 && (
           <div className="answer pop">
             <div className="speaker">
-              <Avatar />
               <span>{profile.name}</span>
             </div>
-            <h1 className="hero-title" aria-label={hero.intro}>
-              <span aria-hidden="true">{hero.intro.slice(0, shown)}</span>
+            <h1 className="hero-title" aria-label={hero.statement}>
+              <span aria-hidden="true">{hero.statement.slice(0, shown)}</span>
               <span className="caret" aria-hidden="true" />
             </h1>
           </div>
         )}
-        {s >= 4 && <p className="bubble-user pop">{hero.followUp}</p>}
+        {s >= 4 && <p className="bubble-user pop">{hero.closing}</p>}
         {s >= 5 && (
           <div className="tool-row pop">
             {s === 5 ? <Spinner /> : <Check color="#0F7A5C" />}

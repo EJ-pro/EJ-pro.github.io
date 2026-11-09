@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { contact, profile } from "@/data/portfolio";
 import { useCounter, useReducedMotion, useSeenOnce } from "@/lib/motion";
-import { Avatar, TypingDots } from "./ui";
+import { TypingDots } from "./ui";
 
 /** 7. 응답: 첫 대화처럼 다시 대화가 재생되고 연락 입력창이 나온다 */
 export function ContactSection() {
@@ -31,7 +31,6 @@ export function ContactSection() {
         {s >= 3 && (
           <div className="answer pop">
             <div className="speaker">
-              <Avatar />
               <span>{profile.name}</span>
             </div>
             <h2 id="contact-title" className="contact-title" aria-label={contact.reply}>

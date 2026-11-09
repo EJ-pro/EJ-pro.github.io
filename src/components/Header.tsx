@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { profile, stages } from "@/data/portfolio";
-import { Avatar } from "./ui";
 
 /** 고정 헤더: 섹션 메뉴, 지금 보고 있는 단계, 스크롤 진행 막대 */
 export function Header() {
@@ -37,7 +36,6 @@ export function Header() {
     <header className="site-header">
       <div className="site-header-bar">
         <a href="#top" className="brand">
-          <Avatar size={30} />
           <strong>{profile.name}</strong>
         </a>
         <nav className="site-nav" aria-label="섹션 메뉴">

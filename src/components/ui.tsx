@@ -27,14 +27,6 @@ export function ArrowUpRight({ size = 14 }: { size?: number }) {
   );
 }
 
-export function Avatar({ size = 26 }: { size?: number }) {
-  return (
-    <span className="avatar" aria-hidden="true" style={{ width: size, height: size, fontSize: size * 0.4 }}>
-      JH
-    </span>
-  );
-}
-
 export function TypingDots() {
   return (
     <div className="typing pop" role="status" aria-label="답변 작성 중">

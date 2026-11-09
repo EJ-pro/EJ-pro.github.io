@@ -8,9 +8,10 @@ export const profile = {
 };
 
 export const hero = {
-  greeting: "안녕하세요, 어떤 분이세요?",
-  intro: "AI Agent와 RAG를 만들고, 배포와 평가까지 직접 이어가는 개발자 이재희예요.",
-  followUp: "지금까지 만드신 걸 보여주실 수 있을까요?",
+  /** 오른쪽 말풍선 → 왼쪽 큰 글씨(스트리밍) → 오른쪽 말풍선 순으로 나오는 자기소개 세 마디 */
+  opening: "안녕하세요, AI 엔지니어 이재희입니다.",
+  statement: "AI Agent와 RAG를 만들고, 배포와 평가까지 직접 이어가고 있습니다.",
+  closing: "지금부터 제 포트폴리오를 소개해드리겠습니다.",
   tool: 'open_portfolio(owner="EJ-pro")',
   handoff: "작업 공간을 열어뒀어요. 아래로 내려오시면 차례로 보여드릴게요.",
 };
