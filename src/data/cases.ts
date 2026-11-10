@@ -318,6 +318,7 @@ export const cases: CaseStudy[] = [
     tagline: "누가 이탈할지 예측하는 모델을 넘어, 왜 이탈하는지와 무엇을 해야 하는지까지 연결한 서비스",
     description: "이탈 예측을 사용자별 원인 분석, 리텐션 액션, ROI 시뮬레이션으로 연결한 KKBOX 프로젝트의 실행 보고서입니다.",
     repo: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-2nd-3TEAM",
+    live: "https://kkbox-churn.streamlit.app/",
     image: "/images/projects/kkbox-roi.jpg",
     imageAlt: "KKBOX 마케팅 성과 시뮬레이터 화면",
     fit: "cover",

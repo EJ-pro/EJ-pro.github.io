@@ -244,6 +244,7 @@ export const featured: FeaturedProject[] = [
     summary: "이탈 확률 예측에서 멈추지 않고 사용자별 원인, 대응 액션, 예상 수익까지 연결한 의사결정 지원 서비스",
     stack: "XGBoost / LightGBM / CatBoost / SHAP / Streamlit",
     href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-2nd-3TEAM",
+    live: "https://kkbox-churn.streamlit.app/",
     steps: [
       { tool: "predict_churn", title: "이탈 확률 예측", detail: "XGBoost, LightGBM, CatBoost로 고객별 이탈 가능성을 계산합니다" },
       { tool: "explain_contribution", title: "사용자별 원인 추출", detail: "Feature Contribution으로 왜 떠나려 하는지 찾습니다" },
@@ -366,7 +367,7 @@ export const projects: Project[] = [
   { name: "GitGraph · ChatFolio", category: "ai", label: "개발 도구", description: "AST로 코드 의존성을 추출하고 GraphRAG로 분석과 README 생성을 돕는 개발 도구", href: "https://github.com/EJ-pro/GitGraph" },
   { name: "HELBOTIN", image: "/images/projects/helbotin-chat.jpg", fit: "cover", category: "ai", label: "AI 서비스", description: "운동 데이터 기반 RAG 상담과 개인화 루틴을 제공하는 헬스케어 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-4th-4team" },
   { name: "너로 정했다! LLM", image: "/images/projects/pokemon-team-builder.jpg", fit: "cover", category: "ai", label: "Hybrid RAG", description: "Vector, BM25, pg_trgm과 Graph 탐색을 결합한 포켓몬 AI 플랫폼", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-3rd-3TEAM", detail: "hybrid-rag" },
-  { name: "KKBOX Churn Prevention", image: "/images/projects/kkbox-roi.jpg", fit: "cover", category: "ai", label: "머신러닝", description: "이탈 예측을 사용자별 원인, 대응 액션, ROI 비교로 연결한 의사결정 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-2nd-3TEAM", detail: "kkbox" },
+  { name: "KKBOX Churn Prevention", image: "/images/projects/kkbox-roi.jpg", fit: "cover", category: "ai", label: "머신러닝", description: "이탈 예측을 사용자별 원인, 대응 액션, ROI 비교로 연결한 의사결정 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-2nd-3TEAM", detail: "kkbox", live: "https://kkbox-churn.streamlit.app/" },
   { name: "밥벌이 Android", category: "android", label: "Android", description: "요리 영상을 구조화된 레시피로 바꾸고 현재 조리 단계를 기억하는 앱", href: "https://github.com/EJ-pro/bobbeori-android" },
   { name: "Pokemon RAG Database Pipeline", category: "ai", label: "데이터 파이프라인", description: "PokeAPI의 정형·비정형 데이터를 수집해 RAG 지식베이스로 적재하는 파이프라인", href: "https://github.com/EJ-pro/Pokemon_DB_Collection" },
   { name: "SmartPot", category: "android", label: "Android 비전", description: "CameraX와 픽셀 분석으로 식물 상태를 진단하는 반려식물 관리 앱", href: "https://github.com/EJ-pro/smartpot" },
