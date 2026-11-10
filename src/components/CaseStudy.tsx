@@ -230,9 +230,19 @@ export default function CaseStudy({ c }: { c: Case }) {
                 </li>
               ))}
             </ul>
-            <Link href="/#trace" className="case-home">
-              포트폴리오로 돌아가기
-            </Link>
+            <div className="case-end">
+              <span className="case-end-check" aria-hidden="true">
+                <Check size={16} color="#fff" width={2.6} />
+              </span>
+              <p>
+                <strong>보고서를 모두 읽었습니다</strong>
+                <span>{c.sections.length}개 단계 확인 완료 · 대화로 돌아가 다른 프로젝트도 볼 수 있습니다</span>
+              </p>
+              <Link href="/#trace" className="case-home">
+                <span aria-hidden="true">←</span>
+                포트폴리오로 돌아가기
+              </Link>
+            </div>
           </div>
         </section>
       </main>
