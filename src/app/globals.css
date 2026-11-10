@@ -905,3 +905,15 @@ button { font-family: inherit; }
 .cs-img-frame img { object-fit: cover; }
 .cs-img-frame.fit-contain img { object-fit: contain; padding: 16px; }
 .cs-img figcaption { font-size: 13px; color: var(--muted); }
+
+/* 하단 문의 대화 */
+.contact-log { display: flex; flex-direction: column; gap: 14px; margin-bottom: 8px; }
+.bubble-bot { align-self: flex-start; margin: 0; max-width: 85%; padding: 12px 18px; border-radius: 20px 20px 20px 6px; background: var(--fog-deep); color: var(--ink); font-size: 16px; line-height: 1.6; }
+.bubble-bot.is-error { background: #ffe2e3; color: #7a1420; }
+.contact-again { align-self: flex-start; }
+.contact-again-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.send-btn:disabled { background: #b7bdcc; cursor: default; }
+.composer.is-invalid { border-color: var(--rec); }
+.contact-error { margin: 6px 0 0 20px; font-size: 13px; color: #c4282c; }
+.contact-log .ghost-btn { background: #fff; border: 1px solid var(--line); border-radius: 999px; }
+.contact-log .ghost-btn:hover { border-color: var(--accent); color: var(--accent); background: #fff; }

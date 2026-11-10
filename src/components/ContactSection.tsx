@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { contact, contextWindow, profile } from "@/data/portfolio";
 import { REPLAY_EVENT, useCounter, useReducedMotion, useSeenOnce } from "@/lib/motion";
 import { TypingDots } from "./ui";
@@ -44,30 +44,7 @@ export function ContactSection() {
             </h2>
           </div>
         )}
-        {s >= 4 && (
-          <form className="contact-form pop" action={`mailto:${profile.email}`} method="get">
-            <div className="composer composer-raised">
-              <label htmlFor="ask" className="sr-only">
-                {profile.name}에게 보낼 메시지
-              </label>
-              <input id="ask" name="body" type="text" placeholder={`${profile.name}에게 메시지 보내기`} />
-              <button type="submit" className="send-btn" aria-label="메일로 보내기">
-                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 14V4M4.5 8.5L9 4l4.5 4.5" />
-                </svg>
-              </button>
-            </div>
-            <div className="pill-row pill-row-center">
-              <a className="pill-soft" href={`mailto:${profile.email}`}>
-                {profile.email}
-              </a>
-              <a className="pill-soft" href={profile.github} target="_blank" rel="noreferrer">
-                GitHub {profile.githubHandle}
-              </a>
-            </div>
-            <p className="fineprint">{profile.name}도 실수할 수 있습니다. 중요한 내용은 GitHub에서 확인해 주세요.</p>
-          </form>
-        )}
+        {s >= 4 && <ContactChat />}
       </div>
       <footer className="site-footer">
         <div className="footer-inner">
@@ -99,5 +76,165 @@ export function ContactSection() {
         </div>
       </footer>
     </section>
+  );
+}
+
+type Phase = "message" | "email" | "sending" | "sent" | "error";
+type Line = { who: "user" | "bot"; text: string };
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/** 하단 입력창: 메시지 → 답장 받을 이메일 → 전송. 결과를 대화로 보여준다 */
+function ContactChat() {
+  const [phase, setPhase] = useState<Phase>("message");
+  const [lines, setLines] = useState<Line[]>([]);
+  const [draft, setDraft] = useState("");
+  const [message, setMessage] = useState("");
+  const [invalid, setInvalid] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const trapRef = useRef<HTMLInputElement>(null);
+
+  const say = (who: Line["who"], text: string) => setLines((l) => [...l, { who, text }]);
+
+  const send = async (email: string) => {
+    setPhase("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: contact.formKey,
+          subject: "[포트폴리오] 새 메시지가 도착했습니다",
+          from_name: "이재희 포트폴리오",
+          email,
+          replyto: email,
+          message,
+          botcheck: trapRef.current?.checked ?? false,
+        }),
+      });
+      const data = (await res.json()) as { success?: boolean };
+      if (!res.ok || !data.success) throw new Error("send failed");
+      say("bot", contact.sent(email));
+      setPhase("sent");
+    } catch {
+      say("bot", contact.failed);
+      setPhase("error");
+    }
+  };
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const text = draft.trim();
+    if (!text) return;
+    if (phase === "message") {
+      say("user", text);
+      setMessage(text);
+      setDraft("");
+      setPhase("email");
+      setTimeout(() => say("bot", contact.askEmail), 450);
+    } else if (phase === "email") {
+      if (!EMAIL_RE.test(text)) {
+        setInvalid(true);
+        return;
+      }
+      setInvalid(false);
+      say("user", text);
+      setDraft("");
+      void send(text);
+    }
+    inputRef.current?.focus();
+  };
+
+  const reset = () => {
+    setLines([]);
+    setMessage("");
+    setDraft("");
+    setPhase("message");
+    requestAnimationFrame(() => inputRef.current?.focus());
+  };
+
+  const locked = phase === "sending" || phase === "sent" || phase === "error";
+  const placeholder = phase === "email" ? "답장 받을 이메일 주소" : `${profile.name}에게 메시지 보내기`;
+
+  return (
+    <div className="contact-form pop">
+      {lines.length > 0 && (
+        <div className="contact-log" aria-live="polite">
+          {lines.map((l, i) =>
+            l.who === "user" ? (
+              <p key={i} className="bubble-user pop">
+                {l.text}
+              </p>
+            ) : (
+              <p key={i} className={`bubble-bot pop${phase === "error" && i === lines.length - 1 ? " is-error" : ""}`}>
+                {l.text}
+              </p>
+            ),
+          )}
+          {phase === "sending" && <TypingDots />}
+          {phase === "sent" && (
+            <button type="button" className="ghost-btn contact-again pop" onClick={reset}>
+              새 메시지 쓰기
+            </button>
+          )}
+          {phase === "error" && (
+            <div className="contact-again-row pop">
+              <a className="pill-soft" href={`mailto:${profile.email}?body=${encodeURIComponent(message)}`}>
+                메일로 보내기
+              </a>
+              <button type="button" className="ghost-btn" onClick={reset}>
+                다시 쓰기
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {!locked && (
+        <form onSubmit={onSubmit} noValidate>
+          <div className={`composer composer-raised${invalid ? " is-invalid" : ""}`}>
+            <label htmlFor="ask" className="sr-only">
+              {placeholder}
+            </label>
+            <input
+              ref={inputRef}
+              id="ask"
+              name={phase === "email" ? "email" : "message"}
+              type={phase === "email" ? "email" : "text"}
+              autoComplete={phase === "email" ? "email" : "off"}
+              maxLength={phase === "email" ? 120 : 2000}
+              value={draft}
+              onChange={(e) => {
+                setDraft(e.target.value);
+                if (invalid) setInvalid(false);
+              }}
+              placeholder={placeholder}
+              aria-invalid={invalid || undefined}
+              aria-describedby={invalid ? "ask-error" : undefined}
+            />
+            <input ref={trapRef} type="checkbox" name="botcheck" className="sr-only" tabIndex={-1} aria-hidden="true" />
+            <button type="submit" className="send-btn" aria-label={phase === "email" ? "보내기" : "다음"} disabled={!draft.trim()}>
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 14V4M4.5 8.5L9 4l4.5 4.5" />
+              </svg>
+            </button>
+          </div>
+          {invalid && (
+            <p id="ask-error" className="contact-error">
+              이메일 주소 형식을 확인해 주세요.
+            </p>
+          )}
+        </form>
+      )}
+
+      <div className="pill-row pill-row-center">
+        <a className="pill-soft" href={`mailto:${profile.email}`}>
+          {profile.email}
+        </a>
+        <a className="pill-soft" href={profile.github} target="_blank" rel="noreferrer">
+          GitHub {profile.githubHandle}
+        </a>
+      </div>
+      <p className="fineprint">보낸 메시지는 {profile.name}의 메일로 바로 전달됩니다.</p>
+    </div>
   );
 }
