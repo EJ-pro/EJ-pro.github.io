@@ -372,14 +372,14 @@ export const projects: Project[] = [
   { name: "밥벌이 Android", image: "/images/projects/bobbeori-android.jpg", fit: "cover", category: "android", label: "Android", description: "요리 영상을 구조화된 레시피로 바꾸고 현재 조리 단계를 기억하는 앱", href: "https://github.com/EJ-pro/bobbeori-android", live: "https://play.google.com/store/apps/details?id=com.bobbeori.bobbeori_app&hl=ko" },
   { name: "Walky", category: "android", label: "Android", description: "사람과 반려동물의 산책을 기록하는 위치 기반 산책 커뮤니티", href: "https://github.com/EJ-pro/Walky", live: "https://play.google.com/store/apps/details?id=com.walkmate.walky&hl=ko" },
   { name: "E-Card", category: "etc", label: "웹", description: "레벨 테스트와 주제별 콘텐츠, 퀴즈를 제공하는 영어 학습 웹 앱", href: "https://github.com/EJ-pro/Project-4" },
-  { name: "TikTok AR Filter", image: "/images/projects/tiktok-makeathon.jpg", fit: "cover", category: "etc", label: "AR", description: "TikTok Effect House로 만든 인터랙티브 AR 필터", href: "https://github.com/EJ-pro/TikTok_AR_Filter" },
+  { name: "TikTok 메이커톤 신청 페이지", image: "/images/projects/tiktok-makeathon.jpg", fit: "cover", category: "etc", label: "웹", description: "TikTok Effect House AR 필터 메이커톤(해커톤)의 참가 신청 웹페이지", href: "https://github.com/EJ-pro/TikTok_AR_Filter" },
 ];
 
 export const projectFilters: { id: "all" | ProjectCategory; label: string }[] = [
   { id: "all", label: "전체" },
   { id: "ai", label: "AI와 데이터" },
   { id: "android", label: "Android" },
-  { id: "etc", label: "웹과 AR" },
+  { id: "etc", label: "웹" },
 ];
 
 export const search = {
