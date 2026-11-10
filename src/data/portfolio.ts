@@ -173,6 +173,10 @@ export const awards: Award[] = [
 
 export type FeaturedProject = {
   name: string;
+  /** 대화에서 방문자가 묻는 질문 */
+  ask: string;
+  /** 결과물 패널에 보이는 파일 이름 */
+  slug: string;
   image: string;
   fit: "cover" | "contain";
   alt: string;
@@ -180,12 +184,14 @@ export type FeaturedProject = {
   summary: string;
   stack: string;
   href: string;
-  steps: { title: string; detail: string }[];
+  steps: { tool: string; title: string; detail: string }[];
 };
 
 export const featured: FeaturedProject[] = [
   {
     name: "밥벌이",
+    ask: "밥벌이는 어떤 프로젝트인가요?",
+    slug: "bobbeori",
     image: "/images/projects/bobbeori-agents.jpg",
     fit: "contain",
     alt: "밥벌이 Multi-Agent 아키텍처 다이어그램",
@@ -194,15 +200,17 @@ export const featured: FeaturedProject[] = [
     stack: "LangGraph / MCP / FastAPI / PostgreSQL / Neo4j / AWS",
     href: "https://github.com/EJ-pro",
     steps: [
-      { title: "요청 받기", detail: "ChatGPT, Claude 같은 MCP 클라이언트나 웹·앱에서 요청이 들어옵니다" },
-      { title: "Supervisor가 작업 분해", detail: "복합 요청을 도메인별 작업으로 나누고 의존 관계를 파악합니다" },
-      { title: "독립 조회는 병렬 실행", detail: "재고, 장보기, 레시피 Agent가 동시에 정보를 모읍니다" },
-      { title: "의존 작업은 순차 실행", detail: "앞 단계 결과가 필요한 작업은 순서를 지켜 실행합니다" },
-      { title: "변경 전 사용자 확인", detail: "데이터를 쓰기 전에는 미리보기를 보여주고 확인을 받습니다" },
+      { tool: "receive_request", title: "요청 받기", detail: "ChatGPT, Claude 같은 MCP 클라이언트나 웹·앱에서 요청이 들어옵니다" },
+      { tool: "supervisor.plan", title: "Supervisor가 작업 분해", detail: "복합 요청을 도메인별 작업으로 나누고 의존 관계를 파악합니다" },
+      { tool: "run_parallel", title: "독립 조회는 병렬 실행", detail: "재고, 장보기, 레시피 Agent가 동시에 정보를 모읍니다" },
+      { tool: "run_sequential", title: "의존 작업은 순차 실행", detail: "앞 단계 결과가 필요한 작업은 순서를 지켜 실행합니다" },
+      { tool: "confirm_write", title: "변경 전 사용자 확인", detail: "데이터를 쓰기 전에는 미리보기를 보여주고 확인을 받습니다" },
     ],
   },
   {
     name: "너로 정했다! LLM",
+    ask: "너로 정했다! LLM은 어떤 프로젝트인가요?",
+    slug: "pokemon-llm",
     image: "/images/projects/pokemon-team-builder.jpg",
     fit: "cover",
     alt: "너로 정했다! LLM 팀 빌더 화면",
@@ -211,15 +219,17 @@ export const featured: FeaturedProject[] = [
     stack: "Python / PostgreSQL / pgvector / Neo4j / RRF / RAGAS",
     href: "https://github.com/EJ-pro",
     steps: [
-      { title: "데이터 수집과 정제", detail: "외부 API에서 정형·비정형 데이터를 모아 정리합니다" },
-      { title: "저장소 적재", detail: "PostgreSQL·pgvector와 Neo4j에 나눠 담습니다" },
-      { title: "세 방식으로 동시 검색", detail: "BM25, pg_trgm, Vector 검색을 함께 실행합니다" },
-      { title: "RRF로 결과 결합", detail: "각 방식의 순위를 합쳐 한쪽의 실패를 다른 쪽이 보완합니다" },
-      { title: "RAGAS로 품질 검증", detail: "고정 평가셋으로 적용 전후 검색 품질을 비교합니다" },
+      { tool: "collect_sources", title: "데이터 수집과 정제", detail: "외부 API에서 정형·비정형 데이터를 모아 정리합니다" },
+      { tool: "load_stores", title: "저장소 적재", detail: "PostgreSQL·pgvector와 Neo4j에 나눠 담습니다" },
+      { tool: "hybrid_search", title: "세 방식으로 동시 검색", detail: "BM25, pg_trgm, Vector 검색을 함께 실행합니다" },
+      { tool: "rrf_merge", title: "RRF로 결과 결합", detail: "각 방식의 순위를 합쳐 한쪽의 실패를 다른 쪽이 보완합니다" },
+      { tool: "ragas_eval", title: "RAGAS로 품질 검증", detail: "고정 평가셋으로 적용 전후 검색 품질을 비교합니다" },
     ],
   },
   {
     name: "KKBOX Churn Prevention",
+    ask: "KKBOX Churn Prevention은 어떤 프로젝트인가요?",
+    slug: "kkbox-churn",
     image: "/images/projects/kkbox-roi.jpg",
     fit: "cover",
     alt: "KKBOX 마케팅 성과 시뮬레이터 화면",
@@ -228,10 +238,10 @@ export const featured: FeaturedProject[] = [
     stack: "XGBoost / LightGBM / CatBoost / SHAP / Streamlit",
     href: "https://github.com/EJ-pro",
     steps: [
-      { title: "이탈 확률 예측", detail: "XGBoost, LightGBM, CatBoost로 고객별 이탈 가능성을 계산합니다" },
-      { title: "사용자별 원인 추출", detail: "Feature Contribution으로 왜 떠나려 하는지 찾습니다" },
-      { title: "고위험 고객 Action Board", detail: "누구에게 무엇을 해야 할지 한눈에 정리합니다" },
-      { title: "ROI 시뮬레이션", detail: "할인, 무료 연장 같은 전략별 예상 수익을 비교합니다" },
+      { tool: "predict_churn", title: "이탈 확률 예측", detail: "XGBoost, LightGBM, CatBoost로 고객별 이탈 가능성을 계산합니다" },
+      { tool: "explain_contribution", title: "사용자별 원인 추출", detail: "Feature Contribution으로 왜 떠나려 하는지 찾습니다" },
+      { tool: "build_action_board", title: "고위험 고객 Action Board", detail: "누구에게 무엇을 해야 할지 한눈에 정리합니다" },
+      { tool: "simulate_roi", title: "ROI 시뮬레이션", detail: "할인, 무료 연장 같은 전략별 예상 수익을 비교합니다" },
     ],
   },
 ];
@@ -316,6 +326,9 @@ export type ProjectCategory = "ai" | "android" | "etc";
 
 export type Project = {
   name: string;
+  /** 사진. 없으면 분야 색과 이름 글자로 자리를 채운다 */
+  image?: string;
+  fit?: "cover" | "contain";
   category: ProjectCategory;
   label: string;
   description: string;
@@ -323,11 +336,11 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  { name: "밥벌이", category: "ai", label: "AI 서비스", description: "복합 요청의 의존 관계와 실행 정책을 제어하는 Multi-Agent 식생활 서비스", href: "https://github.com/EJ-pro" },
+  { name: "밥벌이", image: "/images/projects/bobbeori-agents.jpg", fit: "contain", category: "ai", label: "AI 서비스", description: "복합 요청의 의존 관계와 실행 정책을 제어하는 Multi-Agent 식생활 서비스", href: "https://github.com/EJ-pro" },
   { name: "GitGraph · ChatFolio", category: "ai", label: "개발 도구", description: "AST로 코드 의존성을 추출하고 GraphRAG로 분석과 README 생성을 돕는 개발 도구", href: "https://github.com/EJ-pro/GitGraph" },
-  { name: "HELBOTIN", category: "ai", label: "AI 서비스", description: "운동 데이터 기반 RAG 상담과 개인화 루틴을 제공하는 헬스케어 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-4th-4team" },
-  { name: "너로 정했다! LLM", category: "ai", label: "Hybrid RAG", description: "Vector, BM25, pg_trgm과 Graph 탐색을 결합한 포켓몬 AI 플랫폼", href: "https://github.com/EJ-pro" },
-  { name: "KKBOX Churn Prevention", category: "ai", label: "머신러닝", description: "이탈 예측을 사용자별 원인, 대응 액션, ROI 비교로 연결한 의사결정 서비스", href: "https://github.com/EJ-pro" },
+  { name: "HELBOTIN", image: "/images/projects/helbotin-chat.jpg", fit: "cover", category: "ai", label: "AI 서비스", description: "운동 데이터 기반 RAG 상담과 개인화 루틴을 제공하는 헬스케어 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-4th-4team" },
+  { name: "너로 정했다! LLM", image: "/images/projects/pokemon-team-builder.jpg", fit: "cover", category: "ai", label: "Hybrid RAG", description: "Vector, BM25, pg_trgm과 Graph 탐색을 결합한 포켓몬 AI 플랫폼", href: "https://github.com/EJ-pro" },
+  { name: "KKBOX Churn Prevention", image: "/images/projects/kkbox-roi.jpg", fit: "cover", category: "ai", label: "머신러닝", description: "이탈 예측을 사용자별 원인, 대응 액션, ROI 비교로 연결한 의사결정 서비스", href: "https://github.com/EJ-pro" },
   { name: "밥벌이 Android", category: "android", label: "Android", description: "요리 영상을 구조화된 레시피로 바꾸고 현재 조리 단계를 기억하는 앱", href: "https://github.com/EJ-pro/bobbeori-android" },
   { name: "Pokemon RAG Database Pipeline", category: "ai", label: "데이터 파이프라인", description: "PokeAPI의 정형·비정형 데이터를 수집해 RAG 지식베이스로 적재하는 파이프라인", href: "https://github.com/EJ-pro/Pokemon_DB_Collection" },
   { name: "SmartPot", category: "android", label: "Android 비전", description: "CameraX와 픽셀 분석으로 식물 상태를 진단하는 반려식물 관리 앱", href: "https://github.com/EJ-pro/smartpot" },
@@ -342,13 +355,6 @@ export const projectFilters: { id: "all" | ProjectCategory; label: string }[] = 
   { id: "android", label: "Android" },
   { id: "etc", label: "웹과 AR" },
 ];
-
-export const screenshots = [
-  { name: "HELBOTIN", label: "AI 서비스", image: "/images/projects/helbotin-chat.jpg", fit: "cover", alt: "HELBOTIN 상담 채팅 화면", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-4th-4team" },
-  { name: "너로 정했다! LLM", label: "Hybrid RAG", image: "/images/projects/pokemon-team-builder.jpg", fit: "cover", alt: "너로 정했다! LLM 팀 빌더 화면", href: "https://github.com/EJ-pro" },
-  { name: "KKBOX Churn Prevention", label: "머신러닝", image: "/images/projects/kkbox-roi.jpg", fit: "cover", alt: "KKBOX 마케팅 성과 시뮬레이터 화면", href: "https://github.com/EJ-pro" },
-  { name: "밥벌이", label: "AI 서비스", image: "/images/projects/bobbeori-agents.jpg", fit: "contain", alt: "밥벌이 Multi-Agent 아키텍처 다이어그램", href: "https://github.com/EJ-pro" },
-] as const;
 
 export const search = {
   query: "이재희가 만든 프로젝트 전부 찾아줘",
