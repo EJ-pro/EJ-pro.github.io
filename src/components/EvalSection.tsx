@@ -23,23 +23,23 @@ function EvalCard({ item, index, status, onOpen }: { item: EvalCase; index: numb
       </div>
       <strong className="eval-title">{item.title}</strong>
       <span className="eval-desc">{item.desc}</span>
-      <span className="tag-row">
-        {item.tags.map((t) => (
-          <span key={t} className="tag">
-            {t}
-          </span>
-        ))}
+      <span className="eval-foot">
+        <span className="tag-row">
+          {item.tags.map((t) => (
+            <span key={t} className="tag">
+              {t}
+            </span>
+          ))}
+        </span>
+        <button type="button" className="eval-open" data-eval-open={index} onClick={() => onOpen(index)}>
+          자세히 보기
+          <span aria-hidden="true">→</span>
+        </button>
       </span>
       {status === "running" && (
         <span className="runbar-track" aria-hidden="true">
           <span className="runbar" />
         </span>
-      )}
-      {status === "done" && (
-        <button type="button" className="eval-open pop" data-eval-open={index} onClick={() => onOpen(index)}>
-          자세히 보기
-          <span aria-hidden="true">→</span>
-        </button>
       )}
     </li>
   );
