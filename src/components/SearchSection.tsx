@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Fragment, useRef, useState } from "react";
+import Link from "next/link";
+import { Fragment, useRef, useState, type ReactNode } from "react";
 import { profile, projectFilters, projects, search, type Project, type ProjectCategory } from "@/data/portfolio";
 import { useCounter, useReducedMotion, useSeenOnce, useToolPhase } from "@/lib/motion";
 import { ArrowUpRight, ToolChip } from "./ui";
@@ -140,7 +141,7 @@ export function SearchSection() {
               className={`src-card row-in${n === flash?.n ? " is-flash" : ""}`}
               style={{ animationDelay: filter === "all" ? "0ms" : `${i * 50}ms` }}
             >
-              <a href={p.href} target="_blank" rel="noreferrer">
+              <CardLink project={p}>
                 <Thumb project={p} index={i} />
                 <span className="src-body">
                   <span className="src-meta">
@@ -150,15 +151,25 @@ export function SearchSection() {
                   <strong>{p.name}</strong>
                   <span className="src-desc">{p.description}</span>
                   <span className="src-go">
-                    GitHub에서 보기
-                    <ArrowUpRight size={13} />
+                    {p.detail ? "상세 보기" : "GitHub에서 보기"}
+                    {p.detail ? <span aria-hidden="true">→</span> : <ArrowUpRight size={13} />}
                   </span>
                 </span>
-              </a>
+              </CardLink>
             </li>
           ))}
         </ul>
       </div>
     </section>
+  );
+}
+
+/** 상세 페이지가 있으면 사이트 안으로, 없으면 GitHub로 */
+function CardLink({ project, children }: { project: Project; children: ReactNode }) {
+  if (project.detail) return <Link href={`/projects/${project.detail}/`}>{children}</Link>;
+  return (
+    <a href={project.href} target="_blank" rel="noreferrer">
+      {children}
+    </a>
   );
 }

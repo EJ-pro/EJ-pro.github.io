@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { featured, profile, type FeaturedProject } from "@/data/portfolio";
 import { useCounter, useReducedMotion, useSeenOnce, useToolPhase } from "@/lib/motion";
@@ -74,9 +75,9 @@ function Run({ project, play, reduced, onNext }: { project: FeaturedProject; pla
                 다음 대화
               </button>
             )}
-            <a className="agent-link" href={project.href} target="_blank" rel="noreferrer">
+            <Link className="agent-link" href={`/projects/${project.slug}/`}>
               개발 내용 보기
-            </a>
+            </Link>
           </span>
         </div>
       </div>
