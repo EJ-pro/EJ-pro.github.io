@@ -148,17 +148,17 @@ button { font-family: inherit; }
 /* 사이드 내비: 넓은 화면에서 오른쪽에 고정 */
 .side-nav { position: fixed; z-index: 15; right: 20px; top: 50%; transform: translateY(-50%); }
 .side-nav ol {
-  position: relative; list-style: none; margin: 0; padding: 10px 8px; display: flex; flex-direction: column; gap: 2px; border-radius: 999px;
+  position: relative; list-style: none; margin: 0; padding: 12px 8px; display: flex; flex-direction: column; gap: 10px; border-radius: 999px;
   background: rgba(255, 255, 255, 0.78); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(21, 25, 36, 0.08); box-shadow: 0 12px 32px -18px rgba(21, 25, 36, 0.45);
 }
-.side-nav a { position: relative; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 999px; text-decoration: none; }
+.side-nav a { position: relative; display: flex; align-items: center; justify-content: center; width: 28px; height: 30px; border-radius: 999px; text-decoration: none; }
 .side-nav-mark { width: 7px; height: 7px; border-radius: 4px; background: #b3b9c9; transition: height 0.25s, background 0.25s; }
 .side-nav a:hover .side-nav-mark { background: var(--ink-3); }
 .side-nav a.is-active .side-nav-mark { height: 20px; background: var(--accent); }
 .side-nav-label {
   position: absolute; right: calc(100% + 12px); top: 50%; transform: translate(6px, -50%); width: 116px; box-sizing: border-box;
-  padding: 5px 10px; border-radius: 999px; text-align: center;
+  padding: 4px 10px; border-radius: 999px; text-align: center; line-height: 1.5;
   background: var(--ink); color: #fff; font-size: 13px; font-weight: 500; white-space: nowrap;
   opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s;
 }
