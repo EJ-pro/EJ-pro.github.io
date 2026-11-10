@@ -204,6 +204,7 @@ export const featured: FeaturedProject[] = [
     summary: "복합 요청을 작업 단위로 나누고, 의존 관계에 따라 실행 순서를 제어한 Multi-Agent 식생활 서비스",
     stack: "LangGraph / MCP / FastAPI / PostgreSQL / Neo4j / AWS",
     href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-FINAL-1Team",
+    live: "https://bobbeori.netlify.app/",
     steps: [
       { tool: "receive_request", title: "요청 받기", detail: "ChatGPT, Claude 같은 MCP 클라이언트나 웹·앱에서 요청이 들어옵니다" },
       { tool: "supervisor.plan", title: "Supervisor가 작업 분해", detail: "복합 요청을 도메인별 작업으로 나누고 의존 관계를 파악합니다" },
@@ -364,7 +365,7 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  { name: "밥벌이", image: "/images/projects/bobbeori-hero.jpg", fit: "cover", category: "ai", label: "AI 서비스", description: "복합 요청의 의존 관계와 실행 정책을 제어하는 Multi-Agent 식생활 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-FINAL-1Team", detail: "bobbeori" },
+  { name: "밥벌이", image: "/images/projects/bobbeori-hero.jpg", fit: "cover", category: "ai", label: "AI 서비스", description: "복합 요청의 의존 관계와 실행 정책을 제어하는 Multi-Agent 식생활 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-FINAL-1Team", detail: "bobbeori", live: "https://bobbeori.netlify.app/" },
   { name: "GitGraph · ChatFolio", image: "/images/projects/gitgraph-architecture.jpg", fit: "cover", category: "ai", label: "개발 도구", description: "AST로 코드 의존성을 추출하고 GraphRAG로 분석과 README 생성을 돕는 개발 도구", href: "https://github.com/EJ-pro/GitGraph" },
   { name: "HELBOTIN", image: "/images/projects/helbotin-chat.jpg", fit: "cover", category: "ai", label: "AI 서비스", description: "운동 데이터 기반 RAG 상담과 개인화 루틴을 제공하는 헬스케어 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-4th-4team", live: "https://helbotin.netlify.app/" },
   { name: "너로 정했다! LLM", image: "/images/projects/pokemon-team-builder.jpg", fit: "cover", category: "ai", label: "Hybrid RAG", description: "Vector, BM25, pg_trgm과 Graph 탐색을 결합한 포켓몬 AI 플랫폼", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-3rd-3TEAM", detail: "hybrid-rag", live: "https://pokemon-hybrid-rag.streamlit.app/" },

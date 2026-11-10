@@ -43,6 +43,7 @@ export const cases: CaseStudy[] = [
     tagline: "하나의 대화에 섞인 조회, 추천, 데이터 변경을 실행 정책별로 분리한 Multi-Agent 식생활 서비스",
     description: "밥벌이 프로젝트의 Multi-Agent 실행 구조, 평가, 보호장치, 배포 과정을 정리한 실행 보고서입니다.",
     repo: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-FINAL-1Team",
+    live: "https://bobbeori.netlify.app/",
     image: "/images/projects/bobbeori-hero.jpg",
     imageAlt: "냉장고 재료로 요리를 추천하는 밥벌이 서비스 대표 이미지",
     fit: "cover",
