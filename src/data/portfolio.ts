@@ -251,38 +251,53 @@ export const featured: FeaturedProject[] = [
   },
 ];
 
-export type EvalCase = { title: string; desc: string; tags: string[] };
+export type EvalEvidence = {
+  /** 근거가 된 프로젝트 */
+  project: string;
+  /** 상세 페이지 slug (있을 때만 링크) */
+  slug?: string;
+  points: string[];
+  metric: { label: string; value: string };
+};
+
+export type EvalCase = { title: string; desc: string; tags: string[]; evidence: EvalEvidence };
 
 export const evals: EvalCase[] = [
   {
     title: "Multi-Agent 실행 흐름 설계",
     desc: "Supervisor와 도메인 Agent를 나누고, 작업 의존성에 따라 병렬·순차 실행을 결정했습니다. 쓰기 작업 전에는 사용자 확인을 거치도록 했습니다.",
     tags: ["LangGraph", "Multi-Agent"],
+    evidence: { project: "밥벌이", slug: "bobbeori", points: ["Supervisor가 요청을 Task로 나누고 Inventory, Recipe, Shopping, Calendar Agent에 배분", "서로 의존하지 않는 조회는 병렬로, 앞 결과가 필요한 작업은 순차로 실행", "Langfuse Trace로 Intent부터 Tool 결과까지 이어 실패 단계를 특정"], metric: { label: "228개 평가 문항", value: "73.9 → 86.0" } },
   },
   {
     title: "RAGAS로 검색 품질 평가",
     desc: "고정 평가 데이터셋으로 검색 구조를 비교하고, Hybrid Retrieval 적용 전후 품질을 검증했습니다.",
     tags: ["RAGAS", "Hybrid RAG"],
+    evidence: { project: "너로 정했다! LLM", slug: "hybrid-rag", points: ["10개 고정 질문과 RAGAS 지표로 검색 구조의 변경 전후를 비교", "Vector, BM25, pg_trgm 결과를 RRF로 결합해 Context Recall 0.70 → 0.90", "Self-RAG는 Faithfulness가 0.938 → 0.769로 떨어져 롤백"], metric: { label: "RAGAS 평균", value: "0.816 → 0.886" } },
   },
   {
     title: "MCP 서버와 Tool 제작",
     desc: "냉장고, 장보기, 일정 기능을 MCP Tool로 연결하고 조회와 변경의 실행 정책을 분리했습니다.",
     tags: ["MCP", "Tool Use"],
+    evidence: { project: "밥벌이", slug: "bobbeori", points: ["냉장고, 장보기, 일정 기능을 MCP Tool로 제공", "조회와 데이터 변경의 실행 경로를 나누고, 변경 전에는 사용자 확인", "Idempotency Key로 재시도 중복을 막고 user_id 조건으로 소유권 확인"], metric: { label: "쓰기 보호장치", value: "4종" } },
   },
   {
     title: "AWS 배포와 운영",
     desc: "ECS Fargate와 EC2에 AI 서비스를 배포하고 도메인, HTTPS, Nginx까지 구성했습니다.",
     tags: ["AWS", "Docker"],
+    evidence: { project: "밥벌이", slug: "bobbeori", points: ["밥벌이: ECS Fargate에서 Backend와 MCP를 따로 운영하고 인프라를 AWS CDK로 관리", "HELBOTIN: EC2 운영 환경에서 SSE 응답이 한 번에 출력되는 장애 발생", "Browser, Nginx, Container, Django 순서로 범위를 좁혀 Nginx proxy_buffering을 원인으로 특정"], metric: { label: "운영 환경", value: "ECS · EC2" } },
   },
   {
     title: "CI/CD와 배포 전후 검증",
     desc: "GitHub Actions로 빌드, 테스트, CDK 검증을 돌리고 배포 후 Smoke Test를 자동화했습니다.",
     tags: ["GitHub Actions", "AWS CDK"],
+    evidence: { project: "밥벌이", slug: "bobbeori", points: ["배포 전 Frontend Build, Backend pytest, CDK synth를 통과해야 병합", "배포 후 www, api, mcp 엔드포인트 Smoke Test", "Agent Regression Test로 주요 기능의 회귀 여부 확인"], metric: { label: "회귀 테스트", value: "237개" } },
   },
   {
     title: "Android 앱 기획과 출시",
     desc: "Java 기반 모바일 앱 두 개를 기획부터 스토어 출시까지 했고, 출시 이후에도 꾸준히 개선해 왔습니다.",
     tags: ["Java", "Android"],
+    evidence: { project: "개인 Android 앱", points: ["Java 기반 앱 두 개를 아이디어 기획부터 스토어 배포까지 직접 진행", "출시 이후 사용자 흐름을 점검하며 기능 개선과 유지보수", "CameraX와 ML Kit로 반려 식물 관리 앱 SmartPot 개발"], metric: { label: "스토어 출시", value: "2개" } },
   },
 ];
 

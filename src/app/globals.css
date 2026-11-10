@@ -420,6 +420,58 @@ button { font-family: inherit; }
 .runbar-track { display: block; height: 3px; margin-top: 6px; border-radius: 2px; background: var(--fog-deep); overflow: hidden; }
 .runbar { display: block; height: 100%; background: var(--accent); }
 
+/* 평가 근거 펼치기 */
+.eval-more-wrap { display: flex; flex-direction: column; align-items: center; margin-top: -24px; }
+.eval-more-btn {
+  display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 22px 0 8px; border: 0; border-radius: 999px;
+  background: var(--night); color: #fff; font-size: 15px; font-weight: 600; cursor: pointer;
+  box-shadow: 0 18px 40px -20px rgba(14, 20, 51, 0.7); transition: transform 0.25s, background 0.25s;
+}
+.eval-more-btn:hover { transform: translateY(-2px); background: #1b2350; }
+.eval-more-cmd { padding: 7px 12px; border-radius: 999px; background: #1f2858; color: var(--butter); font-size: 12px; font-weight: 500; }
+.eval-more-chev { transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.eval-more-btn.is-open .eval-more-chev { transform: rotate(180deg); }
+.eval-more { display: grid; grid-template-rows: 0fr; width: 100%; opacity: 0; transition: grid-template-rows 0.75s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s; }
+.eval-more.is-open { grid-template-rows: 1fr; opacity: 1; }
+.eval-more-inner { min-height: 0; overflow: hidden; }
+.eval-report { margin-top: 28px; border-radius: 22px; background: var(--night-2); color: #e8ebf5; overflow: hidden; transform: translateY(-16px) scale(0.98); transform-origin: top center; transition: transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.eval-more.is-open .eval-report { transform: none; }
+.eval-rows { list-style: none; margin: 0; padding: 8px 28px 16px; }
+.eval-row {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.6fr) 220px; gap: 28px; align-items: start;
+  padding: 26px 0; border-bottom: 1px solid var(--night-line);
+  opacity: 0; transform: translateY(18px); transition: opacity 0.5s, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.eval-row:last-child { border-bottom: 0; }
+.eval-more.is-open .eval-row { opacity: 1; transform: none; transition-delay: calc(0.25s + var(--i) * 0.09s); }
+.eval-row-head { display: flex; flex-direction: column; gap: 8px; }
+.eval-row-num { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; padding: 3px 10px; border-radius: 999px; background: rgba(110, 231, 183, 0.14); color: var(--mint); font-size: 12px; }
+.eval-row-head strong { font-size: 19px; line-height: 1.4; letter-spacing: -0.01em; color: #fff; }
+.eval-row-src { font-size: 13px; color: #8d96bd; }
+.eval-row-src a { color: var(--butter); text-decoration: none; font-weight: 500; }
+.eval-row-src a:hover { color: #fff; text-decoration: underline; }
+.eval-row-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.eval-row-points li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.65; color: #c9cee8; }
+.eval-row-points li::before { content: ""; position: absolute; left: 2px; top: 0.72em; width: 6px; height: 6px; border-radius: 50%; background: #4a5390; }
+.eval-row-metric { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border-radius: 14px; background: #1b2350; }
+.eval-row-metric .mono { font-size: 12px; color: #8d96bd; }
+.eval-row-metric strong { font-family: var(--mono); font-size: 21px; line-height: 1.25; font-weight: 600; color: var(--butter); letter-spacing: -0.02em; white-space: nowrap; }
+@media (max-width: 900px) {
+  .eval-row { grid-template-columns: 1fr; gap: 14px; }
+  .eval-row-metric { flex-direction: row; align-items: baseline; justify-content: space-between; }
+}
+@media (max-width: 760px) {
+  .eval-more-wrap { margin-top: -8px; }
+  .eval-more-btn { width: 100%; justify-content: center; padding: 0 18px; }
+  .eval-more-cmd { display: none; }
+  .eval-rows { padding: 4px 18px 10px; }
+  .eval-row { padding: 22px 0; }
+  .eval-row-metric strong { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eval-more, .eval-report, .eval-row, .eval-more-chev { transition: none; }
+}
+
 .console {
   flex: 0 1 300px; min-width: 260px; display: flex; flex-direction: column; border-radius: 20px;
   background: var(--night-2); color: #e8ebf5; overflow: hidden; box-shadow: 0 40px 80px -30px rgba(19, 26, 54, 0.55);
