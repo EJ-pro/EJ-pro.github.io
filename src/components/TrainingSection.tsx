@@ -65,7 +65,7 @@ function subscribeNarrow(onChange: () => void) {
   return () => media.removeEventListener("change", onChange);
 }
 
-/** 업데이트 내역: 스크롤하면 가로로 흘러가는 타임라인과 수상 */
+/** 경험: 스크롤하면 가로로 흘러가는 타임라인과 수상 */
 export function TrainingSection() {
   const ref = useRef<HTMLElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
@@ -142,9 +142,9 @@ export function TrainingSection() {
       >
         <div className="ckpt-stage">
           <div className="ckpt-head">
-            <ToolChip call='get_changelog(model="이재희")' phase={phase} result={`${checkpoints.length}개`} />
-            <h2 id="training-title" className="h2">이재희 AI 업데이트 내역</h2>
-            <p className="lead">2019년부터 지금까지 이재희 AI가 업데이트되어 온 과정과, 그 과정에서 받은 상 {awards.length}건입니다.</p>
+            <ToolChip call='get_experience(owner="이재희")' phase={phase} result={`${checkpoints.length}개`} />
+            <h2 id="training-title" className="h2">경험과 수상</h2>
+            <p className="lead">2019년 컴퓨터공학 전공부터 지금까지 쌓아 온 활동과 프로젝트, 그 과정에서 받은 상 {awards.length}건입니다.</p>
           </div>
           <aside ref={awardsRef} className="rewards" aria-labelledby="rewards-title">
             <div className="rewards-top">
@@ -201,7 +201,7 @@ export function TrainingSection() {
             <ol
               ref={trackRef}
               className="ckpts"
-              aria-label="업데이트 내역"
+              aria-label="경험"
               style={pinned ? { transform: `translate3d(${-shownProgress * travel}px, 0, 0)` } : undefined}
             >
               <span className="ckpt-rail" aria-hidden="true" />

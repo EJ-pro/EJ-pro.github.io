@@ -148,7 +148,7 @@ button { font-family: inherit; }
 /* 사이드 내비: 넓은 화면에서 오른쪽에 고정 */
 .side-nav { position: fixed; z-index: 15; right: 20px; top: 50%; transform: translateY(-50%); }
 .side-nav ol {
-  list-style: none; margin: 0; padding: 10px 8px; display: flex; flex-direction: column; gap: 2px; border-radius: 999px;
+  position: relative; list-style: none; margin: 0; padding: 10px 8px; display: flex; flex-direction: column; gap: 2px; border-radius: 999px;
   background: rgba(255, 255, 255, 0.78); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(21, 25, 36, 0.08); box-shadow: 0 12px 32px -18px rgba(21, 25, 36, 0.45);
 }
@@ -157,11 +157,15 @@ button { font-family: inherit; }
 .side-nav a:hover .side-nav-mark { background: var(--ink-3); }
 .side-nav a.is-active .side-nav-mark { height: 20px; background: var(--accent); }
 .side-nav-label {
-  position: absolute; right: calc(100% + 12px); top: 50%; transform: translate(6px, -50%); padding: 5px 12px; border-radius: 999px;
+  position: absolute; right: calc(100% + 12px); top: 50%; transform: translate(6px, -50%); width: 116px; box-sizing: border-box;
+  padding: 5px 10px; border-radius: 999px; text-align: center;
   background: var(--ink); color: #fff; font-size: 13px; font-weight: 500; white-space: nowrap;
   opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s;
 }
-.side-nav:hover .side-nav-label { opacity: 0.88; transform: translate(0, -50%); }
+.side-nav:hover .side-nav-label { opacity: 0.88; transform: translate(0, -50%); pointer-events: auto; cursor: pointer; }
+/* 점에서 이름표로 마우스를 옮기는 동안 펼침이 꺼지지 않도록 사이를 잇는 투명 영역 */
+.side-nav:hover ol::before { content: ""; position: absolute; top: 0; bottom: 0; right: 100%; width: 150px; }
+.side-nav-label:hover { opacity: 1; }
 .side-nav a:hover .side-nav-label, .side-nav a:focus-visible .side-nav-label { opacity: 1; transform: translate(0, -50%); }
 .side-nav a.is-active .side-nav-label { background: var(--accent); }
 .side-nav:hover a.is-active .side-nav-label { opacity: 1; }
@@ -223,7 +227,7 @@ button { font-family: inherit; }
 .meter { flex: 1 1 auto; height: 6px; border-radius: 3px; background: var(--night-line); overflow: hidden; }
 .meter span { display: block; height: 100%; border-radius: 3px; background: var(--amber); transition: width 0.2s linear; }
 
-/* ───────── 업데이트 내역 ───────── */
+/* ───────── 경험과 수상 ───────── */
 .training { padding-block: 96px; }
 
 /* 가로 타임라인: 화면에 고정된 채 스크롤만큼 옆으로 흐른다 */

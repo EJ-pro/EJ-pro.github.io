@@ -23,17 +23,17 @@ export const contextWindow = {
   lowAt: 0.85,
 };
 
-export type Stage = { id: string; nav?: string; status: string };
+export type Stage = { id: string; nav?: string; status: string; /** false면 오른쪽 사이드 내비에서 뺀다 */ side?: boolean };
 
 export const stages: Stage[] = [
   { id: "hello", status: "대화 시작" },
   { id: "context", nav: "프로필", status: "컨텍스트 불러오는 중" },
   { id: "trace", nav: "대표 프로젝트", status: "추론 과정 재생 중" },
-  { id: "evals", nav: "경험", status: "평가 돌리는 중" },
+  { id: "evals", nav: "역량", status: "평가 돌리는 중" },
   { id: "tools", nav: "기술", status: "Tool 연결하는 중" },
   { id: "search", nav: "전체 프로젝트", status: "프로젝트 검색 중" },
-  { id: "training", nav: "업데이트 내역", status: "업데이트 내역 불러오는 중" },
-  { id: "contact", nav: "연락", status: "응답 작성 중" },
+  { id: "training", nav: "경험", status: "경험 불러오는 중" },
+  { id: "contact", nav: "연락", status: "응답 작성 중", side: false },
 ];
 
 export type PromptLine =
@@ -69,7 +69,7 @@ export type Checkpoint = {
   ongoing?: boolean;
 };
 
-/** 업데이트 내역: 시기별로 이재희 AI가 쌓아 온 경험 */
+/** 경험: 시기별 활동과 프로젝트 */
 export const checkpoints: Checkpoint[] = [
   {
     period: "2019 — 2025",

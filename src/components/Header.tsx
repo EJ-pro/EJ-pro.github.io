@@ -42,6 +42,7 @@ export function Header() {
 
   const activeId = stages[stage].id;
   const navItems = stages.filter((s) => s.nav);
+  const sideItems = navItems.filter((s) => s.side !== false);
 
   return (
     <>
@@ -82,7 +83,7 @@ export function Header() {
     {/* 화면 오른쪽에 따라다니는 사이드 내비: 지금 섹션은 막대로, 올리면 이름이 펼쳐진다 */}
     <nav className="side-nav" aria-label="섹션 바로가기">
       <ol>
-        {navItems.map((s) => {
+        {sideItems.map((s) => {
           const on = s.id === activeId;
           return (
             <li key={s.id}>
