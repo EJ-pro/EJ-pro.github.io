@@ -81,7 +81,8 @@ export function ContactSection() {
 
 type Phase = "message" | "email" | "sending" | "sent" | "error";
 type Line = { who: "user" | "bot"; text: string };
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+/** 문장 속에서도 이메일만 골라낸다 (예: "a@b.com입니다" → a@b.com) */
+const EMAIL_RE = /[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/;
 
 /** 하단 입력창: 메시지 → 답장 받을 이메일 → 전송. 결과를 대화로 보여준다 */
 function ContactChat() {
@@ -132,14 +133,15 @@ function ContactChat() {
       setPhase("email");
       setTimeout(() => say("bot", contact.askEmail), 450);
     } else if (phase === "email") {
-      if (!EMAIL_RE.test(text)) {
+      const email = text.match(EMAIL_RE)?.[0];
+      if (!email) {
         setInvalid(true);
         return;
       }
       setInvalid(false);
       say("user", text);
       setDraft("");
-      void send(text);
+      void send(email);
     }
     inputRef.current?.focus();
   };
@@ -199,7 +201,8 @@ function ContactChat() {
               ref={inputRef}
               id="ask"
               name={phase === "email" ? "email" : "message"}
-              type={phase === "email" ? "email" : "text"}
+              type="text"
+              inputMode={phase === "email" ? "email" : "text"}
               autoComplete={phase === "email" ? "email" : "off"}
               maxLength={phase === "email" ? 120 : 2000}
               value={draft}
