@@ -199,7 +199,7 @@ button { font-family: inherit; }
 .meter { flex: 1 1 auto; height: 6px; border-radius: 3px; background: var(--night-line); overflow: hidden; }
 .meter span { display: block; height: 100%; border-radius: 3px; background: var(--amber); transition: width 0.2s linear; }
 
-/* ───────── 학습 기록 ───────── */
+/* ───────── 연대기 ───────── */
 .training { padding-block: 96px; }
 
 /* 가로 타임라인: 화면에 고정된 채 스크롤만큼 옆으로 흐른다 */

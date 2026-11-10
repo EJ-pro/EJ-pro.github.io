@@ -28,11 +28,11 @@ export type Stage = { id: string; nav?: string; status: string };
 export const stages: Stage[] = [
   { id: "hello", status: "대화 시작" },
   { id: "context", nav: "프로필", status: "컨텍스트 불러오는 중" },
-  { id: "training", nav: "학습 기록", status: "체크포인트 불러오는 중" },
   { id: "trace", nav: "대표 프로젝트", status: "추론 과정 재생 중" },
   { id: "evals", nav: "경험", status: "평가 돌리는 중" },
   { id: "tools", nav: "기술", status: "Tool 연결하는 중" },
   { id: "search", nav: "전체 프로젝트", status: "프로젝트 검색 중" },
+  { id: "training", nav: "연대기", status: "연대기 불러오는 중" },
   { id: "contact", nav: "연락", status: "응답 작성 중" },
 ];
 
@@ -69,7 +69,7 @@ export type Checkpoint = {
   ongoing?: boolean;
 };
 
-/** 학습 기록: 시기별 체크포인트 */
+/** 연대기: 시기별 발자취 */
 export const checkpoints: Checkpoint[] = [
   {
     period: "2019 — 2025",
