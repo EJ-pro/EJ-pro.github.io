@@ -323,8 +323,8 @@ export const cases: CaseStudy[] = [
     description: "이탈 예측을 사용자별 원인 분석, 리텐션 액션, ROI 시뮬레이션으로 연결한 KKBOX 프로젝트의 실행 보고서입니다.",
     repo: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-2nd-3TEAM",
     live: "https://kkbox-churn.streamlit.app/",
-    image: "/images/projects/kkbox-roi.jpg",
-    imageAlt: "KKBOX 마케팅 성과 시뮬레이터 화면",
+    image: "/images/projects/kkbox-dashboard.jpg",
+    imageAlt: "KKBOX 이탈 방어 시스템 통합 대시보드 화면",
     fit: "cover",
     meta: [
       { label: "기간", value: "2026.03.26 – 2026.04.02" },
@@ -421,6 +421,7 @@ export const cases: CaseStudy[] = [
         title: "리텐션 전략의 ROI 시뮬레이션",
         lead: "할인 쿠폰과 무료 연장 중 어떤 전략이 나은지 조건을 바꿔 비교합니다.",
         blocks: [
+          { t: "img", src: "/images/projects/kkbox-roi.jpg", alt: "두 고객 그룹의 할인율과 방어 성공률을 비교하는 마케팅 성과 시뮬레이터 화면", caption: "마케팅 성과 시뮬레이터: 그룹별 조건을 바꿔 방어 성공률과 비용을 비교합니다" },
           {
             t: "flow",
             items: [
