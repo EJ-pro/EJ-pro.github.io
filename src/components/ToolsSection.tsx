@@ -6,6 +6,8 @@ import { useCounter, useReducedMotion, useSeenOnce, useToolPhase } from "@/lib/m
 import { ToolChip } from "./ui";
 
 const TOTAL = toolkits.reduce((n, k) => n + k.tools.length, 0);
+/** 분야(열)마다 앞선 분야들의 Tool 수. 한 분야씩 위에서 아래로 켜지게 순서를 매긴다 */
+const OFFSETS = toolkits.map((_, ki) => toolkits.slice(0, ki).reduce((n, k) => n + k.tools.length, 0));
 
 /** 5. Tool: 이재희 AI에 연결된 Tool 카드가 한 줄씩 "연결됨"으로 바뀐다 */
 export function ToolsSection() {
@@ -17,7 +19,6 @@ export function ToolsSection() {
 
   const phase = reduced ? 3 : tool;
   const on = reduced ? TOTAL : connected;
-  const kits = toolkits.length;
 
   return (
     <section id="tools" ref={ref} className="section tools" aria-labelledby="tools-title">
@@ -38,11 +39,15 @@ export function ToolsSection() {
         <div className="toolkits">
           {toolkits.map((kit, ki) => (
             <div key={kit.label} className="toolkit">
-              <h3>{kit.label}</h3>
+              <h3>
+                <span>{kit.label}</span>
+                <span className="toolkit-count mono">
+                  {Math.min(kit.tools.length, Math.max(0, on - OFFSETS[ki]))}/{kit.tools.length}
+                </span>
+              </h3>
               <ul>
                 {kit.tools.map((t, ti) => {
-                  // 각 열의 첫 줄부터 가로로 한 줄씩 켜진다
-                  const isOn = ti * kits + ki < on;
+                  const isOn = OFFSETS[ki] + ti < on;
                   return (
                     <li key={t.name} className={`tool-card${isOn ? " is-on" : ""}`}>
                       <span className="tool-card-top">
