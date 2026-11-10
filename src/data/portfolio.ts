@@ -340,7 +340,7 @@ export const toolkits: Toolkit[] = [
     tools: [
       { name: "React", use: "웹 프론트엔드" },
       { name: "Next.js", use: "지금 보고 계신 이 포트폴리오" },
-      { name: "Android", use: "Java·Kotlin 앱 기획과 출시" },
+      { name: "Android", use: "Kotlin·Jetpack Compose 앱 기획과 출시" },
       { name: "Git", use: "협업과 버전 관리" },
     ],
   },
