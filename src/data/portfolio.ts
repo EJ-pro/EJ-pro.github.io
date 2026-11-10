@@ -300,9 +300,9 @@ export const evals: EvalCase[] = [
   },
   {
     title: "Android 앱 기획과 출시",
-    desc: "Java 기반 모바일 앱 두 개를 기획부터 스토어 출시까지 했고, 출시 이후에도 꾸준히 개선해 왔습니다.",
-    tags: ["Java", "Android"],
-    evidence: { project: "개인 Android 앱", points: ["Java 기반 앱 두 개를 아이디어 기획부터 스토어 배포까지 직접 진행", "출시 이후 사용자 흐름을 점검하며 기능 개선과 유지보수", "CameraX와 ML Kit로 반려 식물 관리 앱 SmartPot 개발"], metric: { label: "스토어 출시", value: "2개" } },
+    desc: "밥벌이와 Walky 두 Android 앱을 기획부터 Play 스토어 출시까지 했고, 출시 이후에도 꾸준히 개선해 왔습니다.",
+    tags: ["Kotlin", "Android"],
+    evidence: { project: "밥벌이 · Walky", points: ["밥벌이: 요리 영상을 구조화된 레시피로 바꾸고 현재 조리 단계를 기억하는 앱을 Jetpack Compose와 Supabase로 개발", "Walky: 사람과 반려동물의 산책을 기록하는 위치 기반 산책 커뮤니티 앱 개발", "두 앱 모두 Play 스토어에 출시하고, 사용자 흐름을 점검하며 기능 개선과 유지보수"], metric: { label: "Play 스토어 출시", value: "2개" } },
   },
 ];
 
