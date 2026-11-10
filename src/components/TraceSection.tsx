@@ -75,6 +75,11 @@ function Run({ project, play, reduced, onNext }: { project: FeaturedProject; pla
                 다음 대화
               </button>
             )}
+            {project.live && (
+              <a className="agent-link" href={project.live} target="_blank" rel="noreferrer">
+                사이트 열기
+              </a>
+            )}
             <Link className="agent-link" href={`/projects/${project.slug}/`}>
               개발 내용 보기
             </Link>

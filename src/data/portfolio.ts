@@ -186,6 +186,8 @@ export type FeaturedProject = {
   summary: string;
   stack: string;
   href: string;
+  /** 운영 중인 사이트 주소 */
+  live?: string;
   steps: { tool: string; title: string; detail: string }[];
 };
 
@@ -355,6 +357,8 @@ export type Project = {
   href: string;
   /** 상세 페이지가 있으면 그 slug */
   detail?: string;
+  /** 운영 중인 사이트 주소 */
+  live?: string;
 };
 
 export const projects: Project[] = [

@@ -25,6 +25,8 @@ export type CaseStudy = {
   tagline: string;
   description: string;
   repo: string;
+  /** 운영 중인 사이트 주소 */
+  live?: string;
   image: string;
   imageAlt: string;
   fit: "cover" | "contain";

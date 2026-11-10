@@ -156,6 +156,12 @@ export function SearchSection() {
                   </span>
                 </span>
               </CardLink>
+              {p.live && (
+                <a className="src-live" href={p.live} target="_blank" rel="noreferrer">
+                  <span className="src-live-dot" aria-hidden="true" />
+                  사이트 열기
+                </a>
+              )}
             </li>
           ))}
         </ul>
@@ -166,9 +172,14 @@ export function SearchSection() {
 
 /** 상세 페이지가 있으면 사이트 안으로, 없으면 GitHub로 */
 function CardLink({ project, children }: { project: Project; children: ReactNode }) {
-  if (project.detail) return <Link href={`/projects/${project.detail}/`}>{children}</Link>;
+  if (project.detail)
+    return (
+      <Link className="src-main" href={`/projects/${project.detail}/`}>
+        {children}
+      </Link>
+    );
   return (
-    <a href={project.href} target="_blank" rel="noreferrer">
+    <a className="src-main" href={project.href} target="_blank" rel="noreferrer">
       {children}
     </a>
   );

@@ -145,6 +145,12 @@ export default function CaseStudy({ c }: { c: Case }) {
             <span aria-hidden="true">←</span> 이재희 포트폴리오
           </Link>
           <span className="case-bar-file mono">{c.slug}/report.md</span>
+          {c.live && (
+            <a className="case-repo case-live" href={c.live} target="_blank" rel="noreferrer">
+              <span className="src-live-dot" aria-hidden="true" />
+              사이트 열기
+            </a>
+          )}
           <a className="case-repo" href={c.repo} target="_blank" rel="noreferrer">
             GitHub <ArrowUpRight size={13} />
           </a>
