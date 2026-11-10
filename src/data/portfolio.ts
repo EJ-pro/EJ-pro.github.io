@@ -32,7 +32,7 @@ export const stages: Stage[] = [
   { id: "evals", nav: "경험", status: "평가 돌리는 중" },
   { id: "tools", nav: "기술", status: "Tool 연결하는 중" },
   { id: "search", nav: "전체 프로젝트", status: "프로젝트 검색 중" },
-  { id: "training", nav: "연대기", status: "연대기 불러오는 중" },
+  { id: "training", nav: "업데이트 내역", status: "업데이트 내역 불러오는 중" },
   { id: "contact", nav: "연락", status: "응답 작성 중" },
 ];
 
@@ -69,7 +69,7 @@ export type Checkpoint = {
   ongoing?: boolean;
 };
 
-/** 연대기: 시기별 발자취 */
+/** 업데이트 내역: 시기별로 이재희 AI가 쌓아 온 경험 */
 export const checkpoints: Checkpoint[] = [
   {
     period: "2019 — 2025",
