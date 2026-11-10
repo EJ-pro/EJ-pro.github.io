@@ -177,6 +177,8 @@ export type FeaturedProject = {
   ask: string;
   /** 결과물 패널에 보이는 파일 이름 */
   slug: string;
+  /** 대화 카드에 보이는 한 줄 설명 */
+  tagline: string;
   image: string;
   fit: "cover" | "contain";
   alt: string;
@@ -192,6 +194,7 @@ export const featured: FeaturedProject[] = [
     name: "밥벌이",
     ask: "밥벌이는 어떤 프로젝트인가요?",
     slug: "bobbeori",
+    tagline: "Multi-Agent 식생활 서비스",
     image: "/images/projects/bobbeori-agents.jpg",
     fit: "contain",
     alt: "밥벌이 Multi-Agent 아키텍처 다이어그램",
@@ -211,6 +214,7 @@ export const featured: FeaturedProject[] = [
     name: "너로 정했다! LLM",
     ask: "너로 정했다! LLM은 어떤 프로젝트인가요?",
     slug: "pokemon-llm",
+    tagline: "Hybrid RAG 포켓몬 AI 플랫폼",
     image: "/images/projects/pokemon-team-builder.jpg",
     fit: "cover",
     alt: "너로 정했다! LLM 팀 빌더 화면",
@@ -230,6 +234,7 @@ export const featured: FeaturedProject[] = [
     name: "KKBOX Churn Prevention",
     ask: "KKBOX Churn Prevention은 어떤 프로젝트인가요?",
     slug: "kkbox-churn",
+    tagline: "이탈 방지 의사결정 지원 서비스",
     image: "/images/projects/kkbox-roi.jpg",
     fit: "cover",
     alt: "KKBOX 마케팅 성과 시뮬레이터 화면",
