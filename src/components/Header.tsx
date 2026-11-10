@@ -40,20 +40,23 @@ export function Header() {
   const tokenState: TokenState = used >= 0.995 ? "empty" : used >= contextWindow.lowAt ? "low" : "ok";
   const left = tokenState === "empty" ? 0 : Math.round((1 - used) * contextWindow.limit);
 
+  const activeId = stages[stage].id;
+  const navItems = stages.filter((s) => s.nav);
+
   return (
+    <>
     <header className="site-header">
       <div className="site-header-bar">
         <a href="#top" className="brand">
           <strong>{profile.name}</strong>
         </a>
+        {/* 좁은 화면에서만 보이는 헤더 메뉴. 넓은 화면에서는 오른쪽 사이드 내비를 쓴다 */}
         <nav className="site-nav" aria-label="섹션 메뉴">
-          {stages
-            .filter((s) => s.nav)
-            .map((s) => (
-              <a key={s.id} href={`#${s.id}`}>
-                {s.nav}
-              </a>
-            ))}
+          {navItems.map((s) => (
+            <a key={s.id} href={`#${s.id}`} aria-current={s.id === activeId ? "location" : undefined}>
+              {s.nav}
+            </a>
+          ))}
         </nav>
         <div className="header-meta">
           <p className="stage" aria-live="polite">
@@ -75,5 +78,23 @@ export function Header() {
         <div className={`progress is-${tokenState}`} style={{ transform: `scaleX(${used})` }} />
       </div>
     </header>
+
+    {/* 화면 오른쪽에 따라다니는 사이드 내비: 지금 섹션은 막대로, 올리면 이름이 펼쳐진다 */}
+    <nav className="side-nav" aria-label="섹션 바로가기">
+      <ol>
+        {navItems.map((s) => {
+          const on = s.id === activeId;
+          return (
+            <li key={s.id}>
+              <a href={`#${s.id}`} className={on ? "is-active" : undefined} aria-current={on ? "location" : undefined}>
+                <span className="side-nav-label">{s.nav}</span>
+                <span className="side-nav-mark" aria-hidden="true" />
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+    </>
   );
 }

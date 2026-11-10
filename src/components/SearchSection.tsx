@@ -119,7 +119,7 @@ export function SearchSection() {
         )}
 
         <div className="src-bar">
-          <p className="src-title">출처 {cards.length}</p>
+          <p className="src-title">출처{rows > 0 ? ` ${cards.length}` : ""}</p>
           <div className="filters" role="group" aria-label="분야 필터">
             {projectFilters.map((f) => {
               const count = projects.filter((p) => f.id === "all" || p.category === f.id).length;
