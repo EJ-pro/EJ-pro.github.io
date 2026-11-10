@@ -178,6 +178,7 @@ export const cases: CaseStudy[] = [
     tagline: "서로 다른 검색 방식의 실패 패턴을 보완하고, 포켓몬 데이터에 근거해 답하는 AI 플랫폼",
     description: "포켓몬 데이터를 PostgreSQL, pgvector, Neo4j에 연결하고 서로 다른 검색 실패를 보완한 Hybrid RAG 프로젝트의 실행 보고서입니다.",
     repo: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-3rd-3TEAM",
+    live: "https://pokemon-hybrid-rag.streamlit.app/",
     image: "/images/projects/pokemon-team-builder.jpg",
     imageAlt: "너로 정했다! LLM 팀 빌더 화면",
     fit: "cover",

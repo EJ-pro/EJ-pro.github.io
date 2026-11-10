@@ -224,6 +224,7 @@ export const featured: FeaturedProject[] = [
     summary: "서로 다른 검색 방식의 약점을 보완하도록 BM25, pg_trgm, Vector 결과를 RRF로 결합한 Hybrid RAG",
     stack: "Python / PostgreSQL / pgvector / Neo4j / RRF / RAGAS",
     href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-3rd-3TEAM",
+    live: "https://pokemon-hybrid-rag.streamlit.app/",
     steps: [
       { tool: "collect_sources", title: "데이터 수집과 정제", detail: "외부 API에서 정형·비정형 데이터를 모아 정리합니다" },
       { tool: "load_stores", title: "저장소 적재", detail: "PostgreSQL·pgvector와 Neo4j에 나눠 담습니다" },
@@ -366,7 +367,7 @@ export const projects: Project[] = [
   { name: "밥벌이", image: "/images/projects/bobbeori-agents.jpg", fit: "contain", category: "ai", label: "AI 서비스", description: "복합 요청의 의존 관계와 실행 정책을 제어하는 Multi-Agent 식생활 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-FINAL-1Team", detail: "bobbeori" },
   { name: "GitGraph · ChatFolio", category: "ai", label: "개발 도구", description: "AST로 코드 의존성을 추출하고 GraphRAG로 분석과 README 생성을 돕는 개발 도구", href: "https://github.com/EJ-pro/GitGraph" },
   { name: "HELBOTIN", image: "/images/projects/helbotin-chat.jpg", fit: "cover", category: "ai", label: "AI 서비스", description: "운동 데이터 기반 RAG 상담과 개인화 루틴을 제공하는 헬스케어 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-4th-4team", live: "https://helbotin.netlify.app/" },
-  { name: "너로 정했다! LLM", image: "/images/projects/pokemon-team-builder.jpg", fit: "cover", category: "ai", label: "Hybrid RAG", description: "Vector, BM25, pg_trgm과 Graph 탐색을 결합한 포켓몬 AI 플랫폼", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-3rd-3TEAM", detail: "hybrid-rag" },
+  { name: "너로 정했다! LLM", image: "/images/projects/pokemon-team-builder.jpg", fit: "cover", category: "ai", label: "Hybrid RAG", description: "Vector, BM25, pg_trgm과 Graph 탐색을 결합한 포켓몬 AI 플랫폼", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-3rd-3TEAM", detail: "hybrid-rag", live: "https://pokemon-hybrid-rag.streamlit.app/" },
   { name: "KKBOX Churn Prevention", image: "/images/projects/kkbox-roi.jpg", fit: "cover", category: "ai", label: "머신러닝", description: "이탈 예측을 사용자별 원인, 대응 액션, ROI 비교로 연결한 의사결정 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-2nd-3TEAM", detail: "kkbox", live: "https://kkbox-churn.streamlit.app/" },
   { name: "밥벌이 Android", category: "android", label: "Android", description: "요리 영상을 구조화된 레시피로 바꾸고 현재 조리 단계를 기억하는 앱", href: "https://github.com/EJ-pro/bobbeori-android", live: "https://play.google.com/store/apps/details?id=com.bobbeori.bobbeori_app&hl=ko" },
   { name: "Pokemon RAG Database Pipeline", category: "ai", label: "데이터 파이프라인", description: "PokeAPI의 정형·비정형 데이터를 수집해 RAG 지식베이스로 적재하는 파이프라인", href: "https://github.com/EJ-pro/Pokemon_DB_Collection" },
