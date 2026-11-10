@@ -252,6 +252,14 @@ export default function CaseStudy({ c }: { c: Case }) {
           </div>
         </section>
       </main>
+
+      {c.live && (
+        <a className="case-fab" href={c.live} target="_blank" rel="noreferrer">
+          <span className="case-fab-dot" aria-hidden="true" />
+          사이트 보러가기
+          <ArrowUpRight size={15} />
+        </a>
+      )}
     </>
   );
 }

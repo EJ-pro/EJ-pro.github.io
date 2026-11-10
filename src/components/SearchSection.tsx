@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useRef, useState, type ReactNode } from "react";
-import { profile, projectFilters, projects, search, type Project, type ProjectCategory } from "@/data/portfolio";
+import { liveLabel, profile, projectFilters, projects, search, type Project, type ProjectCategory } from "@/data/portfolio";
 import { useCounter, useReducedMotion, useSeenOnce, useToolPhase } from "@/lib/motion";
 import { ArrowUpRight, ToolChip } from "./ui";
 
@@ -159,7 +159,7 @@ export function SearchSection() {
               {p.live && (
                 <a className="src-live" href={p.live} target="_blank" rel="noreferrer">
                   <span className="src-live-dot" aria-hidden="true" />
-                  사이트 열기
+                  {liveLabel(p.live)}
                 </a>
               )}
             </li>

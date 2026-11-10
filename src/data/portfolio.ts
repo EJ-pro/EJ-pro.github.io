@@ -368,10 +368,10 @@ export const projects: Project[] = [
   { name: "HELBOTIN", image: "/images/projects/helbotin-chat.jpg", fit: "cover", category: "ai", label: "AI 서비스", description: "운동 데이터 기반 RAG 상담과 개인화 루틴을 제공하는 헬스케어 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-4th-4team" },
   { name: "너로 정했다! LLM", image: "/images/projects/pokemon-team-builder.jpg", fit: "cover", category: "ai", label: "Hybrid RAG", description: "Vector, BM25, pg_trgm과 Graph 탐색을 결합한 포켓몬 AI 플랫폼", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-3rd-3TEAM", detail: "hybrid-rag" },
   { name: "KKBOX Churn Prevention", image: "/images/projects/kkbox-roi.jpg", fit: "cover", category: "ai", label: "머신러닝", description: "이탈 예측을 사용자별 원인, 대응 액션, ROI 비교로 연결한 의사결정 서비스", href: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-2nd-3TEAM", detail: "kkbox", live: "https://kkbox-churn.streamlit.app/" },
-  { name: "밥벌이 Android", category: "android", label: "Android", description: "요리 영상을 구조화된 레시피로 바꾸고 현재 조리 단계를 기억하는 앱", href: "https://github.com/EJ-pro/bobbeori-android" },
+  { name: "밥벌이 Android", category: "android", label: "Android", description: "요리 영상을 구조화된 레시피로 바꾸고 현재 조리 단계를 기억하는 앱", href: "https://github.com/EJ-pro/bobbeori-android", live: "https://play.google.com/store/apps/details?id=com.bobbeori.bobbeori_app&hl=ko" },
   { name: "Pokemon RAG Database Pipeline", category: "ai", label: "데이터 파이프라인", description: "PokeAPI의 정형·비정형 데이터를 수집해 RAG 지식베이스로 적재하는 파이프라인", href: "https://github.com/EJ-pro/Pokemon_DB_Collection" },
   { name: "SmartPot", category: "android", label: "Android 비전", description: "CameraX와 픽셀 분석으로 식물 상태를 진단하는 반려식물 관리 앱", href: "https://github.com/EJ-pro/smartpot" },
-  { name: "Walky", category: "android", label: "Android", description: "사람과 반려동물의 산책을 기록하는 위치 기반 산책 커뮤니티", href: "https://github.com/EJ-pro/Walky" },
+  { name: "Walky", category: "android", label: "Android", description: "사람과 반려동물의 산책을 기록하는 위치 기반 산책 커뮤니티", href: "https://github.com/EJ-pro/Walky", live: "https://play.google.com/store/apps/details?id=com.walkmate.walky&hl=ko" },
   { name: "E-Card", category: "etc", label: "웹", description: "레벨 테스트와 주제별 콘텐츠, 퀴즈를 제공하는 영어 학습 웹 앱", href: "https://github.com/EJ-pro/Project-4" },
   { name: "TikTok AR Filter", category: "etc", label: "AR", description: "TikTok Effect House로 만든 인터랙티브 AR 필터", href: "https://github.com/EJ-pro/TikTok_AR_Filter" },
 ];
@@ -391,3 +391,6 @@ export const contact = {
   ask: "함께 일하고 싶습니다",
   reply: "반갑습니다. 포지션 제안이나 함께할 프로젝트 이야기라면 언제든 환영합니다.",
 };
+
+/** 사이트 버튼 문구. 스토어 주소면 스토어로 안내한다 */
+export const liveLabel = (url: string) => (url.includes("play.google.com") ? "Play 스토어" : "사이트 열기");
