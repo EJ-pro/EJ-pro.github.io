@@ -11,6 +11,15 @@ function BlockView({ b }: { b: Block }) {
   switch (b.t) {
     case "p":
       return <p className="cs-p">{b.text}</p>;
+    case "img":
+      return (
+        <figure className="cs-img">
+          <div className={`cs-img-frame fit-${b.fit ?? "cover"}`}>
+            <Image src={b.src} alt={b.alt} fill sizes="(max-width: 1000px) 100vw, 780px" />
+          </div>
+          {b.caption && <figcaption>{b.caption}</figcaption>}
+        </figure>
+      );
     case "quote":
       return (
         <figure className="cs-quote">

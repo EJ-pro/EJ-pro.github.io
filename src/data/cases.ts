@@ -5,6 +5,7 @@
 
 export type Block =
   | { t: "p"; text: string }
+  | { t: "img"; src: string; alt: string; caption?: string; fit?: "cover" | "contain" }
   | { t: "quote"; text: string }
   | { t: "list"; items: string[] }
   | { t: "chips"; items: string[] }
@@ -42,9 +43,9 @@ export const cases: CaseStudy[] = [
     tagline: "하나의 대화에 섞인 조회, 추천, 데이터 변경을 실행 정책별로 분리한 Multi-Agent 식생활 서비스",
     description: "밥벌이 프로젝트의 Multi-Agent 실행 구조, 평가, 보호장치, 배포 과정을 정리한 실행 보고서입니다.",
     repo: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN27-FINAL-1Team",
-    image: "/images/projects/bobbeori-agents.jpg",
-    imageAlt: "밥벌이 Multi-Agent 시스템 구조",
-    fit: "contain",
+    image: "/images/projects/bobbeori-hero.jpg",
+    imageAlt: "냉장고 재료로 요리를 추천하는 밥벌이 서비스 대표 이미지",
+    fit: "cover",
     meta: [
       { label: "기간", value: "2026.06 – 2026.08" },
       { label: "팀", value: "5인 팀, 팀장" },
@@ -90,6 +91,7 @@ export const cases: CaseStudy[] = [
         id: "flow",
         title: "의존 관계에 따른 실행 흐름 제어",
         blocks: [
+          { t: "img", src: "/images/projects/bobbeori-agents.jpg", alt: "Supervisor와 Domain Agent, Tool로 이어지는 밥벌이 Multi-Agent 구조도", caption: "Supervisor에서 Domain Agent와 Tool로 이어지는 전체 구조", fit: "contain" },
           {
             t: "flow",
             items: [
@@ -401,6 +403,7 @@ export const cases: CaseStudy[] = [
         title: "고위험 고객을 행동 목록으로 전환",
         lead: "예측 확률, 만료 임박 여부, 이탈 원인을 한 화면에서 확인하는 Action Board를 만들었습니다.",
         blocks: [
+          { t: "img", src: "/images/projects/kkbox-action-board.jpg", alt: "위험 등급과 이탈 원인 필터가 있는 고위험군 액션 보드 화면", caption: "고위험군 액션 보드: 위험 등급과 이탈 원인 카테고리로 대응 대상을 고릅니다" },
           {
             t: "cards",
             items: [
