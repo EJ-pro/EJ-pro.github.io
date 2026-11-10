@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { cases, type Block, type CaseStudy as Case } from "@/data/cases";
 import { featured } from "@/data/portfolio";
 import CaseToc from "./CaseToc";
+import ScrollTop from "./ScrollTop";
 import { ArrowUpRight, Check, ToolChip } from "./ui";
 
 function BlockView({ b }: { b: Block }) {
@@ -137,6 +138,7 @@ export default function CaseStudy({ c }: { c: Case }) {
 
   return (
     <>
+      <ScrollTop id={c.slug} />
       <header className="case-bar">
         <div className="case-bar-inner">
           <Link href="/#trace" className="case-back">
