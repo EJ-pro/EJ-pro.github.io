@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState, type CSSProperties } from "react";
+import { useId, useRef, useState } from "react";
 import { evals, type EvalCase } from "@/data/portfolio";
 import { useCounter, useReducedMotion, useSeenOnce, useToolPhase } from "@/lib/motion";
 import { Check, Spinner, ToolChip } from "./ui";
@@ -11,8 +11,11 @@ const pad = (n: number) => String(n).padStart(2, "0");
 const VERDICT: Record<Status, string> = { queued: "대기", running: "평가 중", done: "통과" };
 
 function EvalCard({ item, index, status }: { item: EvalCase; index: number; status: Status }) {
+  const [open, setOpen] = useState(false);
+  const panelId = useId();
+  const ev = item.evidence;
   return (
-    <li className={`eval-card is-${status}`}>
+    <li className={`eval-card is-${status}${open ? " is-expanded" : ""}`}>
       <div className="eval-card-top">
         <span className="mono eval-num">평가 {pad(index + 1)}</span>
         <span className="verdict">
@@ -35,6 +38,43 @@ function EvalCard({ item, index, status }: { item: EvalCase; index: number; stat
           <span className="runbar" />
         </span>
       )}
+      {status === "done" && (
+        <>
+          <button
+            type="button"
+            className={`eval-open pop${open ? " is-open" : ""}`}
+            aria-expanded={open}
+            aria-controls={panelId}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? "접기" : "자세히 보기"}
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <div id={panelId} className={`eval-detail${open ? " is-open" : ""}`} inert={!open}>
+            <div className="eval-detail-inner">
+              <div className="eval-detail-body">
+                <div className="eval-detail-metric">
+                  <span className="mono">{ev.metric.label}</span>
+                  <strong>{ev.metric.value}</strong>
+                </div>
+                <ul className="eval-detail-points">
+                  {ev.points.map((pt, k) => (
+                    <li key={pt} style={{ transitionDelay: open ? `${180 + k * 80}ms` : "0ms" }}>
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+                <p className="eval-detail-src">
+                  근거 ·{" "}
+                  {ev.slug ? <Link href={`/projects/${ev.slug}/`}>{ev.project} 상세 보기 →</Link> : ev.project}
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </li>
   );
 }
@@ -56,7 +96,6 @@ export function EvalSection() {
   const left = cards.filter((c) => c.index % 2 === 0);
   const right = cards.filter((c) => c.index % 2 === 1);
   const log = cards.filter((c) => c.status !== "queued");
-  const [open, setOpen] = useState(false);
 
   return (
     <section id="evals" ref={ref} className="section section-fog" aria-labelledby="evals-title">
@@ -113,57 +152,6 @@ export function EvalSection() {
           </ul>
         </div>
 
-        <div className="eval-more-wrap">
-          <button
-            type="button"
-            className={`eval-more-btn${open ? " is-open" : ""}`}
-            aria-expanded={open}
-            aria-controls="eval-report"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span className="mono eval-more-cmd">{open ? "$ close_report" : "$ open_report --verbose"}</span>
-            {open ? "평가 근거 접기" : "평가 근거 자세히 보기"}
-            <svg className="eval-more-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-
-          <div id="eval-report" className={`eval-more${open ? " is-open" : ""}`} inert={!open}>
-            <div className="eval-more-inner">
-              <div className="eval-report">
-                <div className="window-bar">
-                  <span /><span /><span />
-                  <em>eval_report.md · {evals.length}건 모두 통과</em>
-                </div>
-                <ol className="eval-rows">
-                  {evals.map((e, i) => (
-                    <li key={e.title} className="eval-row" style={{ "--i": i } as CSSProperties}>
-                      <div className="eval-row-head">
-                        <span className="eval-row-num mono">
-                          <Check size={12} width={2.6} />
-                          평가 {pad(i + 1)}
-                        </span>
-                        <strong>{e.title}</strong>
-                        <span className="eval-row-src">
-                          근거 · {e.evidence.slug ? <Link href={`/projects/${e.evidence.slug}/`}>{e.evidence.project} 보고서 →</Link> : e.evidence.project}
-                        </span>
-                      </div>
-                      <ul className="eval-row-points">
-                        {e.evidence.points.map((pt) => (
-                          <li key={pt}>{pt}</li>
-                        ))}
-                      </ul>
-                      <div className="eval-row-metric">
-                        <span className="mono">{e.evidence.metric.label}</span>
-                        <strong>{e.evidence.metric.value}</strong>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
