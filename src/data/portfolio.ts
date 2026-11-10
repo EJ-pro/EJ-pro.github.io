@@ -143,11 +143,10 @@ export const checkpoints: Checkpoint[] = [
     note: "팀장으로서 특정 기능에만 참여하기보다 설계, 구현, 품질 평가, 배포 과정에서 팀원들과 주요 문제를 함께 논의하고 해결했습니다.",
   },
   {
-    period: "2026.10 —",
+    period: "2026.10 — 2026.11",
     title: "밥벌이 Android",
-    summary: "기존 밥벌이 서비스를 모바일 환경으로 확장하는 Android 애플리케이션을 개발하고 있습니다.",
-    items: ["Jetpack Compose 기반 UI 구성", "Supabase 연동", "모바일 환경에 맞춘 사용자 흐름 설계", "요리 단계 안내 기능 구현"],
-    ongoing: true,
+    summary: "기존 밥벌이 서비스를 모바일 환경으로 확장한 Android 애플리케이션을 개발해 Play 스토어에 출시했습니다.",
+    items: ["Jetpack Compose 기반 UI 구성", "Supabase 연동", "모바일 환경에 맞춘 사용자 흐름 설계", "요리 단계 안내 기능 구현", "Play 스토어 출시"],
   },
 ];
 
