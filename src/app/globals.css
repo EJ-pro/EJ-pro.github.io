@@ -420,40 +420,84 @@ button { font-family: inherit; }
 .runbar-track { display: block; height: 3px; margin-top: 6px; border-radius: 2px; background: var(--fog-deep); overflow: hidden; }
 .runbar { display: block; height: 100%; background: var(--accent); }
 
-/* 평가 카드 자세히 보기 */
+/* 평가 카드 자세히 보기 → 집중 화면 */
 .eval-open {
-  align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; margin-top: 6px; padding: 0 14px;
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 36px; margin-top: 6px; padding: 0 14px;
   border: 1.5px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink-2); font-size: 13px; font-weight: 600; cursor: pointer;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
-.eval-open svg { transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
-.eval-open:hover { border-color: var(--accent); color: var(--accent); }
-.eval-open.is-open { background: var(--night); border-color: var(--night); color: #fff; }
-.eval-open.is-open svg { transform: rotate(180deg); }
-.eval-card.is-expanded { border-color: var(--night); box-shadow: 0 30px 60px -34px rgba(14, 20, 51, 0.55); }
-.eval-detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
-.eval-detail.is-open { grid-template-rows: 1fr; }
-.eval-detail-inner { min-height: 0; overflow: hidden; }
-.eval-detail-body {
-  display: flex; flex-direction: column; gap: 14px; margin-top: 10px; padding: 18px; border-radius: 14px; background: var(--night-2); color: #e8ebf5;
-  opacity: 0; transform: translateY(-10px) scale(0.98); transform-origin: top; transition: opacity 0.35s, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+.eval-open span { transition: transform 0.2s; }
+.eval-open:hover { background: var(--night); border-color: var(--night); color: #fff; }
+.eval-open:hover span { transform: translateX(3px); }
+.evals-stage { scroll-margin-top: calc(var(--header-h) + 24px); }
+.board-in { animation: board-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes board-in { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
+
+.eval-focus {
+  max-width: 1120px; margin: 0 auto; border-radius: 28px; background: var(--night-2); color: #e8ebf5; overflow: hidden;
+  box-shadow: 0 50px 100px -40px rgba(14, 20, 51, 0.7); animation: focus-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
-.eval-detail.is-open .eval-detail-body { opacity: 1; transform: none; transition-delay: 0.08s; }
-.eval-detail-metric { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--night-line); }
-.eval-detail-metric .mono { font-size: 12px; color: #8d96bd; }
-.eval-detail-metric strong { font-family: var(--mono); font-size: 20px; line-height: 1.25; font-weight: 600; color: var(--butter); white-space: nowrap; }
-.eval-detail-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
-.eval-detail-points li {
-  position: relative; padding-left: 18px; font-size: 14px; line-height: 1.65; color: #c9cee8;
-  opacity: 0; transform: translateY(8px); transition: opacity 0.4s, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+@keyframes focus-in { from { opacity: 0; transform: scale(0.92) translateY(24px); } to { opacity: 1; transform: none; } }
+.eval-focus-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px 16px 16px; border-bottom: 1px solid var(--night-line); }
+.eval-focus-back {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px;
+  background: #1f2858; color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s;
 }
-.eval-detail.is-open .eval-detail-points li { opacity: 1; transform: none; }
-.eval-detail-points li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--mint); font: 600 12px/1.9 var(--mono); }
-.eval-detail-src { margin: 0; font-size: 13px; color: #8d96bd; }
-.eval-detail-src a { color: var(--butter); text-decoration: none; font-weight: 600; }
-.eval-detail-src a:hover { color: #fff; text-decoration: underline; }
+.eval-focus-back:hover { background: var(--butter); color: var(--night); }
+.eval-focus-nav { display: flex; align-items: center; gap: 8px; }
+.eval-focus-nav .mono { margin-right: 6px; font-size: 13px; color: #8d96bd; }
+.eval-focus-nav button {
+  width: 44px; height: 44px; border: 1px solid #343e6c; border-radius: 50%; background: transparent; color: #fff;
+  font-size: 22px; line-height: 1; cursor: pointer; transition: background 0.2s, border-color 0.2s;
+}
+.eval-focus-nav button:hover { background: #fff; color: var(--night); border-color: #fff; }
+
+.eval-focus-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 56px; padding: 52px 56px 56px; }
+.eval-focus-main { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
+.eval-focus-main > * { animation: cs-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.eval-focus-main > :nth-child(2) { animation-delay: 0.06s; }
+.eval-focus-main > :nth-child(3) { animation-delay: 0.12s; }
+.eval-focus-main > :nth-child(4) { animation-delay: 0.18s; }
+.eval-focus-main > :nth-child(5) { animation-delay: 0.26s; }
+.eval-focus-badge { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px; border-radius: 999px; background: rgba(110, 231, 183, 0.14); color: var(--mint); font-size: 13px; }
+.eval-focus h3 { margin: 0; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.2; letter-spacing: -0.028em; font-weight: 600; color: #fff; }
+.eval-focus-desc { margin: 0; font-size: 17px; line-height: 1.75; color: #c9cee8; }
+.eval-focus-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.eval-focus-tags span { padding: 4px 12px; border-radius: 999px; border: 1px solid #343e6c; font-size: 13px; color: #b8bfe0; }
+.eval-focus-metric { display: flex; flex-direction: column; gap: 6px; width: 100%; margin-top: 10px; padding: 22px 24px; border-radius: 18px; background: #1b2350; }
+.eval-focus-metric .mono { font-size: 13px; color: #8d96bd; }
+.eval-focus-metric strong { font-family: var(--mono); font-size: clamp(32px, 4vw, 48px); line-height: 1.1; font-weight: 600; letter-spacing: -0.03em; color: var(--butter); }
+
+.eval-focus-side { display: flex; flex-direction: column; gap: 16px; }
+.eval-focus-label { margin: 0; font-size: 13px; color: #8d96bd; animation: cs-in 0.5s 0.18s both; }
+.eval-focus-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.eval-focus-points li {
+  display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; padding: 20px 22px; border-radius: 16px;
+  background: #182046; border: 1px solid var(--night-line); font-size: 16px; line-height: 1.65; color: #e1e5f6;
+  animation: point-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.eval-focus-points li .mono { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: var(--green); color: #fff; font-size: 12px; font-weight: 600; }
+@keyframes point-in { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
+.eval-focus-link {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; margin-top: 6px; padding: 0 22px; border-radius: 999px;
+  background: var(--butter); color: var(--night); font-size: 15px; font-weight: 600; text-decoration: none; animation: cs-in 0.5s 0.7s both; transition: background 0.2s;
+}
+.eval-focus-link:hover { background: #fff; color: var(--night); }
+@media (max-width: 900px) {
+  .eval-focus-body { grid-template-columns: 1fr; gap: 36px; padding: 36px 28px 36px; }
+}
+@media (max-width: 760px) {
+  .eval-focus { border-radius: 22px; }
+  .eval-focus-bar { padding: 12px; }
+  .eval-focus-back { padding: 0 14px; }
+  .eval-focus-nav .mono { display: none; }
+  .eval-focus-body { padding: 28px 20px 24px; gap: 28px; }
+  .eval-focus-desc, .eval-focus-points li { font-size: 15px; }
+  .eval-focus-points li { padding: 16px; grid-template-columns: 30px 1fr; gap: 12px; }
+  .eval-focus-link { width: 100%; justify-content: center; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .eval-detail, .eval-detail-body, .eval-detail-points li, .eval-open svg { transition: none; }
+  .board-in, .eval-focus, .eval-focus-main > *, .eval-focus-label, .eval-focus-points li, .eval-focus-link { animation: none; }
 }
 
 .console {
