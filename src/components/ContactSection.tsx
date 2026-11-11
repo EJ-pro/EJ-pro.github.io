@@ -67,6 +67,9 @@ export function ContactSection() {
               <a className="footer-link" href={`mailto:${profile.email}`}>
                 메일
               </a>
+              <a className="footer-link" href={profile.resume} download={profile.resumeName}>
+                이력서
+              </a>
             </div>
           </div>
           <div className="footer-bottom">
@@ -235,6 +238,9 @@ function ContactChat() {
         </a>
         <a className="pill-soft" href={profile.github} target="_blank" rel="noreferrer">
           GitHub {profile.githubHandle}
+        </a>
+        <a className="pill-soft" href={profile.resume} download={profile.resumeName}>
+          이력서 PDF
         </a>
       </div>
       <p className="fineprint">보낸 메시지는 {profile.name}의 메일로 바로 전달됩니다.</p>

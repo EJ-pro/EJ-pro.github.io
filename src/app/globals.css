@@ -917,3 +917,7 @@ button { font-family: inherit; }
 .contact-error { margin: 6px 0 0 20px; font-size: 13px; color: #c4282c; }
 .contact-log .ghost-btn { background: #fff; border: 1px solid var(--line); border-radius: 999px; }
 .contact-log .ghost-btn:hover { border-color: var(--accent); color: var(--accent); background: #fff; }
+
+/* 이력서 받기 */
+.pill-resume { background: var(--accent); border-color: var(--accent); color: #fff; }
+.pill-resume:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
