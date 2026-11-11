@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
+import Analytics from "@/components/Analytics";
+
+/** Google Analytics 4 측정 ID */
+const GA_ID = "G-7RK2DB7D95";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ej-pro.github.io"),
@@ -37,7 +42,17 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script id="ga4" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_ID}');`}
+        </Script>
+      </body>
     </html>
   );
 }
