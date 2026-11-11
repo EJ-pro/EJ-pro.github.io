@@ -5,6 +5,9 @@ export const profile = {
   githubHandle: "@EJ-pro",
   repositories: "https://github.com/EJ-pro?tab=repositories",
   email: "devejpro@gmail.com",
+  /** 이력서 PDF (public/resume.pdf) 와 내려받을 때의 파일 이름 */
+  resume: "/resume.pdf",
+  resumeName: "이재희_AI엔지니어_이력서.pdf",
 };
 
 export const hero = {

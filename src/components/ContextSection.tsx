@@ -70,6 +70,9 @@ export function ContextSection() {
             <a className="pill-link" href={`mailto:${profile.email}`}>
               {profile.email}
             </a>
+            <a className="pill-link pill-resume" href={profile.resume} download={profile.resumeName}>
+              이력서 PDF 받기
+            </a>
           </div>
         </div>
 
